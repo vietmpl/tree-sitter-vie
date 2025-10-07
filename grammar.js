@@ -8,31 +8,6 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-// https://github.com/tree-sitter/tree-sitter-rust/
-/**
- * Creates a rule to match one or more of the rules separated by the separator.
- *
- * @param {RuleOrLiteral} sep - The separator to use.
- * @param {RuleOrLiteral} rule
- *
- * @returns {SeqRule}
- */
-function sepBy1(sep, rule) {
-	return seq(rule, repeat(seq(sep, rule)));
-}
-
-/**
- * Creates a rule to optionally match one or more of the rules separated by the separator.
- *
- * @param {RuleOrLiteral} sep - The separator to use.
- * @param {RuleOrLiteral} rule
- *
- * @returns {ChoiceRule}
- */
-function sepBy(sep, rule) {
-	return optional(sepBy1(sep, rule));
-}
-
 module.exports = grammar({
 	name: "vie",
 
@@ -40,29 +15,18 @@ module.exports = grammar({
 		source_file: $ => repeat($._node),
 		_node: $ => choice($._expression),
 
-		/*
-		 * Identifier
-		 */
 		user_identifier: _ => token(/(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/u),
 		builtin_identifier: _ =>
 			token(seq("@", /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/u)),
 
 		_identifier: $ => choice($.user_identifier, $.builtin_identifier),
 
-		/*
-		 * Literal
-		 */
 		boolean: _ => choice("true", "false"),
 		string: _ =>
 			token(choice(seq("'", /[^'\n]*/, "'"), seq('"', /([^"\n])*/, '"'))),
 
 		_literal: $ => choice($.boolean, $.string),
 
-		/*
-		 * Expression
-		 */
-
-		// Call expression
 		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>
 			prec(
@@ -70,7 +34,6 @@ module.exports = grammar({
 				seq(field("function", $._identifier), field("arguments", $.arguments)),
 			),
 
-		// Pipe expression
 		pipe_expression: $ =>
 			prec(
 				4,
@@ -81,7 +44,6 @@ module.exports = grammar({
 				),
 			),
 
-		// Unary expression
 		unary_operator: _ => "!",
 		unary_expression: $ =>
 			prec(
@@ -92,7 +54,6 @@ module.exports = grammar({
 				),
 			),
 
-		// Binary expression
 		binary_operator: _ => choice("==", "!=", "<", ">", "<=", ">="),
 		binary_expression: $ =>
 			prec.left(
@@ -118,3 +79,28 @@ module.exports = grammar({
 			),
 	},
 });
+
+// https://github.com/tree-sitter/tree-sitter-rust/
+/**
+ * Creates a rule to match one or more of the rules separated by the separator.
+ *
+ * @param {RuleOrLiteral} sep - The separator to use.
+ * @param {RuleOrLiteral} rule
+ *
+ * @returns {SeqRule}
+ */
+function sepBy1(sep, rule) {
+	return seq(rule, repeat(seq(sep, rule)));
+}
+
+/**
+ * Creates a rule to optionally match one or more of the rules separated by the separator.
+ *
+ * @param {RuleOrLiteral} sep - The separator to use.
+ * @param {RuleOrLiteral} rule
+ *
+ * @returns {ChoiceRule}
+ */
+function sepBy(sep, rule) {
+	return optional(sepBy1(sep, rule));
+}
