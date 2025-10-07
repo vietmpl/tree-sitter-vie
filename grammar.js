@@ -15,11 +15,7 @@ module.exports = grammar({
 		source_file: $ => repeat($._node),
 		_node: $ => choice($._expression),
 
-		user_identifier: _ => token(/(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/u),
-		builtin_identifier: _ =>
-			token(seq("@", /(r#)?[_\p{XID_Start}][_\p{XID_Continue}]*/u)),
-
-		_identifier: $ => choice($.user_identifier, $.builtin_identifier),
+		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,
 
 		boolean: _ => choice("true", "false"),
 		string: _ =>
@@ -31,7 +27,7 @@ module.exports = grammar({
 		call_expression: $ =>
 			prec(
 				5,
-				seq(field("function", $._identifier), field("arguments", $.arguments)),
+				seq(field("function", $.identifier), field("arguments", $.arguments)),
 			),
 
 		pipe_expression: $ =>
@@ -40,7 +36,7 @@ module.exports = grammar({
 				seq(
 					field("argument", $._expression),
 					"|",
-					field("function", $._identifier),
+					field("function", $.identifier),
 				),
 			),
 
@@ -70,7 +66,7 @@ module.exports = grammar({
 		_expression: $ =>
 			choice(
 				$._literal,
-				$._identifier,
+				$.identifier,
 				$.pipe_expression,
 				$.call_expression,
 				$.unary_expression,

@@ -18,43 +18,10 @@
         }
       ]
     },
-    "user_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*",
-        "flags": "u"
-      }
-    },
-    "builtin_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "STRING",
-            "value": "@"
-          },
-          {
-            "type": "PATTERN",
-            "value": "(r#)?[_\\p{XID_Start}][_\\p{XID_Continue}]*",
-            "flags": "u"
-          }
-        ]
-      }
-    },
-    "_identifier": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "user_identifier"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "builtin_identifier"
-        }
-      ]
+    "identifier": {
+      "type": "PATTERN",
+      "value": "@?[_\\p{XID_Start}][_\\p{XID_Continue}]*",
+      "flags": "u"
     },
     "boolean": {
       "type": "CHOICE",
@@ -193,7 +160,7 @@
             "name": "function",
             "content": {
               "type": "SYMBOL",
-              "name": "_identifier"
+              "name": "identifier"
             }
           },
           {
@@ -230,7 +197,7 @@
             "name": "function",
             "content": {
               "type": "SYMBOL",
-              "name": "_identifier"
+              "name": "identifier"
             }
           }
         ]
@@ -353,7 +320,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_identifier"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
