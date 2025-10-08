@@ -28,7 +28,7 @@
 
 ;; Function call
 (call_expression
-  function: (identifier) @function) 
+  function: (identifier) @function)
 
 [
   ","

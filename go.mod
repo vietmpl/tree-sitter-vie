@@ -1,4 +1,4 @@
-module github.com/vietmpl/vie
+module github.com/vietmpl/tree-sitter-vie
 
 go 1.22
 

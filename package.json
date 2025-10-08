@@ -2,8 +2,18 @@
 	"name": "tree-sitter-vie",
 	"version": "0.1.0",
 	"description": "Vie grammar for tree-sitter",
-	"repository": "https://github.com/vietmpl/vie",
+	"repository": "https://github.com/vietmpl/tree-sitter-vie",
 	"license": "MIT",
+	"contributors": [
+		{
+			"name": "skewb1k",
+			"email": "skewb1kunix@gmail.com"
+		},
+		{
+			"name": "nickshiro",
+			"email": "rudbsm@gmail.com"
+		}
+	],
 	"main": "bindings/node",
 	"types": "bindings/node",
 	"keywords": [
@@ -42,7 +52,6 @@
 	},
 	"scripts": {
 		"install": "node-gyp-build",
-		"generate": "tree-sitter generate",
 		"prestart": "tree-sitter build --wasm",
 		"start": "tree-sitter playground",
 		"format": "biome check --write grammar.js",

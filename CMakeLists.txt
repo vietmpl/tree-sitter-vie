@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 project(tree-sitter-vie
         VERSION "0.1.0"
         DESCRIPTION "Vie grammar for tree-sitter"
-        HOMEPAGE_URL "https://github.com/vietmpl/vie"
+        HOMEPAGE_URL "https://github.com/vietmpl/tree-sitter-vie"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)

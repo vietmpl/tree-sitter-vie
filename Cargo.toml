@@ -2,12 +2,12 @@
 name = "tree-sitter-vie"
 description = "Vie grammar for tree-sitter"
 version = "0.1.0"
-authors = ["skewb1k"]
+authors = ["skewb1k", "nickshiro"]
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "vie"]
 categories = ["parser-implementations", "parsing", "text-editors"]
-repository = "https://github.com/vietmpl/vie"
+repository = "https://github.com/vietmpl/tree-sitter-vie"
 edition = "2021"
 autoexamples = false
 

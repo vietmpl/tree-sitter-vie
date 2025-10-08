@@ -3,7 +3,7 @@ $(error Windows is not supported)
 endif
 
 LANGUAGE_NAME := tree-sitter-vie
-HOMEPAGE_URL := https://github.com/vietmpl/vie
+HOMEPAGE_URL := https://github.com/vietmpl/tree-sitter-vie
 VERSION := 0.1.0
 
 # repository

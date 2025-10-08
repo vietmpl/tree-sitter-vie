@@ -1,43 +1,41 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
-  "grammars": [
-    {
-      "name": "vie",
-      "camelcase": "Vie",
-      "title": "Vie",
-      "scope": "source.vie",
-      "file-types": [
-        "vie"
-      ],
-      "injection-regex": "^vie$",
-      "class-name": "TreeSitterVie"
-    }
-  ],
-  "metadata": {
-    "version": "0.1.0",
-    "license": "MIT",
-    "description": "Vie grammar for tree-sitter",
-    "authors": [
-      {
-        "name": "skewb1k",
-        "email": "skewb1kunix@gmail.com"
-      },
-      {
-        "name": "nickshiro",
-        "email": "rudbsm@gmail.com"
-      }
-    ],
-    "links": {
-      "repository": "https://github.com/vietmpl/vie"
-    }
-  },
-  "bindings": {
-    "c": true,
-    "go": true,
-    "node": true,
-    "python": true,
-    "rust": true,
-    "swift": true,
-    "zig": false
-  }
+	"$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+	"grammars": [
+		{
+			"name": "vie",
+			"camelcase": "Vie",
+			"title": "Vie",
+			"scope": "source.vie",
+			"file-types": ["vie"],
+			"injection-regex": "^vie$",
+			"class-name": "TreeSitterVie"
+		}
+	],
+	"metadata": {
+		"version": "0.1.0",
+		"license": "MIT",
+		"description": "Vie grammar for tree-sitter",
+		"authors": [
+			{
+				"name": "skewb1k",
+				"email": "skewb1kunix@gmail.com"
+			},
+			{
+				"name": "nickshiro",
+				"email": "rudbsm@gmail.com"
+			}
+		],
+		"links": {
+			"repository": "https://github.com/vietmpl/tree-sitter-vie"
+		}
+	},
+	"bindings": {
+		"c": true,
+		"go": true,
+		"node": true,
+		"python": true,
+		"rust": true,
+		"swift": true,
+		"zig": false
+	}
 }
