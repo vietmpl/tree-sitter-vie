@@ -1,0 +1,188 @@
+=============================
+Simple if
+=============================
+{% if flag %}{% end %}
+---
+
+(source_file
+  (if_block
+    condition: (identifier)))
+
+=============================
+If with text
+=============================
+
+{% if flag %}
+Conditional content
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text))
+  (text))
+
+=============================
+If with render inside
+=============================
+
+{% if flag %}
+{{ user }}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    consequence: (render_block
+      (identifier))
+    consequence: (text))
+  (text))
+
+=============================
+If else
+=============================
+
+{% if flag %}
+A
+{% else %}
+B
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    alternative: (text))
+  (text))
+
+=============================
+Else if
+=============================
+
+{% if flag %}
+A
+{% else if flag2 %}
+B
+{% else if flag3 %}
+B
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    condition: (identifier)
+    consequence: (text)
+    condition: (identifier)
+    consequence: (text))
+  (text))
+
+=============================
+Nested ifs
+=============================
+
+{% if flag %}
+{% if flag %}
+A
+{% end %}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    consequence: (if_block
+      condition: (identifier)
+      consequence: (text))
+    consequence: (text))
+  (text))
+
+=============================
+Nested if else
+=============================
+
+{% if flag %}
+A
+{% else %}
+{% if flag %}
+B
+{% else %}
+C
+{% end %}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    alternative: (text)
+    alternative: (if_block
+      condition: (identifier)
+      consequence: (text)
+      alternative: (text))
+    alternative: (text))
+  (text))
+
+=============================
+Deep nested ifs
+=============================
+
+{% if flag %}
+
+  {% if flag %}
+
+  {% else if flag2 %}
+
+    {% if flag3 %}
+
+    {% else if flag2 %}
+
+    {% end %}
+
+  {% end %}
+
+{% else %}
+
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    consequence: (if_block
+      condition: (identifier)
+      consequence: (text)
+      condition: (identifier)
+      consequence: (text)
+      consequence: (if_block
+        condition: (identifier)
+        consequence: (text)
+        condition: (identifier)
+        consequence: (text))
+      consequence: (text))
+    consequence: (text)
+    alternative: (text))
+  (text))
+

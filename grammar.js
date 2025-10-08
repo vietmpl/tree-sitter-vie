@@ -20,14 +20,45 @@ const PREC = {
 module.exports = grammar({
 	name: "vie",
 
-	rules: {
-		source_file: $ => repeat(choice($.text, $.render_block, $.comment_block)),
+	externals: $ => [$.text],
+	conflicts: $ => [[$._else_clause], [$._else_if_clause]],
 
-		text: _ => prec.right(repeat1(choice(/[^{]/, /\{[^#%]/))),
+	rules: {
+		source_file: $ => repeat($._node),
+
+		_node: $ => choice($.text, $.render_block, $.comment_block, $._statement),
 
 		comment_block: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
 
 		render_block: $ => seq("{{", optional($._expression), "}}"),
+
+		_statement: $ => choice($.if_block),
+
+		if_block: $ =>
+			seq(
+				"{%",
+				"if",
+				field("condition", $._expression),
+				"%}",
+				field("consequence", repeat($._node)),
+				repeat($._else_if_clause),
+				optional(field("alternative", $._else_clause)),
+				"{%",
+				"end",
+				"%}",
+			),
+
+		_else_if_clause: $ =>
+			seq(
+				"{%",
+				"else",
+				"if",
+				field("condition", $._expression),
+				"%}",
+				field("consequence", repeat($._node)),
+			),
+
+		_else_clause: $ => seq("{%", "else", "%}", repeat($._node)),
 
 		// TODO: disallow @_?
 		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,

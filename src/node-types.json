@@ -180,6 +180,110 @@
     "fields": {}
   },
   {
+    "type": "if_block",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "%}",
+            "named": false
+          },
+          {
+            "type": "comment_block",
+            "named": true
+          },
+          {
+            "type": "else",
+            "named": false
+          },
+          {
+            "type": "if_block",
+            "named": true
+          },
+          {
+            "type": "render_block",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "{%",
+            "named": false
+          }
+        ]
+      },
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean_literal",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "comment_block",
+            "named": true
+          },
+          {
+            "type": "if_block",
+            "named": true
+          },
+          {
+            "type": "render_block",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "pipe_expression",
     "named": true,
     "fields": {
@@ -290,6 +394,10 @@
           "named": true
         },
         {
+          "type": "if_block",
+          "named": true
+        },
+        {
           "type": "render_block",
           "named": true
         },
@@ -299,11 +407,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "text",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "unary_expression",
@@ -376,6 +479,10 @@
     "named": false
   },
   {
+    "type": "%}",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -408,6 +515,14 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "end",
+    "named": false
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -416,7 +531,15 @@
     "named": true
   },
   {
+    "type": "if",
+    "named": false
+  },
+  {
     "type": "string_literal",
+    "named": true
+  },
+  {
+    "type": "text",
     "named": true
   },
   {
@@ -429,6 +552,10 @@
   },
   {
     "type": "{#",
+    "named": false
+  },
+  {
+    "type": "{%",
     "named": false
   },
   {
