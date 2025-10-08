@@ -32,11 +32,11 @@ module.exports = grammar({
 		// TODO: disallow @_?
 		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,
 
-		boolean: _ => choice("true", "false"),
-		string: _ =>
+		boolean_literal: _ => choice("true", "false"),
+		string_literal: _ =>
 			token(choice(seq("'", /[^'\n]*/, "'"), seq('"', /([^"\n])*/, '"'))),
 
-		_literal: $ => choice($.boolean, $.string),
+		_literal: $ => choice($.boolean_literal, $.string_literal),
 
 		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>

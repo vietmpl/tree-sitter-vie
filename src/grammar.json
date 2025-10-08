@@ -101,7 +101,7 @@
       "value": "@?[_\\p{XID_Start}][_\\p{XID_Continue}]*",
       "flags": "u"
     },
-    "boolean": {
+    "boolean_literal": {
       "type": "CHOICE",
       "members": [
         {
@@ -114,7 +114,7 @@
         }
       ]
     },
-    "string": {
+    "string_literal": {
       "type": "TOKEN",
       "content": {
         "type": "CHOICE",
@@ -161,11 +161,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "boolean"
+          "name": "boolean_literal"
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "string_literal"
         }
       ]
     },

@@ -10,10 +10,10 @@ Boolean literal
 (source_file
   (text)
   (render_block
-    (boolean))
+    (boolean_literal))
   (text)
   (render_block
-    (boolean))
+    (boolean_literal))
   (text))
 
 =============================
@@ -32,22 +32,22 @@ Simple string literal
 (source_file
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text))
 
 =============================
@@ -70,34 +70,34 @@ String literal with special chars
 (source_file
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text))
 
 =============================
@@ -115,15 +115,15 @@ Escaped string literal
 (source_file
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text))
 

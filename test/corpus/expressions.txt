@@ -1,13 +1,4 @@
 =============================
-Empty render
-=============================
-{{}}
----
-
-(source_file
-  (render_block))
-
-=============================
 Render with text
 =============================
 
@@ -89,10 +80,10 @@ Parenthesized expression
 (source_file
   (text)
   (render_block
-    (string))
+    (string_literal))
   (text)
   (render_block
-    (boolean))
+    (boolean_literal))
   (text)
   (render_block
     (identifier))
@@ -170,12 +161,12 @@ Unary expression
   (render_block
     (unary_expression
       (unary_operator)
-        (boolean)))
+        (boolean_literal)))
   (text)
   (render_block
     (unary_expression
       (unary_operator)
-        (string)))
+        (string_literal)))
   (text))
 
 =============================

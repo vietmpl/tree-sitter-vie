@@ -12,7 +12,7 @@
           "named": true
         },
         {
-          "type": "boolean",
+          "type": "boolean_literal",
           "named": true
         },
         {
@@ -28,7 +28,7 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "string_literal",
           "named": true
         },
         {
@@ -59,7 +59,7 @@
             "named": true
           },
           {
-            "type": "boolean",
+            "type": "boolean_literal",
             "named": true
           },
           {
@@ -75,7 +75,7 @@
             "named": true
           },
           {
-            "type": "string",
+            "type": "string_literal",
             "named": true
           },
           {
@@ -111,7 +111,7 @@
             "named": true
           },
           {
-            "type": "boolean",
+            "type": "boolean_literal",
             "named": true
           },
           {
@@ -127,7 +127,7 @@
             "named": true
           },
           {
-            "type": "string",
+            "type": "string_literal",
             "named": true
           },
           {
@@ -144,7 +144,7 @@
     "fields": {}
   },
   {
-    "type": "boolean",
+    "type": "boolean_literal",
     "named": true,
     "fields": {}
   },
@@ -200,7 +200,7 @@
             "named": true
           },
           {
-            "type": "boolean",
+            "type": "boolean_literal",
             "named": true
           },
           {
@@ -216,7 +216,7 @@
             "named": true
           },
           {
-            "type": "string",
+            "type": "string_literal",
             "named": true
           },
           {
@@ -250,7 +250,7 @@
           "named": true
         },
         {
-          "type": "boolean",
+          "type": "boolean_literal",
           "named": true
         },
         {
@@ -266,7 +266,7 @@
           "named": true
         },
         {
-          "type": "string",
+          "type": "string_literal",
           "named": true
         },
         {
@@ -326,7 +326,7 @@
             "named": true
           },
           {
-            "type": "boolean",
+            "type": "boolean_literal",
             "named": true
           },
           {
@@ -342,7 +342,7 @@
             "named": true
           },
           {
-            "type": "string",
+            "type": "string_literal",
             "named": true
           },
           {
@@ -416,7 +416,7 @@
     "named": true
   },
   {
-    "type": "string",
+    "type": "string_literal",
     "named": true
   },
   {
