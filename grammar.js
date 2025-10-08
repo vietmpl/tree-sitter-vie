@@ -12,9 +12,15 @@ module.exports = grammar({
 	name: "vie",
 
 	rules: {
-		source_file: $ => repeat($._node),
-		_node: $ => choice($._expression),
+		source_file: $ => repeat(choice($.text, $.render_block, $.comment_block)),
 
+		text: _ => prec.right(repeat1(choice(/[^{]/, /\{[^#%]/))),
+
+		comment_block: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
+
+		render_block: $ => seq("{{", optional($._expression), "}}"),
+
+		// TODO: disallow @_?
 		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,
 
 		boolean: _ => choice("true", "false"),

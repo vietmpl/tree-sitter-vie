@@ -175,6 +175,11 @@
     }
   },
   {
+    "type": "comment_block",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pipe_expression",
     "named": true,
     "fields": {
@@ -233,12 +238,11 @@
     }
   },
   {
-    "type": "source_file",
+    "type": "render_block",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "types": [
         {
@@ -271,6 +275,35 @@
         }
       ]
     }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment_block",
+          "named": true
+        },
+        {
+          "type": "render_block",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "text",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "unary_expression",
@@ -335,6 +368,14 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "#}",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -387,7 +428,19 @@
     "named": true
   },
   {
+    "type": "{#",
+    "named": false
+  },
+  {
+    "type": "{{",
+    "named": false
+  },
+  {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "}}",
     "named": false
   }
 ]
