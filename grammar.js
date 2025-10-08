@@ -8,6 +8,15 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const PREC = {
+	call: 4,
+	unary: 3,
+	binary: 2,
+	// TODO: add '||' and '&&'
+	// and: 1,
+	// or: 0
+};
+
 module.exports = grammar({
 	name: "vie",
 
@@ -32,13 +41,13 @@ module.exports = grammar({
 		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>
 			prec(
-				5,
+				PREC.call,
 				seq(field("function", $.identifier), field("arguments", $.arguments)),
 			),
 
 		pipe_expression: $ =>
 			prec(
-				4,
+				PREC.call,
 				seq(
 					field("argument", $._expression),
 					"|",
@@ -49,7 +58,7 @@ module.exports = grammar({
 		unary_operator: _ => "!",
 		unary_expression: $ =>
 			prec(
-				3,
+				PREC.unary,
 				seq(
 					field("operator", $.unary_operator),
 					field("operand", $._expression),
@@ -59,7 +68,7 @@ module.exports = grammar({
 		binary_operator: _ => choice("==", "!=", "<", ">", "<=", ">="),
 		binary_expression: $ =>
 			prec.left(
-				2,
+				PREC.binary,
 				seq(
 					field("left", $._expression),
 					field("operator", $.binary_operator),
