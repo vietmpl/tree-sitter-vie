@@ -614,6 +614,10 @@
     "named": false
   },
   {
+    "type": "and",
+    "named": false
+  },
+  {
     "type": "case",
     "named": false
   },
@@ -635,6 +639,18 @@
   },
   {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "is",
+    "named": false
+  },
+  {
+    "type": "not",
+    "named": false
+  },
+  {
+    "type": "or",
     "named": false
   },
   {

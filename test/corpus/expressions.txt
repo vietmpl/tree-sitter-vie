@@ -143,6 +143,9 @@ Unary expression
 {{ ! flag }}
 {{ !true }}
 {{ !"str" }}
+{{ not true }}
+{{ not "srr" }}
+{{ not value }}
 
 ---
 
@@ -167,6 +170,21 @@ Unary expression
     (unary_expression
       (unary_operator)
         (string_literal)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (boolean_literal)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (string_literal)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (identifier)))
   (text))
 
 =============================
@@ -180,6 +198,9 @@ Binary expression
 {{ a >= b }}
 {{ a <= b }}
 {{ a .. b }}
+{{ a or b }}
+{{ a and b }}
+{{ a is not b }}
 
 ---
 
@@ -226,5 +247,94 @@ Binary expression
       left: (identifier)
       operator: (binary_operator)
       right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
   (text))
 
+=============================
+Is / not expressions
+=============================
+
+{{ not not true }}
+{{ not !true }}
+{{ !!true }}
+{{ false is not not true }}
+{{ false is not ! true }}
+{{ false is not a < false }}
+{{ (false is not true) is not a }}
+
+---
+
+(source_file
+  (text)
+    (render_block
+      (unary_expression
+        (unary_operator)
+        (unary_expression
+          (unary_operator)
+          (boolean_literal))))
+  (text)
+    (render_block
+      (unary_expression
+        (unary_operator)
+        (unary_expression
+          (unary_operator)
+          (boolean_literal))))
+  (text)
+    (render_block
+      (unary_expression
+        (unary_operator)
+        (unary_expression
+          (unary_operator)
+          (boolean_literal))))
+  (text)
+    (render_block
+      (binary_expression
+        (boolean_literal)
+        (binary_operator)
+        (unary_expression
+          (unary_operator)
+          (boolean_literal))))  
+  (text)
+    (render_block
+      (binary_expression
+        (boolean_literal)
+        (binary_operator)
+        (unary_expression
+          (unary_operator)
+          (boolean_literal))))
+  (text)
+    (render_block
+      (binary_expression
+        (binary_expression
+          (boolean_literal)
+          (binary_operator)
+          (identifier))
+         (binary_operator)
+         (boolean_literal)))
+    (text)
+      (render_block
+        (binary_expression
+          (binary_expression
+            (boolean_literal)
+            (binary_operator)
+            (boolean_literal))
+          (binary_operator)
+          (identifier)))
+    (text))

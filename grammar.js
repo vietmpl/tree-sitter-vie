@@ -101,7 +101,7 @@ module.exports = grammar({
 				),
 			),
 
-		unary_operator: _ => choice("!"),
+		unary_operator: _ => choice("!", "not"),
 		unary_expression: $ =>
 			prec(
 				PREC.unary,
@@ -111,7 +111,19 @@ module.exports = grammar({
 				),
 			),
 
-		binary_operator: _ => choice("==", "!=", "<", ">", "<=", ">=", ".."),
+		binary_operator: _ =>
+			choice(
+				"==",
+				"!=",
+				"<",
+				">",
+				"<=",
+				">=",
+				"..",
+				"or",
+				"and",
+				seq("is", "not"),
+			),
 		binary_expression: $ =>
 			prec.left(
 				PREC.binary,

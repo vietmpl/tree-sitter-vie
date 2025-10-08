@@ -508,6 +508,10 @@
         {
           "type": "STRING",
           "value": "!"
+        },
+        {
+          "type": "STRING",
+          "value": "not"
         }
       ]
     },
@@ -566,6 +570,27 @@
         {
           "type": "STRING",
           "value": ".."
+        },
+        {
+          "type": "STRING",
+          "value": "or"
+        },
+        {
+          "type": "STRING",
+          "value": "and"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "is"
+            },
+            {
+              "type": "STRING",
+              "value": "not"
+            }
+          ]
         }
       ]
     },
