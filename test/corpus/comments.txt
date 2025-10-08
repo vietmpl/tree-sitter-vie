@@ -1,0 +1,114 @@
+=============================
+Simple comment
+=============================
+{# Comment #}
+---
+
+(source_file
+  (comment_block))
+
+=============================
+Multiline comment
+=============================
+{#
+Wow
+#}
+---
+
+(source_file
+  (comment_block))
+
+=============================
+Multiple comments
+=============================
+{# 1 #}{# 2 #}{# 3 #}
+---
+
+(source_file
+  (comment_block)
+  (comment_block)
+  (comment_block))
+
+=============================
+Comment with text
+=============================
+
+{# Comment #}
+
+MyCoolText
+
+{#
+WOW BOB WOW
+#}{##}
+
+---
+
+(source_file
+  (text)
+  (comment_block)
+  (text)
+  (comment_block)
+  (comment_block)
+  (text))
+
+=============================
+Comment with #
+=============================
+
+{###}
+
+{# # #}
+
+{# ### #}
+
+{#
+###
+#}
+
+---
+
+(source_file
+  (text)
+  (comment_block)
+  (text)
+  (comment_block)
+  (text)
+  (comment_block)
+  (text)
+  (comment_block)
+  (text))
+
+=============================
+Comment with #}
+=============================
+
+{##}#}
+
+---
+
+(source_file
+  (text)
+  (comment_block)
+  (text))
+
+=============================
+Nested comments
+=============================
+{#{##}#}
+---
+
+(source_file
+  (comment_block)
+  (text))
+
+=============================
+Comment and { text
+=============================
+{
+{##}
+---
+
+(source_file
+  (text)
+  (comment_block))
+

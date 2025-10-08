@@ -1,0 +1,231 @@
+=============================
+Empty render
+=============================
+{{}}
+---
+
+(source_file
+  (render_block))
+
+=============================
+Render with text
+=============================
+
+Hello {{}}!
+
+---
+
+(source_file
+  (text)
+  (render_block)
+  (text))
+
+=============================
+Multiline render
+:skip
+=============================
+{{
+}}
+---
+
+=============================
+Multiple renders
+=============================
+{{}}{{}}{{}}
+---
+
+(source_file
+  (render_block)
+  (render_block)
+  (render_block))
+
+=============================
+Nested renders
+:error
+=============================
+{{ {{}} }}
+---
+
+=============================
+Identifier
+=============================
+
+{{ name }}
+{{ @name }}
+{{ @name1 }}
+{{ _name }}
+{{ _name1 }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (identifier))
+  (text)
+  (render_block
+    (identifier))
+  (text)
+  (render_block
+    (identifier))
+  (text)
+  (render_block
+    (identifier))
+  (text)
+  (render_block
+    (identifier))
+  (text))
+
+=============================
+Parenthesized expression
+=============================
+
+{{ ("") }}
+{{ (true) }}
+{{ (name) }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (boolean))
+  (text)
+  (render_block
+    (identifier))
+  (text))
+
+=============================
+Function call
+=============================
+
+{{ foo() }}
+{{ @foo() }}
+{{ foo(x) }}
+{{ foo(x, y) }}
+{{ foo(bar()) }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments)))
+  (text)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments)))
+  (text)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (identifier))))
+  (text)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (identifier)
+        (identifier))))
+  (text)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (call_expression
+          function: (identifier)
+          arguments: (arguments)))))
+  (text))
+
+=============================
+Unary expression
+=============================
+
+{{!flag}}
+{{ ! flag }}
+{{ !true }}
+{{ !"str" }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (identifier)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (identifier)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (boolean)))
+  (text)
+  (render_block
+    (unary_expression
+      (unary_operator)
+        (string)))
+  (text))
+
+=============================
+Binary expression
+=============================
+
+{{ a == b }}
+{{ a != b }}
+{{ a < b }}
+{{ a > b }}
+{{ a >= b }}
+{{ a <= b }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
+  (text))

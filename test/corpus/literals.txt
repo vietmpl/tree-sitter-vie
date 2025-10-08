@@ -1,0 +1,129 @@
+=============================
+Boolean literal
+=============================
+
+{{ true }}
+{{ false }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (boolean))
+  (text)
+  (render_block
+    (boolean))
+  (text))
+
+=============================
+Simple string literal
+=============================
+
+{{ 'cringe' }}
+{{ "based" }}
+{{ '' }}
+{{ "" }}
+{{ "    	" }}
+{{ '//' }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text))
+
+=============================
+String literal with special chars
+=============================
+
+{{ "'" }}
+{{ '"' }}
+{{ '{' }}
+{{ '{{' }}
+{{ '}}' }}
+{{ '#}' }}
+{{ '##}' }}
+{{ '{#' }}
+{{ '{%' }}
+{{ '%}' }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text))
+
+=============================
+Escaped string literal
+:skip
+=============================
+
+{{ '\'' }}
+{{ '\n' }}
+{{ "\r" }}
+{{ "\"" }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text)
+  (render_block
+    (string))
+  (text))
+
