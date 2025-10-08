@@ -18,7 +18,7 @@
 ;; Operators
 [
   (binary_operator)
-  "!"
+  (unary_operator)
 ] @operator
 
 ;; Pipes
