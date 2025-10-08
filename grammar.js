@@ -21,7 +21,7 @@ module.exports = grammar({
 	name: "vie",
 
 	externals: $ => [$.text],
-	conflicts: $ => [[$._else_clause], [$._else_if_clause]],
+	conflicts: $ => [[$._else_clause], [$._else_if_clause], [$._case_clause]],
 
 	rules: {
 		source_file: $ => repeat($._node),
@@ -32,7 +32,7 @@ module.exports = grammar({
 
 		render_block: $ => seq("{{", optional($._expression), "}}"),
 
-		_statement: $ => choice($.if_block),
+		_statement: $ => choice($.if_block, $.switch_block),
 
 		if_block: $ =>
 			seq(
@@ -59,6 +59,21 @@ module.exports = grammar({
 			),
 
 		_else_clause: $ => seq("{%", "else", "%}", repeat($._node)),
+
+		switch_block: $ =>
+			seq(
+				"{%",
+				"switch",
+				field("value", $._expression),
+				"%}",
+				repeat(choice($._case_clause, $.comment_block)),
+				"{%",
+				"end",
+				"%}",
+			),
+
+		_case_clause: $ =>
+			seq("{%", "case", field("value", $._expression), "%}", repeat($._node)),
 
 		// TODO: disallow @_?
 		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,

@@ -1,0 +1,115 @@
+=============================
+Simple switch
+=============================
+{% switch key %}{% end %}
+---
+
+(source_file
+  (switch_block
+    value: (identifier)))
+
+=============================
+Switch with one case
+=============================
+{%switch key%}{%case a%}{%end%}
+---
+
+(source_file
+  (switch_block
+    value: (identifier)
+    value: (identifier)))
+
+=============================
+Switch with text
+=============================
+
+{% switch key %}
+{% case a %}
+Text
+{% case b %}
+Text
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (switch_block
+    value: (identifier)
+    value: (identifier)
+    (text)
+    value: (identifier)
+    (text))
+  (text))
+
+=============================
+Nested switches
+=============================
+
+{% switch key %}
+{% case a %}
+  {% switch key %}
+  {% case a %}
+  Text
+  {% end %}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (switch_block
+    value: (identifier)
+    value: (identifier)
+    (text)
+    (switch_block
+      value: (identifier)
+      value: (identifier)
+      (text))
+  (text))
+  (text))
+
+=============================
+Switch with if
+=============================
+
+{% switch key %}
+{% case a %}
+  {% if b %}
+  {% end %}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (switch_block
+    value: (identifier)
+    value: (identifier)
+    (text)
+    (if_block
+      condition: (identifier)
+      consequence: (text))
+  (text))
+  (text))
+
+=============================
+Switch with comment
+=============================
+
+{% switch key %}
+{# A #}
+{% case a %}
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (switch_block
+    value: (identifier)
+    (comment_block)
+    value: (identifier)
+  (text))
+  (text))
+

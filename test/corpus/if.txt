@@ -26,7 +26,7 @@ Conditional content
   (text))
 
 =============================
-If with render inside
+If with render
 =============================
 
 {% if flag %}
@@ -186,3 +186,31 @@ Deep nested ifs
     alternative: (text))
   (text))
 
+
+=============================
+If with switch
+=============================
+
+{% if flag %}
+
+{% switch a %}
+
+{% case a %}
+
+{% end %}
+
+{% end %}
+
+---
+
+(source_file
+  (text)
+  (if_block
+    condition: (identifier)
+    consequence: (text)
+    consequence: (switch_block
+      value: (identifier)
+      value: (identifier)
+      (text))
+    consequence: (text))
+  (text))
