@@ -553,6 +553,15 @@
     }
   },
   {
+    "type": "unary_operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "!",
+    "named": false
+  },
+  {
     "type": "!=",
     "named": false
   },
@@ -578,6 +587,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "..",
     "named": false
   },
   {
@@ -639,10 +652,6 @@
   {
     "type": "true",
     "named": false
-  },
-  {
-    "type": "unary_operator",
-    "named": true
   },
   {
     "type": "{#",

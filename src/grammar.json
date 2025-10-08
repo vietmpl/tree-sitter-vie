@@ -503,8 +503,13 @@
       }
     },
     "unary_operator": {
-      "type": "STRING",
-      "value": "!"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "!"
+        }
+      ]
     },
     "unary_expression": {
       "type": "PREC",
@@ -557,6 +562,10 @@
         {
           "type": "STRING",
           "value": ">="
+        },
+        {
+          "type": "STRING",
+          "value": ".."
         }
       ]
     },

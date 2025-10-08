@@ -101,14 +101,17 @@ module.exports = grammar({
 				),
 			),
 
-		// Fix higlights when adding unary operator node
+		unary_operator: _ => choice("!"),
 		unary_expression: $ =>
 			prec(
 				PREC.unary,
-				seq(field("operator", "!"), field("operand", $._expression)),
+				seq(
+					field("operator", $.unary_operator),
+					field("operand", $._expression),
+				),
 			),
 
-		binary_operator: _ => choice("==", "!=", "<", ">", "<=", ">="),
+		binary_operator: _ => choice("==", "!=", "<", ">", "<=", ">=", ".."),
 		binary_expression: $ =>
 			prec.left(
 				PREC.binary,

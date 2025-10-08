@@ -179,6 +179,7 @@ Binary expression
 {{ a > b }}
 {{ a >= b }}
 {{ a <= b }}
+{{ a .. b }}
 
 ---
 
@@ -219,4 +220,11 @@ Binary expression
       left: (identifier)
       operator: (binary_operator)
       right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      operator: (binary_operator)
+      right: (identifier)))
   (text))
+
