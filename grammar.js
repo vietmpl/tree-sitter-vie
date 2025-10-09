@@ -26,6 +26,8 @@ module.exports = grammar({
 	// TODO: this might not be needed if prec's values are specified correctly
 	conflicts: $ => [[$._else_clause], [$._else_if_clause], [$._case_clause]],
 
+	word: $ => $.identifier,
+
 	rules: {
 		source_file: $ => repeat($._node),
 
