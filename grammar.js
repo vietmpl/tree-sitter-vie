@@ -111,44 +111,31 @@ module.exports = grammar({
 				),
 			),
 
-		binary_expression: $ =>
-			choice(
-				prec.left(
-					PREC.or,
-					seq(
-						field("left", $._expression),
-						field("operator", choice("or", "||")),
-						field("right", $._expression),
-					),
-				),
-				prec.left(
-					PREC.and,
-					seq(
-						field("left", $._expression),
-						field("operator", choice("and", "&&")),
-						field("right", $._expression),
-					),
-				),
-				prec.left(
-					PREC.comparison,
-					seq(
-						field("left", $._expression),
-						field(
-							"operator",
-							choice("==", "!=", "<", ">", "<=", ">=", seq("is", "not")),
+		binary_expression: $ => {
+			const operators = [
+				{ precLevel: PREC.or, operator: choice("or", "||") },
+				{ precLevel: PREC.and, operator: choice("and", "&&") },
+				{
+					precLevel: PREC.comparison,
+					operator: choice("==", "!=", "<", ">", "<=", ">=", seq("is", "not")),
+				},
+				{ precLevel: PREC.concatenation, operator: ".." },
+			];
+
+			return choice(
+				...operators.map(({ precLevel, operator }) =>
+					prec.left(
+						precLevel,
+						seq(
+							field("left", $._expression),
+							field("operator", operator),
+							field("right", $._expression),
 						),
-						field("right", $._expression),
 					),
 				),
-				prec.left(
-					PREC.concatenation,
-					seq(
-						field("left", $._expression),
-						field("operator", ".."),
-						field("right", $._expression),
-					),
-				),
-			),
+			);
+		},
+
 		_parenthesized_expression: $ => seq("(", $._expression, ")"),
 		_expression: $ =>
 			choice(
