@@ -17,8 +17,20 @@
 
 ;; Operators
 [
-  (binary_operator)
-  (unary_operator)
+  "or"
+  "||"
+  "and"
+  "&&"
+  "<="
+  ">="
+  ">"
+  "<"
+  "!="
+  "=="
+  "is"
+  "not"
+  "!"
+  ".."
 ] @operator
 
 ;; Pipes
