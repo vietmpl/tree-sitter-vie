@@ -186,7 +186,6 @@ Deep nested ifs
     alternative: (text))
   (text))
 
-
 =============================
 If with switch
 =============================

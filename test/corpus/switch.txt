@@ -66,7 +66,7 @@ Nested switches
       value: (identifier)
       value: (identifier)
       (text))
-  (text))
+    (text))
   (text))
 
 =============================
@@ -110,6 +110,20 @@ Switch with comment
     value: (identifier)
     (comment_block)
     value: (identifier)
+    (text))
   (text))
-  (text))
+
+=============================
+Invalid switch with text
+:error
+=============================
+
+{% switch key %}
+YOU SHOULDNT PUT TEXT HERE
+{% case a %}
+
+{% end %}
+
+---
+
 

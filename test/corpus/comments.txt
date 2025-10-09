@@ -111,4 +111,3 @@ Comment and { text
 (source_file
   (text)
   (comment_block))
-

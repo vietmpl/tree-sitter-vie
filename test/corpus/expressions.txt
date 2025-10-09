@@ -43,6 +43,17 @@ Multiple renders
   (render_block))
 
 =============================
+Nested renders
+:error
+=============================
+
+{{ {{}} }}
+
+---
+
+
+
+=============================
 Identifier
 =============================
 
@@ -71,6 +82,17 @@ Identifier
   (render_block
     (identifier))
   (text))
+
+=============================
+Invalid identifier
+:error
+=============================
+
+{{ @_iaminvalid }}
+
+---
+
+
 
 =============================
 Function call
@@ -117,6 +139,17 @@ Function call
           function: (identifier)
           arguments: (arguments)))))
   (text))
+
+=============================
+Invalid function call
+:error
+=============================
+
+{{ foo( }}
+
+---
+
+
 
 =============================
 Unary expression

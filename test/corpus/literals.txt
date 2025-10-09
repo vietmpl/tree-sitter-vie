@@ -150,3 +150,13 @@ Escaped string literal
       (escape_sequence)))
   (text))
 
+=============================
+Invalid string literal
+:error
+=============================
+
+{{ ' ' ' }}
+
+---
+
+
