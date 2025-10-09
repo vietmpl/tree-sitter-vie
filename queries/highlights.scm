@@ -1,9 +1,13 @@
 [
+  "{{"
+  "}}"
   "{%"
   "%}"
   "("
   ")"
 ] @punctuation.bracket
+
+"," @punctuation.delimiter
 
 (comment_block) @comment
 
@@ -13,13 +17,15 @@
   "switch"
   "case"
   "end"
+  "is"
+  "not"
+  "is not"
+  "or"
+  "and"
 ] @keyword
 
-;; Operators
 [
-  "or"
   "||"
-  "and"
   "&&"
   "<="
   ">="
@@ -27,32 +33,21 @@
   "<"
   "!="
   "=="
-  "is"
-  "not"
-  "is not"
   "!"
   ".."
+  "|"
 ] @operator
 
-;; Pipes
-(pipe_expression
-  "|" @operator
-  function: (identifier) @function)
-
-;; Function call
-(call_expression
-  function: (identifier) @function)
-
-[
-  ","
-] @punctuation.delimiter
-
-;; Variables
 (identifier) @variable
 
-;; Literals
-(string_literal) @constant.builtin
-(string_literal 
-  escape: (escape_sequence) @string.escaped)
+(pipe_expression
+  function: (identifier) @function.call)
 
-(boolean_literal) @constant.builtin
+(call_expression
+  function: (identifier) @function.call)
+
+(boolean_literal) @boolean
+
+(string_literal) @string
+
+(escape_sequence) @string.escape
