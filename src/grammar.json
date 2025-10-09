@@ -491,7 +491,7 @@
       ]
     },
     "call_expression": {
-      "type": "PREC",
+      "type": "PREC_RIGHT",
       "value": 6,
       "content": {
         "type": "SEQ",
@@ -516,7 +516,7 @@
       }
     },
     "pipe_expression": {
-      "type": "PREC",
+      "type": "PREC_LEFT",
       "value": 7,
       "content": {
         "type": "SEQ",
@@ -545,7 +545,7 @@
       }
     },
     "unary_expression": {
-      "type": "PREC",
+      "type": "PREC_LEFT",
       "value": 5,
       "content": {
         "type": "SEQ",

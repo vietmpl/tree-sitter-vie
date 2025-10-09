@@ -22,6 +22,8 @@ module.exports = grammar({
 	name: "vie",
 
 	externals: $ => [$.text],
+
+	// TODO: this might not be needed if prec's values are specified correctly
 	conflicts: $ => [[$._else_clause], [$._else_if_clause], [$._case_clause]],
 
 	rules: {
@@ -99,13 +101,13 @@ module.exports = grammar({
 
 		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>
-			prec(
+			prec.left(
 				PREC.call,
 				seq(field("function", $.identifier), field("arguments", $.arguments)),
 			),
 
 		pipe_expression: $ =>
-			prec(
+			prec.left(
 				PREC.pipe,
 				seq(
 					field("argument", $._expression),
@@ -115,7 +117,7 @@ module.exports = grammar({
 			),
 
 		unary_expression: $ =>
-			prec(
+			prec.left(
 				PREC.unary,
 				seq(
 					field("operator", choice("!", "not")),
