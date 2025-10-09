@@ -85,12 +85,60 @@
         ]
       },
       "operator": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "binary_operator",
-            "named": true
+            "type": "!=",
+            "named": false
+          },
+          {
+            "type": "&&",
+            "named": false
+          },
+          {
+            "type": "..",
+            "named": false
+          },
+          {
+            "type": "<",
+            "named": false
+          },
+          {
+            "type": "<=",
+            "named": false
+          },
+          {
+            "type": "==",
+            "named": false
+          },
+          {
+            "type": ">",
+            "named": false
+          },
+          {
+            "type": ">=",
+            "named": false
+          },
+          {
+            "type": "and",
+            "named": false
+          },
+          {
+            "type": "is",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
+          },
+          {
+            "type": "or",
+            "named": false
+          },
+          {
+            "type": "||",
+            "named": false
           }
         ]
       },
@@ -137,11 +185,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "binary_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "boolean_literal",
@@ -545,17 +588,16 @@
         "required": true,
         "types": [
           {
-            "type": "unary_operator",
-            "named": true
+            "type": "!",
+            "named": false
+          },
+          {
+            "type": "not",
+            "named": false
           }
         ]
       }
     }
-  },
-  {
-    "type": "unary_operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "!",
@@ -575,6 +617,10 @@
   },
   {
     "type": "%}",
+    "named": false
+  },
+  {
+    "type": "&&",
     "named": false
   },
   {
@@ -683,6 +729,10 @@
   },
   {
     "type": "|",
+    "named": false
+  },
+  {
+    "type": "||",
     "named": false
   },
   {

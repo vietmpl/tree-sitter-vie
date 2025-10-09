@@ -48,7 +48,6 @@ Identifier
 {{ _name1 }}
 
 ---
-
 (source_file
   (text)
   (render_block
@@ -76,7 +75,6 @@ Parenthesized expression
 {{ (name) }}
 
 ---
-
 (source_file
   (text)
   (render_block
@@ -100,7 +98,6 @@ Function call
 {{ foo(bar()) }}
 
 ---
-
 (source_file
   (text)
   (render_block
@@ -148,7 +145,6 @@ Unary expression
 {{ not value }}
 
 ---
-
 (source_file
   (text)
   (render_block
@@ -203,67 +199,56 @@ Binary expression
 {{ a is not b }}
 
 ---
-
 (source_file
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text)
   (render_block
     (binary_expression
       left: (identifier)
-      operator: (binary_operator)
       right: (identifier)))
   (text))
 
@@ -280,7 +265,6 @@ Is / not expressions
 {{ (false is not true) is not a }}
 
 ---
-
 (source_file
   (text)
     (render_block
@@ -307,7 +291,6 @@ Is / not expressions
     (render_block
       (binary_expression
         (boolean_literal)
-        (binary_operator)
         (unary_expression
           (unary_operator)
           (boolean_literal))))  
@@ -315,7 +298,6 @@ Is / not expressions
     (render_block
       (binary_expression
         (boolean_literal)
-        (binary_operator)
         (unary_expression
           (unary_operator)
           (boolean_literal))))
@@ -324,17 +306,84 @@ Is / not expressions
       (binary_expression
         (binary_expression
           (boolean_literal)
-          (binary_operator)
           (identifier))
-         (binary_operator)
          (boolean_literal)))
     (text)
       (render_block
         (binary_expression
           (binary_expression
             (boolean_literal)
-            (binary_operator)
             (boolean_literal))
-          (binary_operator)
           (identifier)))
     (text))
+
+=============================
+Complex operator precedence
+=============================
+
+{{ a or b and c or d and e }}
+{{ not a and b or not c }}
+{{ a == b and c != d or e > f }}
+{{ x or y and z == w or v }}
+{{ a and b or c and d or e }}
+
+---
+(source_file
+  (text)
+  (render_block
+    (binary_expression
+      (binary_expression
+        (identifier)
+        (binary_expression
+          (identifier)
+          (identifier)))
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (text)
+  (render_block
+    (binary_expression
+      (binary_expression
+        (unary_expression
+          (unary_operator)
+          (identifier))
+        (identifier))
+      (unary_expression
+        (unary_operator)
+        (identifier))))
+  (text)
+  (render_block
+    (binary_expression
+      (binary_expression
+        (binary_expression
+          (identifier)
+          (identifier))
+        (binary_expression
+          (identifier)
+          (identifier)))
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (text)
+  (render_block
+    (binary_expression
+      (binary_expression
+        (identifier)
+        (binary_expression
+          (identifier)
+          (binary_expression
+            (identifier)
+            (identifier))))
+      (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      (binary_expression
+        (binary_expression
+          (identifier)
+          (identifier))
+        (binary_expression
+          (identifier)
+          (identifier)))
+      (identifier)))
+  (text))

@@ -9,12 +9,13 @@
 // @ts-check
 
 const PREC = {
-	call: 4,
-	unary: 3,
-	binary: 2,
-	// TODO: add '||' and '&&'
-	// and: 1,
-	// or: 0
+	or: 1,
+	and: 2,
+	comparison: 3,
+	concatenation: 4,
+	unary: 5,
+	call: 6,
+	pipe: 7,
 };
 
 module.exports = grammar({
@@ -101,49 +102,62 @@ module.exports = grammar({
 				),
 			),
 
-		unary_operator: _ => choice("!", "not"),
 		unary_expression: $ =>
 			prec(
 				PREC.unary,
 				seq(
-					field("operator", $.unary_operator),
+					field("operator", choice("!", "not")),
 					field("operand", $._expression),
 				),
 			),
 
-		binary_operator: _ =>
-			choice(
-				"==",
-				"!=",
-				"<",
-				">",
-				"<=",
-				">=",
-				"..",
-				"or",
-				"and",
-				seq("is", "not"),
-			),
 		binary_expression: $ =>
-			prec.left(
-				PREC.binary,
-				seq(
-					field("left", $._expression),
-					field("operator", $.binary_operator),
-					field("right", $._expression),
+			choice(
+				prec.left(
+					PREC.or,
+					seq(
+						field("left", $._expression),
+						field("operator", choice("or", "||")),
+						field("right", $._expression),
+					),
+				),
+				prec.left(
+					PREC.and,
+					seq(
+						field("left", $._expression),
+						field("operator", choice("and", "&&")),
+						field("right", $._expression),
+					),
+				),
+				prec.left(
+					PREC.comparison,
+					seq(
+						field("left", $._expression),
+						field(
+							"operator",
+							choice("==", "!=", "<", ">", "<=", ">=", seq("is", "not")),
+						),
+						field("right", $._expression),
+					),
+				),
+				prec.left(
+					PREC.concatenation,
+					seq(
+						field("left", $._expression),
+						field("operator", ".."),
+						field("right", $._expression),
+					),
 				),
 			),
-
 		_parenthesized_expression: $ => seq("(", $._expression, ")"),
-
 		_expression: $ =>
 			choice(
-				$._literal,
-				$.identifier,
+				$.binary_expression,
+				$.unary_expression,
 				$.pipe_expression,
 				$.call_expression,
-				$.unary_expression,
-				$.binary_expression,
+				$._literal,
+				$.identifier,
 				$._parenthesized_expression,
 			),
 	},
