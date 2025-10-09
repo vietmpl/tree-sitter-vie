@@ -517,7 +517,7 @@
     },
     "pipe_expression": {
       "type": "PREC",
-      "value": 6,
+      "value": 7,
       "content": {
         "type": "SEQ",
         "members": [

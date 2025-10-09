@@ -9,13 +9,13 @@
 // @ts-check
 
 const PREC = {
-	or: 1,
-	and: 2,
-	comparison: 3,
-	concatenation: 4,
-	unary: 5,
-	call: 6,
 	pipe: 7,
+	call: 6,
+	unary: 5,
+	additive: 4,
+	comparative: 3,
+	and: 2,
+	or: 1,
 };
 
 module.exports = grammar({
@@ -106,7 +106,7 @@ module.exports = grammar({
 
 		pipe_expression: $ =>
 			prec(
-				PREC.call,
+				PREC.pipe,
 				seq(
 					field("argument", $._expression),
 					"|",
@@ -124,12 +124,12 @@ module.exports = grammar({
 			),
 
 		binary_expression: $ => {
-			const operators = [
-				{ precLevel: PREC.or, operator: choice("or", "||") },
-				{ precLevel: PREC.and, operator: choice("and", "&&") },
-				{
-					precLevel: PREC.comparison,
-					operator: choice(
+			const table = [
+				[PREC.or, choice("or", "||")],
+				[PREC.and, choice("and", "&&")],
+				[
+					PREC.comparative,
+					choice(
 						"==",
 						"!=",
 						"<",
@@ -140,16 +140,18 @@ module.exports = grammar({
 						// Note: this hardcodes whitespaces instead of relying on 'extras'
 						alias(/is\s+not/, "is not"),
 					),
-				},
-				{ precLevel: PREC.concatenation, operator: ".." },
+				],
+				[PREC.additive, ".."],
 			];
 
 			return choice(
-				...operators.map(({ precLevel, operator }) =>
+				...table.map(([precLevel, operator]) =>
 					prec.left(
+						// @ts-expect-error
 						precLevel,
 						seq(
 							field("left", $._expression),
+							// @ts-expect-error
 							field("operator", operator),
 							field("right", $._expression),
 						),
