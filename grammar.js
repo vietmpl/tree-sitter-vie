@@ -76,8 +76,7 @@ module.exports = grammar({
 		_case_clause: $ =>
 			seq("{%", "case", field("value", $._expression), "%}", repeat($._node)),
 
-		// TODO: disallow @_?
-		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,
+		identifier: _ => /[@_]?[\p{XID_Start}]\p{XID_Continue}*/u,
 
 		boolean_literal: _ => choice("true", "false"),
 

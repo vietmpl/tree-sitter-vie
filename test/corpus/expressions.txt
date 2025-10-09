@@ -22,7 +22,8 @@ Multiline render
 }}
 
 ---
-(source_file 
+
+(source_file
  (text)
  (render_block)
  (text)
@@ -45,20 +46,21 @@ Multiple renders
 Nested renders
 :error
 =============================
+
 {{ {{}} }}
----
 
 =============================
 Identifier
 =============================
 
 {{ name }}
+{{ nam_e1 }}
+{{ _nam_e1 }}
 {{ @name }}
-{{ @name1 }}
-{{ _name }}
-{{ _name1 }}
+{{ @na_me1 }}
 
 ---
+
 (source_file
   (text)
   (render_block
@@ -78,6 +80,13 @@ Identifier
   (text))
 
 =============================
+Invalid identifier
+:error
+=============================
+
+{{ @_iaminvalid }}
+
+=============================
 Parenthesized expression
 =============================
 
@@ -86,6 +95,7 @@ Parenthesized expression
 {{ (name) }}
 
 ---
+
 (source_file
   (text)
   (render_block
@@ -109,6 +119,7 @@ Function call
 {{ foo(bar()) }}
 
 ---
+
 (source_file
   (text)
   (render_block
@@ -147,7 +158,6 @@ Function call
 Unary expression
 =============================
 
-{{!flag}}
 {{ ! flag }}
 {{ !true }}
 {{ !"str" }}
@@ -156,11 +166,8 @@ Unary expression
 {{ not value }}
 
 ---
+
 (source_file
-  (text)
-  (render_block
-    (unary_expression
-      (identifier)))
   (text)
   (render_block
     (unary_expression
@@ -203,6 +210,7 @@ Binary expression
 {{ a is not b }}
 
 ---
+
 (source_file
   (text)
   (render_block
@@ -257,7 +265,7 @@ Binary expression
   (text))
 
 =============================
-Is / not expressions
+Nested unary expressions
 =============================
 
 {{ not not true }}
@@ -269,6 +277,7 @@ Is / not expressions
 {{ (false is not true) is not a }}
 
 ---
+
 (source_file
   (text)
     (render_block
@@ -290,7 +299,7 @@ Is / not expressions
       (binary_expression
         (boolean_literal)
         (unary_expression
-          (boolean_literal))))  
+          (boolean_literal))))
   (text)
     (render_block
       (binary_expression
@@ -314,7 +323,7 @@ Is / not expressions
     (text))
 
 =============================
-Complex operator precedence
+Nested binary expressions
 =============================
 
 {{ a or b and c or d and e }}
@@ -324,6 +333,7 @@ Complex operator precedence
 {{ a and b or c and d or e }}
 
 ---
+
 (source_file
   (text)
   (render_block
