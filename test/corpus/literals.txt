@@ -113,16 +113,20 @@ Escaped string literal
 
 (source_file
   (text)
-  (render_block
-    (string_literal))
+    (render_block
+      (string_literal
+        (escape_sequence)))
   (text)
-  (render_block
-    (string_literal))
+    (render_block
+      (string_literal
+        (escape_sequence)))
   (text)
-  (render_block
-    (string_literal))
+    (render_block
+      (string_literal
+        (escape_sequence)))
   (text)
-  (render_block
-    (string_literal))
+    (render_block
+      (string_literal
+        (escape_sequence)))
   (text))
 
