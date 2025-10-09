@@ -108,25 +108,45 @@ Escaped string literal
 {{ '\n' }}
 {{ "\r" }}
 {{ "\"" }}
+{{ "\u03A9" }}
+{{ "\U0001F600" }}
+{{ "\x7F" }}
+{{ "\  t" }}
 
 ---
 
 (source_file
   (text)
-    (render_block
-      (string_literal
-        (escape_sequence)))
+  (render_block
+    (string_literal
+      (escape_sequence)))
   (text)
-    (render_block
-      (string_literal
-        (escape_sequence)))
+  (render_block
+    (string_literal
+      (escape_sequence)))
   (text)
-    (render_block
-      (string_literal
-        (escape_sequence)))
+  (render_block
+    (string_literal
+      (escape_sequence)))
   (text)
-    (render_block
-      (string_literal
-        (escape_sequence)))
+  (render_block
+    (string_literal
+      (escape_sequence)))
+  (text)
+  (render_block
+    (string_literal
+      (escape_sequence)))
+  (text)
+  (render_block
+    (string_literal
+      (escape_sequence)))
+  (text)
+  (render_block
+    (string_literal
+      (escape_sequence)))
+  (text)
+  (render_block
+    (string_literal
+      (escape_sequence)))
   (text))
 

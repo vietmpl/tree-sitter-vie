@@ -82,18 +82,30 @@ module.exports = grammar({
 
 		boolean_literal: _ => choice("true", "false"),
 
-		escape_sequence: _ => seq("\\", /./),
+		escape_sequence: _ =>
+			token.immediate(
+				seq(
+					"\\",
+					choice(
+						/[^xuU]/,
+						/u[0-9a-fA-F]{4}/,
+						/U[0-9a-fA-F]{8}/,
+						/x[0-9a-fA-F]{2}/,
+					),
+				),
+			),
+
 		string_literal: $ =>
 			choice(
 				seq(
 					"'",
-					repeat(choice(/[^'\\\n]/, field("escape", $.escape_sequence))),
-					"'",
+					repeat(choice(/[^'\\\n]/, $.escape_sequence)),
+					token.immediate("'"),
 				),
 				seq(
 					'"',
-					repeat(choice(/[^"\\\n]/, field("escape", $.escape_sequence))),
-					'"',
+					repeat(choice(/[^"\\\n]/, $.escape_sequence)),
+					token.immediate('"'),
 				),
 			),
 

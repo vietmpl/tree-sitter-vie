@@ -336,17 +336,37 @@
       ]
     },
     "escape_sequence": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "\\"
-        },
-        {
-          "type": "PATTERN",
-          "value": "."
-        }
-      ]
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "\\"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^xuU]"
+              },
+              {
+                "type": "PATTERN",
+                "value": "u[0-9a-fA-F]{4}"
+              },
+              {
+                "type": "PATTERN",
+                "value": "U[0-9a-fA-F]{8}"
+              },
+              {
+                "type": "PATTERN",
+                "value": "x[0-9a-fA-F]{2}"
+              }
+            ]
+          }
+        ]
+      }
     },
     "string_literal": {
       "type": "CHOICE",
@@ -368,19 +388,18 @@
                     "value": "[^'\\\\\\n]"
                   },
                   {
-                    "type": "FIELD",
-                    "name": "escape",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "escape_sequence"
-                    }
+                    "type": "SYMBOL",
+                    "name": "escape_sequence"
                   }
                 ]
               }
             },
             {
-              "type": "STRING",
-              "value": "'"
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "'"
+              }
             }
           ]
         },
@@ -401,19 +420,18 @@
                     "value": "[^\"\\\\\\n]"
                   },
                   {
-                    "type": "FIELD",
-                    "name": "escape",
-                    "content": {
-                      "type": "SYMBOL",
-                      "name": "escape_sequence"
-                    }
+                    "type": "SYMBOL",
+                    "name": "escape_sequence"
                   }
                 ]
               }
             },
             {
-              "type": "STRING",
-              "value": "\""
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "STRING",
+                "value": "\""
+              }
             }
           ]
         }
@@ -491,7 +509,7 @@
       ]
     },
     "call_expression": {
-      "type": "PREC_RIGHT",
+      "type": "PREC_LEFT",
       "value": 6,
       "content": {
         "type": "SEQ",
