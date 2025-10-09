@@ -149,38 +149,31 @@ Unary expression
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (identifier)))
+      (identifier)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (identifier)))
+      (identifier)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (boolean_literal)))
+      (boolean_literal)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (string_literal)))
+      (string_literal)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (boolean_literal)))
+      (boolean_literal)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (string_literal)))
+      (string_literal)))
   (text)
   (render_block
     (unary_expression
-      (unary_operator)
-        (identifier)))
+      (identifier)))
   (text))
 
 =============================
@@ -269,37 +262,29 @@ Is / not expressions
   (text)
     (render_block
       (unary_expression
-        (unary_operator)
         (unary_expression
-          (unary_operator)
           (boolean_literal))))
   (text)
     (render_block
       (unary_expression
-        (unary_operator)
         (unary_expression
-          (unary_operator)
           (boolean_literal))))
   (text)
     (render_block
       (unary_expression
-        (unary_operator)
         (unary_expression
-          (unary_operator)
           (boolean_literal))))
   (text)
     (render_block
       (binary_expression
         (boolean_literal)
         (unary_expression
-          (unary_operator)
           (boolean_literal))))  
   (text)
     (render_block
       (binary_expression
         (boolean_literal)
         (unary_expression
-          (unary_operator)
           (boolean_literal))))
   (text)
     (render_block
@@ -345,11 +330,9 @@ Complex operator precedence
     (binary_expression
       (binary_expression
         (unary_expression
-          (unary_operator)
           (identifier))
         (identifier))
       (unary_expression
-        (unary_operator)
         (identifier))))
   (text)
   (render_block
