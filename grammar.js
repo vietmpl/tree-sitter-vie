@@ -80,8 +80,21 @@ module.exports = grammar({
 		identifier: _ => /@?[_\p{XID_Start}][_\p{XID_Continue}]*/u,
 
 		boolean_literal: _ => choice("true", "false"),
-		string_literal: _ =>
-			token(choice(seq("'", /[^'\n]*/, "'"), seq('"', /([^"\n])*/, '"'))),
+
+		escape_sequence: _ => seq("\\", /./),
+		string_literal: $ =>
+			choice(
+				seq(
+					"'",
+					repeat(choice(/[^'\\\n]/, field("escape", $.escape_sequence))),
+					"'",
+				),
+				seq(
+					'"',
+					repeat(choice(/[^"\\\n]/, field("escape", $.escape_sequence))),
+					'"',
+				),
+			),
 
 		_literal: $ => choice($.boolean_literal, $.string_literal),
 

@@ -335,47 +335,89 @@
         }
       ]
     },
+    "escape_sequence": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\\"
+        },
+        {
+          "type": "PATTERN",
+          "value": "."
+        }
+      ]
+    },
     "string_literal": {
-      "type": "TOKEN",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "'"
-              },
-              {
-                "type": "PATTERN",
-                "value": "[^'\\n]*"
-              },
-              {
-                "type": "STRING",
-                "value": "'"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "'"
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^'\\\\\\n]"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "escape",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "escape_sequence"
+                    }
+                  }
+                ]
               }
-            ]
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "\""
-              },
-              {
-                "type": "PATTERN",
-                "value": "([^\"\\n])*"
-              },
-              {
-                "type": "STRING",
-                "value": "\""
+            },
+            {
+              "type": "STRING",
+              "value": "'"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^\"\\\\\\n]"
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "escape",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "escape_sequence"
+                    }
+                  }
+                ]
               }
-            ]
-          }
-        ]
-      }
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
+        }
+      ]
     },
     "_literal": {
       "type": "CHOICE",

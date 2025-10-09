@@ -223,6 +223,11 @@
     "fields": {}
   },
   {
+    "type": "escape_sequence",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_block",
     "named": true,
     "fields": {
@@ -464,6 +469,22 @@
     }
   },
   {
+    "type": "string_literal",
+    "named": true,
+    "fields": {
+      "escape": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "escape_sequence",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "switch_block",
     "named": true,
     "fields": {
@@ -608,6 +629,10 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "#",
     "named": false
   },
@@ -621,6 +646,10 @@
   },
   {
     "type": "&&",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -657,6 +686,10 @@
   },
   {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": "\\",
     "named": false
   },
   {
@@ -698,10 +731,6 @@
   {
     "type": "or",
     "named": false
-  },
-  {
-    "type": "string_literal",
-    "named": true
   },
   {
     "type": "switch",

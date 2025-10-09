@@ -51,4 +51,7 @@
 
 ;; Literals
 (string_literal) @constant.builtin
+(string_literal 
+  escape: (escape_sequence) @string.escaped)
+
 (boolean_literal) @constant.builtin
