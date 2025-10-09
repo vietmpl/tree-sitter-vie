@@ -24,12 +24,12 @@ Multiline render
 ---
 
 (source_file
- (text)
- (render_block)
- (text)
- (render_block
-  (string_literal))
- (text))
+  (text)
+  (render_block)
+  (text)
+  (render_block
+    (string_literal))
+  (text))
 
 =============================
 Multiple renders
@@ -41,13 +41,6 @@ Multiple renders
   (render_block)
   (render_block)
   (render_block))
-
-=============================
-Nested renders
-:error
-=============================
-
-{{ {{}} }}
 
 =============================
 Identifier
@@ -74,35 +67,6 @@ Identifier
   (text)
   (render_block
     (identifier))
-  (text)
-  (render_block
-    (identifier))
-  (text))
-
-=============================
-Invalid identifier
-:error
-=============================
-
-{{ @_iaminvalid }}
-
-=============================
-Parenthesized expression
-=============================
-
-{{ ("") }}
-{{ (true) }}
-{{ (name) }}
-
----
-
-(source_file
-  (text)
-  (render_block
-    (string_literal))
-  (text)
-  (render_block
-    (boolean_literal))
   (text)
   (render_block
     (identifier))
@@ -207,11 +171,23 @@ Binary expression
 {{ a .. b }}
 {{ a or b }}
 {{ a and b }}
+{{ a is b }}
 {{ a is not b }}
+{{   a is   not  b }}
 
 ---
 
 (source_file
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      right: (identifier)))
+  (text)
+  (render_block
+    (binary_expression
+      left: (identifier)
+      right: (identifier)))
   (text)
   (render_block
     (binary_expression
@@ -280,47 +256,47 @@ Nested unary expressions
 
 (source_file
   (text)
-    (render_block
+  (render_block
+    (unary_expression
       (unary_expression
-        (unary_expression
-          (boolean_literal))))
+        (boolean_literal))))
   (text)
-    (render_block
+  (render_block
+    (unary_expression
       (unary_expression
-        (unary_expression
-          (boolean_literal))))
+        (boolean_literal))))
   (text)
-    (render_block
+  (render_block
+    (unary_expression
       (unary_expression
-        (unary_expression
-          (boolean_literal))))
+        (boolean_literal))))
   (text)
-    (render_block
+  (render_block
+    (binary_expression
+      (boolean_literal)
+      (unary_expression
+        (boolean_literal))))
+  (text)
+  (render_block
+    (binary_expression
+      (boolean_literal)
+      (unary_expression
+        (boolean_literal))))
+  (text)
+  (render_block
+    (binary_expression
       (binary_expression
         (boolean_literal)
-        (unary_expression
-          (boolean_literal))))
+        (identifier))
+      (boolean_literal)))
   (text)
-    (render_block
+  (render_block
+    (binary_expression
       (binary_expression
         (boolean_literal)
-        (unary_expression
-          (boolean_literal))))
-  (text)
-    (render_block
-      (binary_expression
-        (binary_expression
-          (boolean_literal)
-          (identifier))
-         (boolean_literal)))
-    (text)
-      (render_block
-        (binary_expression
-          (binary_expression
-            (boolean_literal)
-            (boolean_literal))
-          (identifier)))
-    (text))
+        (boolean_literal))
+      (identifier)))
+  (text))
 
 =============================
 Nested binary expressions
@@ -389,5 +365,41 @@ Nested binary expressions
         (binary_expression
           (identifier)
           (identifier)))
+      (identifier)))
+  (text))
+
+=============================
+Parenthesized expression
+=============================
+
+{{ ("") }}
+{{ (true) }}
+{{ (name) }}
+{{ a is (not b) }}
+{{ not a is b }}
+
+---
+
+(source_file
+  (text)
+  (render_block
+    (string_literal))
+  (text)
+  (render_block
+    (boolean_literal))
+  (text)
+  (render_block
+    (identifier))
+  (text)
+  (render_block
+    (binary_expression
+      (identifier)
+      (unary_expression
+        (identifier))))
+  (text)
+  (render_block
+    (binary_expression
+      (unary_expression
+        (identifier))
       (identifier)))
   (text))

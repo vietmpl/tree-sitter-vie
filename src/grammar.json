@@ -710,17 +710,17 @@
                       "value": ">="
                     },
                     {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "STRING",
-                          "value": "is"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": "not"
-                        }
-                      ]
+                      "type": "STRING",
+                      "value": "is"
+                    },
+                    {
+                      "type": "ALIAS",
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "is\\s+not"
+                      },
+                      "named": false,
+                      "value": "is not"
                     }
                   ]
                 }

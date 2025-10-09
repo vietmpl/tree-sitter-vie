@@ -29,6 +29,7 @@
   "=="
   "is"
   "not"
+  "is not"
   "!"
   ".."
 ] @operator

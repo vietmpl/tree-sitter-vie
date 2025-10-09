@@ -129,7 +129,17 @@ module.exports = grammar({
 				{ precLevel: PREC.and, operator: choice("and", "&&") },
 				{
 					precLevel: PREC.comparison,
-					operator: choice("==", "!=", "<", ">", "<=", ">=", seq("is", "not")),
+					operator: choice(
+						"==",
+						"!=",
+						"<",
+						">",
+						"<=",
+						">=",
+						"is",
+						// Note: this hardcodes whitespaces instead of relying on 'extras'
+						alias(/is\s+not/, "is not"),
+					),
 				},
 				{ precLevel: PREC.concatenation, operator: ".." },
 			];

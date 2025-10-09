@@ -85,7 +85,7 @@
         ]
       },
       "operator": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -129,7 +129,7 @@
             "named": false
           },
           {
-            "type": "not",
+            "type": "is not",
             "named": false
           },
           {
@@ -722,6 +722,10 @@
   },
   {
     "type": "is",
+    "named": false
+  },
+  {
+    "type": "is not",
     "named": false
   },
   {
