@@ -13,11 +13,22 @@ Hello {{}}!
 
 =============================
 Multiline render
-:skip
 =============================
+
 {{
 }}
+{{
+    ""
+}}
+
 ---
+(source_file 
+ (text)
+ (render_block)
+ (text)
+ (render_block
+  (string_literal))
+ (text))
 
 =============================
 Multiple renders
