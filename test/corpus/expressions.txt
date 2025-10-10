@@ -2,20 +2,21 @@
 Render with text
 =============================
 
-Hello {{}}!
+Hello {{ name }}!
 
 ---
 
 (source_file
   (text)
-  (render_block)
+  (render_block
+    (identifier))
   (text))
 
 =============================
 Multiline render
 =============================
 
-{{
+{{""
 }}
 {{
     ""
@@ -25,7 +26,8 @@ Multiline render
 
 (source_file
   (text)
-  (render_block)
+  (render_block
+    (string_literal))
   (text)
   (render_block
     (string_literal))
@@ -34,20 +36,23 @@ Multiline render
 =============================
 Multiple renders
 =============================
-{{}}{{}}{{}}
+{{a}}{{a}}{{a}}
 ---
 
 (source_file
-  (render_block)
-  (render_block)
-  (render_block))
+  (render_block
+    (identifier))
+  (render_block
+    (identifier))
+  (render_block
+    (identifier)))
 
 =============================
 Nested renders
 :error
 =============================
 
-{{ {{}} }}
+{{ {{a}} }}
 
 ---
 

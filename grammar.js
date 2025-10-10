@@ -35,7 +35,7 @@ module.exports = grammar({
 
 		comment_block: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
 
-		render_block: $ => seq("{{", optional($._expression), "}}"),
+		render_block: $ => seq("{{", $._expression, "}}"),
 
 		_statement: $ => choice($.if_block, $.switch_block),
 
