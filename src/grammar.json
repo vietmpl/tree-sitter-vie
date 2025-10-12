@@ -470,32 +470,7 @@
         ]
       }
     },
-    "call_expression": {
-      "type": "PREC_LEFT",
-      "value": 6,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "FIELD",
-            "name": "function",
-            "content": {
-              "type": "SYMBOL",
-              "name": "identifier"
-            }
-          },
-          {
-            "type": "FIELD",
-            "name": "arguments",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_arguments"
-            }
-          }
-        ]
-      }
-    },
-    "_arguments": {
+    "arguments": {
       "type": "SEQ",
       "members": [
         {
@@ -552,6 +527,31 @@
           "value": ")"
         }
       ]
+    },
+    "call_expression": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "function",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "FIELD",
+            "name": "arguments",
+            "content": {
+              "type": "SYMBOL",
+              "name": "arguments"
+            }
+          }
+        ]
+      }
     },
     "pipe_expression": {
       "type": "PREC_LEFT",

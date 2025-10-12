@@ -115,28 +115,34 @@ Function call
   (text_block)
   (render_block
     (call_expression
-      function: (identifier)))
-  (text_block)
-  (render_block
-    (call_expression
-      function: (identifier)))
+      function: (identifier)
+      arguments: (arguments)))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (identifier)))
+      arguments: (arguments)))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (identifier)
-      arguments: (identifier)))
+      arguments: (arguments
+        (identifier))))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (call_expression
-        function: (identifier))))
+      arguments: (arguments
+        (identifier)
+        (identifier))))
+  (text_block)
+  (render_block
+    (call_expression
+      function: (identifier)
+      arguments: (arguments
+        (call_expression
+          function: (identifier)
+          arguments: (arguments)))))
   (text_block))
 
 =============================
