@@ -183,6 +183,37 @@
     }
   },
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "render_statement",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "boolean_literal",
     "named": true,
     "fields": {}
@@ -214,128 +245,31 @@
     }
   },
   {
-    "type": "comment_block",
+    "type": "comment",
     "named": true,
     "fields": {}
   },
   {
-    "type": "if_block",
+    "type": "else_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_if_clause",
     "named": true,
     "fields": {
-      "alternative": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "comment_block",
-            "named": true
-          },
-          {
-            "type": "else",
-            "named": false
-          },
-          {
-            "type": "if_block",
-            "named": true
-          },
-          {
-            "type": "render_block",
-            "named": true
-          },
-          {
-            "type": "switch_block",
-            "named": true
-          },
-          {
-            "type": "text_block",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          }
-        ]
-      },
-      "alternatives": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "%}",
-            "named": false
-          },
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "call_expression",
-            "named": true
-          },
-          {
-            "type": "comment_block",
-            "named": true
-          },
-          {
-            "type": "else",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if",
-            "named": false
-          },
-          {
-            "type": "if_block",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expression",
-            "named": true
-          },
-          {
-            "type": "pipe_expression",
-            "named": true
-          },
-          {
-            "type": "render_block",
-            "named": true
-          },
-          {
-            "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "switch_block",
-            "named": true
-          },
-          {
-            "type": "text_block",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          },
-          {
-            "type": "{%",
-            "named": false
-          }
-        ]
-      },
       "condition": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -373,27 +307,85 @@
         ]
       },
       "consequence": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_clause",
+            "named": true
+          }
+        ]
+      },
+      "alternatives": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "comment_block",
+            "type": "else_if_clause",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
             "named": true
           },
           {
-            "type": "if_block",
+            "type": "boolean_literal",
             "named": true
           },
           {
-            "type": "render_block",
+            "type": "call_expression",
             "named": true
           },
           {
-            "type": "switch_block",
+            "type": "identifier",
             "named": true
           },
           {
-            "type": "text_block",
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "pipe_expression",
+            "named": true
+          },
+          {
+            "type": "string_literal",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "consequence": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
             "named": true
           }
         ]
@@ -498,7 +490,7 @@
     }
   },
   {
-    "type": "render_block",
+    "type": "render_statement",
     "named": true,
     "fields": {},
     "children": {
@@ -550,23 +542,23 @@
       "required": false,
       "types": [
         {
-          "type": "comment_block",
+          "type": "comment",
           "named": true
         },
         {
-          "type": "if_block",
+          "type": "if_statement",
           "named": true
         },
         {
-          "type": "render_block",
+          "type": "render_statement",
           "named": true
         },
         {
-          "type": "switch_block",
+          "type": "switch_statement",
           "named": true
         },
         {
-          "type": "text_block",
+          "type": "text",
           "named": true
         }
       ]
@@ -588,7 +580,7 @@
     }
   },
   {
-    "type": "switch_block",
+    "type": "switch_statement",
     "named": true,
     "fields": {
       "body": {
@@ -604,6 +596,10 @@
             "named": true
           },
           {
+            "type": "block",
+            "named": true
+          },
+          {
             "type": "boolean_literal",
             "named": true
           },
@@ -616,15 +612,11 @@
             "named": false
           },
           {
-            "type": "comment_block",
+            "type": "comment",
             "named": true
           },
           {
             "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "if_block",
             "named": true
           },
           {
@@ -636,19 +628,7 @@
             "named": true
           },
           {
-            "type": "render_block",
-            "named": true
-          },
-          {
             "type": "string_literal",
-            "named": true
-          },
-          {
-            "type": "switch_block",
-            "named": true
-          },
-          {
-            "type": "text_block",
             "named": true
           },
           {
@@ -880,7 +860,7 @@
     "named": false
   },
   {
-    "type": "text_block",
+    "type": "text",
     "named": true
   },
   {

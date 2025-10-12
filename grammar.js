@@ -21,62 +21,69 @@ const PREC = {
 module.exports = grammar({
 	name: "vie",
 
-	externals: $ => [$.text_block],
+	externals: $ => [$.text],
 
 	// TODO: this might not be needed if prec's values are specified correctly
-	conflicts: $ => [[$._else_clause], [$._else_if_clause], [$._case_clause]],
+	conflicts: $ => [
+		[$.else_clause],
+		[$.else_if_clause],
+		[$._case_clause],
+		[$.block],
+	],
 
 	word: $ => $.identifier,
 
 	rules: {
-		source_file: $ => repeat($._block),
+		source_file: $ => repeat($._statement),
 
-		_block: $ =>
+		block: $ => repeat1($._statement),
+
+		_statement: $ =>
 			choice(
-				$.text_block,
-				$.render_block,
-				$.comment_block,
-				$.if_block,
-				$.switch_block,
+				$.text,
+				$.comment,
+				$.render_statement,
+				$.if_statement,
+				$.switch_statement,
 			),
 
-		comment_block: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
+		comment: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
 
-		render_block: $ => seq("{{", $._expression, "}}"),
+		render_statement: $ => seq("{{", $._expression, "}}"),
 
-		if_block: $ =>
+		if_statement: $ =>
 			seq(
 				"{%",
 				"if",
 				field("condition", $._expression),
 				"%}",
-				field("consequence", repeat($._block)),
-				field("alternatives", repeat($._else_if_clause)),
-				optional(field("alternative", $._else_clause)),
+				optional(field("consequence", $.block)),
+				repeat(field("alternatives", $.else_if_clause)),
+				optional(field("alternative", $.else_clause)),
 				"{%",
 				"end",
 				"%}",
 			),
 
-		_else_if_clause: $ =>
+		else_if_clause: $ =>
 			seq(
 				"{%",
 				"else",
 				"if",
 				field("condition", $._expression),
 				"%}",
-				field("consequence", repeat($._block)),
+				optional(field("consequence", $.block)),
 			),
 
-		_else_clause: $ => seq("{%", "else", "%}", repeat($._block)),
+		else_clause: $ => seq("{%", "else", "%}", optional($.block)),
 
-		switch_block: $ =>
+		switch_statement: $ =>
 			seq(
 				"{%",
 				"switch",
 				field("value", $._expression),
 				"%}",
-				field("body", repeat(choice($._case_clause, $.comment_block))),
+				field("body", repeat(choice($._case_clause, $.comment))),
 				"{%",
 				"end",
 				"%}",
@@ -88,7 +95,7 @@ module.exports = grammar({
 				"case",
 				field("value", $._expression),
 				"%}",
-				field("body", repeat($._block)),
+				optional(field("body", $.block)),
 			),
 
 		_expression: $ =>

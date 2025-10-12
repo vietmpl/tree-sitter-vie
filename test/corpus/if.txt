@@ -5,7 +5,7 @@ Simple if
 ---
 
 (source_file
-  (if_block
+  (if_statement
     condition: (identifier)))
 
 =============================
@@ -19,11 +19,12 @@ Conditional content
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block))
-  (text_block))
+    consequence: (block
+      (text)))
+  (text))
 
 =============================
 If with render
@@ -36,14 +37,15 @@ If with render
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    consequence: (render_block
-      (identifier))
-    consequence: (text_block))
-  (text_block))
+    consequence: (block
+      (text)
+      (render_statement
+        (identifier))
+      (text)))
+  (text))
 
 =============================
 If else
@@ -58,12 +60,15 @@ B
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    alternative: (text_block))
-  (text_block))
+    consequence: (block
+      (text))
+    alternative: (else_clause
+      (block
+        (text))))
+  (text))
 
 =============================
 Else if
@@ -80,15 +85,20 @@ B
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    condition: (identifier)
-    consequence: (text_block)
-    condition: (identifier)
-    consequence: (text_block))
-  (text_block))
+    consequence: (block
+      (text))
+    alternatives: (else_if_clause
+      condition: (identifier)
+      consequence: (block
+        (text)))
+    alternatives: (else_if_clause
+      condition: (identifier)
+      consequence: (block
+        (text))))
+  (text))
 
 =============================
 Nested ifs
@@ -103,15 +113,17 @@ A
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    consequence: (if_block
-      condition: (identifier)
-      consequence: (text_block))
-    consequence: (text_block))
-  (text_block))
+    consequence: (block
+      (text)
+      (if_statement
+        condition: (identifier)
+        consequence: (block
+          (text)))
+      (text)))
+  (text))
 
 =============================
 Nested if else
@@ -130,17 +142,23 @@ C
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    alternative: (text_block)
-    alternative: (if_block
-      condition: (identifier)
-      consequence: (text_block)
-      alternative: (text_block))
-    alternative: (text_block))
-  (text_block))
+    consequence: (block
+      (text))
+    alternative: (else_clause
+      (block
+        (text)
+        (if_statement
+          condition: (identifier)
+          consequence: (block
+            (text))
+          alternative: (else_clause
+            (block
+              (text))))
+        (text))))
+  (text))
 
 =============================
 Deep nested ifs
@@ -167,24 +185,33 @@ Deep nested ifs
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    consequence: (if_block
-      condition: (identifier)
-      consequence: (text_block)
-      condition: (identifier)
-      consequence: (text_block)
-      consequence: (if_block
+    consequence: (block
+      (text)
+      (if_statement
         condition: (identifier)
-        consequence: (text_block)
-        condition: (identifier)
-        consequence: (text_block))
-      consequence: (text_block))
-    consequence: (text_block)
-    alternative: (text_block))
-  (text_block))
+        consequence: (block
+          (text))
+        alternatives: (else_if_clause
+          condition: (identifier)
+          consequence: (block
+            (text)
+            (if_statement
+              condition: (identifier)
+              consequence: (block
+                (text))
+              alternatives: (else_if_clause
+                condition: (identifier)
+                consequence: (block
+                  (text))))
+            (text))))
+      (text))
+    alternative: (else_clause
+      (block
+        (text))))
+  (text))
 
 =============================
 If with switch
@@ -203,13 +230,15 @@ If with switch
 ---
 
 (source_file
-  (text_block)
-  (if_block
+  (text)
+  (if_statement
     condition: (identifier)
-    consequence: (text_block)
-    consequence: (switch_block
-      value: (identifier)
-      value: (identifier)
-      body: (text_block))
-    consequence: (text_block))
-  (text_block))
+    consequence: (block
+      (text)
+      (switch_statement
+        value: (identifier)
+        value: (identifier)
+        body: (block
+          (text)))
+      (text)))
+  (text))

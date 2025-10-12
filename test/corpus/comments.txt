@@ -5,7 +5,7 @@ Simple comment
 ---
 
 (source_file
-  (comment_block))
+  (comment))
 
 =============================
 Multiline comment
@@ -16,7 +16,7 @@ Wow
 ---
 
 (source_file
-  (comment_block))
+  (comment))
 
 =============================
 Multiple comments
@@ -25,9 +25,9 @@ Multiple comments
 ---
 
 (source_file
-  (comment_block)
-  (comment_block)
-  (comment_block))
+  (comment)
+  (comment)
+  (comment))
 
 =============================
 Comment with text
@@ -44,12 +44,12 @@ WOW BOB WOW
 ---
 
 (source_file
-  (text_block)
-  (comment_block)
-  (text_block)
-  (comment_block)
-  (comment_block)
-  (text_block))
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (comment)
+  (text))
 
 =============================
 Comment with #
@@ -68,15 +68,15 @@ Comment with #
 ---
 
 (source_file
-  (text_block)
-  (comment_block)
-  (text_block)
-  (comment_block)
-  (text_block)
-  (comment_block)
-  (text_block)
-  (comment_block)
-  (text_block))
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text))
 
 =============================
 Comment with #}
@@ -87,9 +87,9 @@ Comment with #}
 ---
 
 (source_file
-  (text_block)
-  (comment_block)
-  (text_block))
+  (text)
+  (comment)
+  (text))
 
 =============================
 Nested comments
@@ -98,8 +98,8 @@ Nested comments
 ---
 
 (source_file
-  (comment_block)
-  (text_block))
+  (comment)
+  (text))
 
 =============================
 Comment and { text
@@ -109,5 +109,5 @@ Comment and { text
 ---
 
 (source_file
-  (text_block)
-  (comment_block))
+  (text)
+  (comment))

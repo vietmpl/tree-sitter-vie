@@ -8,13 +8,13 @@ Boolean literal
 ---
 
 (source_file
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (boolean_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (boolean_literal))
-  (text_block))
+  (text))
 
 =============================
 Simple string literal
@@ -30,25 +30,25 @@ Simple string literal
 ---
 
 (source_file
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block))
+  (text))
 
 =============================
 String literal with special chars
@@ -68,37 +68,37 @@ String literal with special chars
 ---
 
 (source_file
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal))
-  (text_block))
+  (text))
 
 =============================
 Escaped string literal
@@ -116,39 +116,39 @@ Escaped string literal
 ---
 
 (source_file
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block)
-  (render_block
+  (text)
+  (render_statement
     (string_literal
       (escape_sequence)))
-  (text_block))
+  (text))
 
 =============================
 Invalid string literal
