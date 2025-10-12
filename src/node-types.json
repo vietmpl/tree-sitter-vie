@@ -251,7 +251,7 @@
             "named": true
           },
           {
-            "type": "text",
+            "type": "text_block",
             "named": true
           },
           {
@@ -319,7 +319,7 @@
             "named": true
           },
           {
-            "type": "text",
+            "type": "text_block",
             "named": true
           }
         ]
@@ -492,7 +492,7 @@
           "named": true
         },
         {
-          "type": "text",
+          "type": "text_block",
           "named": true
         }
       ]
@@ -577,7 +577,7 @@
           "named": true
         },
         {
-          "type": "text",
+          "type": "text_block",
           "named": true
         }
       ]
@@ -762,7 +762,7 @@
     "named": false
   },
   {
-    "type": "text",
+    "type": "text_block",
     "named": true
   },
   {

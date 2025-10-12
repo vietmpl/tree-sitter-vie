@@ -1,7 +1,7 @@
 #include "tree_sitter/parser.h"
 
 enum TokenType {
-  TEXT,
+  TEXT_BLOCK,
 };
 
 void *tree_sitter_vie_external_scanner_create() { return NULL; }
@@ -16,7 +16,7 @@ static inline void advance(TSLexer *l) { l->advance(l, false); }
 
 bool tree_sitter_vie_external_scanner_scan(void *p, TSLexer *l,
                                            const bool *valid_symbols) {
-  if (!valid_symbols[TEXT])
+  if (!valid_symbols[TEXT_BLOCK])
     return false;
 
   bool has_content = false;
@@ -42,7 +42,7 @@ bool tree_sitter_vie_external_scanner_scan(void *p, TSLexer *l,
   }
 
   if (has_content) {
-    l->result_symbol = TEXT;
+    l->result_symbol = TEXT_BLOCK;
     l->mark_end(l);
     return true;
   }

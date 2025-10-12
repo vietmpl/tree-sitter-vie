@@ -21,7 +21,7 @@ const PREC = {
 module.exports = grammar({
 	name: "vie",
 
-	externals: $ => [$.text],
+	externals: $ => [$.text_block],
 
 	// TODO: this might not be needed if prec's values are specified correctly
 	conflicts: $ => [[$._else_clause], [$._else_if_clause], [$._case_clause]],
@@ -33,7 +33,7 @@ module.exports = grammar({
 
 		_block: $ =>
 			choice(
-				$.text,
+				$.text_block,
 				$.render_block,
 				$.comment_block,
 				$.if_block,

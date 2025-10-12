@@ -7,10 +7,10 @@ Hello {{ name }}!
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text))
+  (text_block))
 
 =============================
 Multiline render
@@ -25,13 +25,13 @@ Multiline render
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text))
+  (text_block))
 
 =============================
 Multiple renders
@@ -71,22 +71,22 @@ Identifier
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text)
+  (text_block)
   (render_block
     (identifier))
-  (text))
+  (text_block))
 
 =============================
 Invalid identifier
@@ -112,30 +112,30 @@ Function call
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (call_expression
       function: (identifier)
       arguments: (arguments)))
-  (text)
+  (text_block)
   (render_block
     (call_expression
       function: (identifier)
       arguments: (arguments)))
-  (text)
+  (text_block)
   (render_block
     (call_expression
       function: (identifier)
       arguments: (arguments
         (identifier))))
-  (text)
+  (text_block)
   (render_block
     (call_expression
       function: (identifier)
       arguments: (arguments
         (identifier)
         (identifier))))
-  (text)
+  (text_block)
   (render_block
     (call_expression
       function: (identifier)
@@ -143,7 +143,7 @@ Function call
         (call_expression
           function: (identifier)
           arguments: (arguments)))))
-  (text))
+  (text_block))
 
 =============================
 Invalid function call
@@ -170,31 +170,31 @@ Unary expression
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (identifier)))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (boolean_literal)))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (string_literal)))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (boolean_literal)))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (string_literal)))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (identifier)))
-  (text))
+  (text_block))
 
 =============================
 Binary expression
@@ -216,67 +216,67 @@ Binary expression
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       left: (identifier)
       right: (identifier)))
-  (text))
+  (text_block))
 
 =============================
 Nested unary expressions
@@ -293,41 +293,41 @@ Nested unary expressions
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (unary_expression
         (boolean_literal))))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (unary_expression
         (boolean_literal))))
-  (text)
+  (text_block)
   (render_block
     (unary_expression
       (unary_expression
         (boolean_literal))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (boolean_literal)
       (unary_expression
         (boolean_literal))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (boolean_literal)
       (unary_expression
         (boolean_literal))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
         (boolean_literal)
         (identifier))
       (boolean_literal)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (parenthesized_expression
@@ -335,7 +335,7 @@ Nested unary expressions
           (boolean_literal)
           (boolean_literal)))
       (identifier)))
-  (text))
+  (text_block))
 
 =============================
 Nested binary expressions
@@ -350,7 +350,7 @@ Nested binary expressions
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
@@ -361,7 +361,7 @@ Nested binary expressions
       (binary_expression
         (identifier)
         (identifier))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
@@ -370,7 +370,7 @@ Nested binary expressions
         (identifier))
       (unary_expression
         (identifier))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
@@ -383,7 +383,7 @@ Nested binary expressions
       (binary_expression
         (identifier)
         (identifier))))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
@@ -394,7 +394,7 @@ Nested binary expressions
             (identifier)
             (identifier))))
       (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (binary_expression
@@ -405,7 +405,7 @@ Nested binary expressions
           (identifier)
           (identifier)))
       (identifier)))
-  (text))
+  (text_block))
 
 =============================
 Parenthesized expression
@@ -419,23 +419,23 @@ Parenthesized expression
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (parenthesized_expression
       (string_literal)))
-  (text)
+  (text_block)
   (render_block
     (parenthesized_expression
       (boolean_literal)))
-  (text)
+  (text_block)
   (render_block
     (parenthesized_expression
       (identifier)))
-  (text)
+  (text_block)
   (render_block
     (binary_expression
       (identifier)
       (parenthesized_expression
         (unary_expression
           (identifier)))))
-  (text))
+  (text_block))

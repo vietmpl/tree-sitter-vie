@@ -8,13 +8,13 @@ Boolean literal
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (boolean_literal))
-  (text)
+  (text_block)
   (render_block
     (boolean_literal))
-  (text))
+  (text_block))
 
 =============================
 Simple string literal
@@ -30,25 +30,25 @@ Simple string literal
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text))
+  (text_block))
 
 =============================
 String literal with special chars
@@ -68,37 +68,37 @@ String literal with special chars
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text)
+  (text_block)
   (render_block
     (string_literal))
-  (text))
+  (text_block))
 
 =============================
 Escaped string literal
@@ -116,39 +116,39 @@ Escaped string literal
 ---
 
 (source_file
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text)
+  (text_block)
   (render_block
     (string_literal
       (escape_sequence)))
-  (text))
+  (text_block))
 
 =============================
 Invalid string literal

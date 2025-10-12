@@ -19,11 +19,11 @@ Conditional content
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text))
-  (text))
+    consequence: (text_block))
+  (text_block))
 
 =============================
 If with render
@@ -36,14 +36,14 @@ If with render
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     consequence: (render_block
       (identifier))
-    consequence: (text))
-  (text))
+    consequence: (text_block))
+  (text_block))
 
 =============================
 If else
@@ -58,12 +58,12 @@ B
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
-    alternative: (text))
-  (text))
+    consequence: (text_block)
+    alternative: (text_block))
+  (text_block))
 
 =============================
 Else if
@@ -80,15 +80,15 @@ B
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     condition: (identifier)
-    consequence: (text))
-  (text))
+    consequence: (text_block))
+  (text_block))
 
 =============================
 Nested ifs
@@ -103,15 +103,15 @@ A
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     consequence: (if_block
       condition: (identifier)
-      consequence: (text))
-    consequence: (text))
-  (text))
+      consequence: (text_block))
+    consequence: (text_block))
+  (text_block))
 
 =============================
 Nested if else
@@ -130,17 +130,17 @@ C
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
-    alternative: (text)
+    consequence: (text_block)
+    alternative: (text_block)
     alternative: (if_block
       condition: (identifier)
-      consequence: (text)
-      alternative: (text))
-    alternative: (text))
-  (text))
+      consequence: (text_block)
+      alternative: (text_block))
+    alternative: (text_block))
+  (text_block))
 
 =============================
 Deep nested ifs
@@ -167,24 +167,24 @@ Deep nested ifs
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     consequence: (if_block
       condition: (identifier)
-      consequence: (text)
+      consequence: (text_block)
       condition: (identifier)
-      consequence: (text)
+      consequence: (text_block)
       consequence: (if_block
         condition: (identifier)
-        consequence: (text)
+        consequence: (text_block)
         condition: (identifier)
-        consequence: (text))
-      consequence: (text))
-    consequence: (text)
-    alternative: (text))
-  (text))
+        consequence: (text_block))
+      consequence: (text_block))
+    consequence: (text_block)
+    alternative: (text_block))
+  (text_block))
 
 =============================
 If with switch
@@ -203,13 +203,13 @@ If with switch
 ---
 
 (source_file
-  (text)
+  (text_block)
   (if_block
     condition: (identifier)
-    consequence: (text)
+    consequence: (text_block)
     consequence: (switch_block
       value: (identifier)
       value: (identifier)
-      (text))
-    consequence: (text))
-  (text))
+      (text_block))
+    consequence: (text_block))
+  (text_block))

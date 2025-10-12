@@ -44,12 +44,12 @@ WOW BOB WOW
 ---
 
 (source_file
-  (text)
+  (text_block)
   (comment_block)
-  (text)
+  (text_block)
   (comment_block)
   (comment_block)
-  (text))
+  (text_block))
 
 =============================
 Comment with #
@@ -68,15 +68,15 @@ Comment with #
 ---
 
 (source_file
-  (text)
+  (text_block)
   (comment_block)
-  (text)
+  (text_block)
   (comment_block)
-  (text)
+  (text_block)
   (comment_block)
-  (text)
+  (text_block)
   (comment_block)
-  (text))
+  (text_block))
 
 =============================
 Comment with #}
@@ -87,9 +87,9 @@ Comment with #}
 ---
 
 (source_file
-  (text)
+  (text_block)
   (comment_block)
-  (text))
+  (text_block))
 
 =============================
 Nested comments
@@ -99,7 +99,7 @@ Nested comments
 
 (source_file
   (comment_block)
-  (text))
+  (text_block))
 
 =============================
 Comment and { text
@@ -109,5 +109,5 @@ Comment and { text
 ---
 
 (source_file
-  (text)
+  (text_block)
   (comment_block))

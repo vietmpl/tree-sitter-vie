@@ -33,14 +33,14 @@ Text
 ---
 
 (source_file
-  (text)
+  (text_block)
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text)
+    (text_block)
     value: (identifier)
-    (text))
-  (text))
+    (text_block))
+  (text_block))
 
 =============================
 Nested switches
@@ -57,17 +57,17 @@ Nested switches
 ---
 
 (source_file
-  (text)
+  (text_block)
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text)
+    (text_block)
     (switch_block
       value: (identifier)
       value: (identifier)
-      (text))
-    (text))
-  (text))
+      (text_block))
+    (text_block))
+  (text_block))
 
 =============================
 Switch with if
@@ -82,16 +82,16 @@ Switch with if
 ---
 
 (source_file
-  (text)
+  (text_block)
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text)
+    (text_block)
     (if_block
       condition: (identifier)
-      consequence: (text))
-  (text))
-  (text))
+      consequence: (text_block))
+    (text_block))
+  (text_block))
 
 =============================
 Switch with comment
@@ -105,13 +105,13 @@ Switch with comment
 ---
 
 (source_file
-  (text)
+  (text_block)
   (switch_block
     value: (identifier)
     (comment_block)
     value: (identifier)
-    (text))
-  (text))
+    (text_block))
+  (text_block))
 
 =============================
 Invalid switch with text

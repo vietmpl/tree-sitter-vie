@@ -15,7 +15,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "text"
+          "name": "text_block"
         },
         {
           "type": "SYMBOL",
@@ -836,7 +836,7 @@
   "externals": [
     {
       "type": "SYMBOL",
-      "name": "text"
+      "name": "text_block"
     }
   ],
   "inline": [],
