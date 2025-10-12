@@ -13,10 +13,10 @@
 #define ALIAS_COUNT 0
 #define TOKEN_COUNT 44
 #define EXTERNAL_TOKEN_COUNT 1
-#define FIELD_COUNT 11
+#define FIELD_COUNT 13
 #define MAX_ALIAS_SEQUENCE_LENGTH 10
 #define MAX_RESERVED_WORD_SET_SIZE 0
-#define PRODUCTION_ID_COUNT 21
+#define PRODUCTION_ID_COUNT 22
 #define SUPERTYPE_COUNT 0
 
 enum ts_symbol_identifiers {
@@ -515,23 +515,27 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 
 enum ts_field_identifiers {
   field_alternative = 1,
-  field_argument = 2,
-  field_arguments = 3,
-  field_condition = 4,
-  field_consequence = 5,
-  field_function = 6,
-  field_left = 7,
-  field_operand = 8,
-  field_operator = 9,
-  field_right = 10,
-  field_value = 11,
+  field_alternatives = 2,
+  field_argument = 3,
+  field_arguments = 4,
+  field_body = 5,
+  field_condition = 6,
+  field_consequence = 7,
+  field_function = 8,
+  field_left = 9,
+  field_operand = 10,
+  field_operator = 11,
+  field_right = 12,
+  field_value = 13,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
   [field_alternative] = "alternative",
+  [field_alternatives] = "alternatives",
   [field_argument] = "argument",
   [field_arguments] = "arguments",
+  [field_body] = "body",
   [field_condition] = "condition",
   [field_consequence] = "consequence",
   [field_function] = "function",
@@ -548,21 +552,22 @@ static const TSMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [3] = {.index = 4, .length = 2},
   [4] = {.index = 6, .length = 3},
   [5] = {.index = 9, .length = 2},
-  [6] = {.index = 11, .length = 1},
-  [7] = {.index = 12, .length = 4},
-  [8] = {.index = 16, .length = 2},
-  [9] = {.index = 18, .length = 1},
-  [10] = {.index = 19, .length = 1},
-  [11] = {.index = 20, .length = 2},
-  [12] = {.index = 22, .length = 2},
-  [13] = {.index = 24, .length = 3},
-  [14] = {.index = 27, .length = 2},
-  [15] = {.index = 29, .length = 1},
-  [16] = {.index = 30, .length = 3},
-  [17] = {.index = 33, .length = 4},
-  [18] = {.index = 37, .length = 4},
-  [19] = {.index = 41, .length = 2},
-  [20] = {.index = 43, .length = 5},
+  [6] = {.index = 11, .length = 2},
+  [7] = {.index = 13, .length = 4},
+  [8] = {.index = 17, .length = 4},
+  [9] = {.index = 21, .length = 1},
+  [10] = {.index = 22, .length = 1},
+  [11] = {.index = 23, .length = 2},
+  [12] = {.index = 25, .length = 2},
+  [13] = {.index = 27, .length = 4},
+  [14] = {.index = 31, .length = 4},
+  [15] = {.index = 35, .length = 1},
+  [16] = {.index = 36, .length = 3},
+  [17] = {.index = 39, .length = 5},
+  [18] = {.index = 44, .length = 5},
+  [19] = {.index = 49, .length = 2},
+  [20] = {.index = 51, .length = 2},
+  [21] = {.index = 53, .length = 6},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -583,53 +588,65 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_condition, 0, .inherited = true},
     {field_consequence, 0, .inherited = true},
   [11] =
+    {field_body, 0, .inherited = true},
     {field_value, 0, .inherited = true},
-  [12] =
+  [13] =
     {field_condition, 0, .inherited = true},
     {field_condition, 1, .inherited = true},
     {field_consequence, 0, .inherited = true},
     {field_consequence, 1, .inherited = true},
-  [16] =
+  [17] =
+    {field_body, 0, .inherited = true},
+    {field_body, 1, .inherited = true},
     {field_value, 0, .inherited = true},
     {field_value, 1, .inherited = true},
-  [18] =
-    {field_condition, 2},
-  [19] =
-    {field_value, 2},
-  [20] =
-    {field_alternative, 4},
+  [21] =
     {field_condition, 2},
   [22] =
+    {field_value, 2},
+  [23] =
+    {field_alternative, 4},
+    {field_condition, 2},
+  [25] =
     {field_condition, 2},
     {field_consequence, 4},
-  [24] =
+  [27] =
+    {field_alternatives, 4},
     {field_condition, 2},
     {field_condition, 4, .inherited = true},
     {field_consequence, 4, .inherited = true},
-  [27] =
+  [31] =
+    {field_body, 4},
+    {field_body, 4, .inherited = true},
     {field_value, 2},
     {field_value, 4, .inherited = true},
-  [29] =
+  [35] =
     {field_condition, 3},
-  [30] =
+  [36] =
     {field_alternative, 5},
     {field_condition, 2},
     {field_consequence, 4},
-  [33] =
+  [39] =
+    {field_alternatives, 5},
     {field_condition, 2},
     {field_condition, 5, .inherited = true},
     {field_consequence, 4},
     {field_consequence, 5, .inherited = true},
-  [37] =
+  [44] =
     {field_alternative, 5},
+    {field_alternatives, 4},
     {field_condition, 2},
     {field_condition, 4, .inherited = true},
     {field_consequence, 4, .inherited = true},
-  [41] =
+  [49] =
+    {field_body, 4},
+    {field_value, 2},
+  [51] =
     {field_condition, 3},
     {field_consequence, 5},
-  [43] =
+  [53] =
     {field_alternative, 6},
+    {field_alternatives, 5},
     {field_condition, 2},
     {field_condition, 5, .inherited = true},
     {field_consequence, 4},
@@ -3327,9 +3344,9 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [157] = {.entry = {.count = 1, .reusable = true}}, SHIFT(49),
   [159] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__else_if_clause, 5, 0, 15), SHIFT(85),
   [162] = {.entry = {.count = 1, .reusable = true}}, SHIFT(50),
-  [164] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__case_clause, 5, 0, 10), SHIFT(67),
-  [167] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__case_clause, 5, 0, 10), SHIFT(85),
-  [170] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__else_if_clause, 6, 0, 19), SHIFT(85),
+  [164] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__case_clause, 5, 0, 19), SHIFT(67),
+  [167] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__case_clause, 5, 0, 19), SHIFT(85),
+  [170] = {.entry = {.count = 2, .reusable = true}}, REDUCE(sym__else_if_clause, 6, 0, 20), SHIFT(85),
   [173] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 8, 0, 13),
   [175] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 7, 0, 9),
   [177] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_switch_block_repeat1, 2, 0, 8), SHIFT_REPEAT(80),
@@ -3347,7 +3364,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [203] = {.entry = {.count = 1, .reusable = true}}, SHIFT(89),
   [205] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 9, 0, 18),
   [207] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 9, 0, 17),
-  [209] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 10, 0, 20),
+  [209] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_block, 10, 0, 21),
   [211] = {.entry = {.count = 1, .reusable = true}}, SHIFT(76),
   [213] = {.entry = {.count = 1, .reusable = false}}, SHIFT(76),
   [215] = {.entry = {.count = 1, .reusable = false}}, SHIFT(54),

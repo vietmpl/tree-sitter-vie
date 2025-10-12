@@ -37,9 +37,9 @@ Text
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text_block)
+    body: (text_block)
     value: (identifier)
-    (text_block))
+    body: (text_block))
   (text_block))
 
 =============================
@@ -61,12 +61,12 @@ Nested switches
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text_block)
-    (switch_block
+    body: (text_block)
+    body: (switch_block
       value: (identifier)
       value: (identifier)
-      (text_block))
-    (text_block))
+      body: (text_block))
+    body: (text_block))
   (text_block))
 
 =============================
@@ -86,11 +86,11 @@ Switch with if
   (switch_block
     value: (identifier)
     value: (identifier)
-    (text_block)
-    (if_block
+    body: (text_block)
+    body: (if_block
       condition: (identifier)
       consequence: (text_block))
-    (text_block))
+    body: (text_block))
   (text_block))
 
 =============================
@@ -108,9 +108,9 @@ Switch with comment
   (text_block)
   (switch_block
     value: (identifier)
-    (comment_block)
+    body: (comment_block)
     value: (identifier)
-    (text_block))
+    body: (text_block))
   (text_block))
 
 =============================

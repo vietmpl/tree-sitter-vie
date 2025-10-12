@@ -210,6 +210,6 @@ If with switch
     consequence: (switch_block
       value: (identifier)
       value: (identifier)
-      (text_block))
+      body: (text_block))
     consequence: (text_block))
   (text_block))
