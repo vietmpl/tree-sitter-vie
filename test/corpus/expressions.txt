@@ -330,9 +330,10 @@ Nested unary expressions
   (text)
   (render_block
     (binary_expression
-      (binary_expression
-        (boolean_literal)
-        (boolean_literal))
+      (parenthesized_expression
+        (binary_expression
+          (boolean_literal)
+          (boolean_literal)))
       (identifier)))
   (text))
 
@@ -414,30 +415,27 @@ Parenthesized expression
 {{ (true) }}
 {{ (name) }}
 {{ a is (not b) }}
-{{ not a is b }}
 
 ---
 
 (source_file
   (text)
   (render_block
-    (string_literal))
+    (parenthesized_expression
+      (string_literal)))
   (text)
   (render_block
-    (boolean_literal))
+    (parenthesized_expression
+      (boolean_literal)))
   (text)
   (render_block
-    (identifier))
+    (parenthesized_expression
+      (identifier)))
   (text)
   (render_block
     (binary_expression
       (identifier)
-      (unary_expression
-        (identifier))))
-  (text)
-  (render_block
-    (binary_expression
-      (unary_expression
-        (identifier))
-      (identifier)))
+      (parenthesized_expression
+        (unary_expression
+          (identifier)))))
   (text))

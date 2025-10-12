@@ -176,7 +176,8 @@ module.exports = grammar({
 			);
 		},
 
-		_parenthesized_expression: $ => seq("(", $._expression, ")"),
+		parenthesized_expression: $ => seq("(", $._expression, ")"),
+
 		_expression: $ =>
 			choice(
 				$.binary_expression,
@@ -185,7 +186,7 @@ module.exports = grammar({
 				$.call_expression,
 				$._literal,
 				$.identifier,
-				$._parenthesized_expression,
+				$.parenthesized_expression,
 			),
 	},
 });
