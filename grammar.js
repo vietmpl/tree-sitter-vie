@@ -29,15 +29,20 @@ module.exports = grammar({
 	word: $ => $.identifier,
 
 	rules: {
-		source_file: $ => repeat($._node),
+		source_file: $ => repeat($._block),
 
-		_node: $ => choice($.text, $.render_block, $.comment_block, $._statement),
+		_block: $ =>
+			choice(
+				$.text,
+				$.render_block,
+				$.comment_block,
+				$.if_block,
+				$.switch_block,
+			),
 
 		comment_block: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
 
 		render_block: $ => seq("{{", $._expression, "}}"),
-
-		_statement: $ => choice($.if_block, $.switch_block),
 
 		if_block: $ =>
 			seq(
@@ -45,7 +50,7 @@ module.exports = grammar({
 				"if",
 				field("condition", $._expression),
 				"%}",
-				field("consequence", repeat($._node)),
+				field("consequence", repeat($._block)),
 				repeat($._else_if_clause),
 				optional(field("alternative", $._else_clause)),
 				"{%",
@@ -60,10 +65,10 @@ module.exports = grammar({
 				"if",
 				field("condition", $._expression),
 				"%}",
-				field("consequence", repeat($._node)),
+				field("consequence", repeat($._block)),
 			),
 
-		_else_clause: $ => seq("{%", "else", "%}", repeat($._node)),
+		_else_clause: $ => seq("{%", "else", "%}", repeat($._block)),
 
 		switch_block: $ =>
 			seq(
@@ -78,24 +83,23 @@ module.exports = grammar({
 			),
 
 		_case_clause: $ =>
-			seq("{%", "case", field("value", $._expression), "%}", repeat($._node)),
+			seq("{%", "case", field("value", $._expression), "%}", repeat($._block)),
+
+		_expression: $ =>
+			choice(
+				$.binary_expression,
+				$.unary_expression,
+				$.pipe_expression,
+				$.call_expression,
+				$.boolean_literal,
+				$.string_literal,
+				$.identifier,
+				$.parenthesized_expression,
+			),
 
 		identifier: _ => /[@_]?[\p{XID_Start}]\p{XID_Continue}*/u,
 
 		boolean_literal: _ => choice("true", "false"),
-
-		escape_sequence: _ =>
-			token.immediate(
-				seq(
-					"\\",
-					choice(
-						/[^xuU]/,
-						/u[0-9a-fA-F]{4}/,
-						/U[0-9a-fA-F]{8}/,
-						/x[0-9a-fA-F]{2}/,
-					),
-				),
-			),
 
 		string_literal: $ =>
 			choice(
@@ -111,7 +115,18 @@ module.exports = grammar({
 				),
 			),
 
-		_literal: $ => choice($.boolean_literal, $.string_literal),
+		escape_sequence: _ =>
+			token.immediate(
+				seq(
+					"\\",
+					choice(
+						/[^xuU]/,
+						/u[0-9a-fA-F]{4}/,
+						/U[0-9a-fA-F]{8}/,
+						/x[0-9a-fA-F]{2}/,
+					),
+				),
+			),
 
 		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>
@@ -177,17 +192,6 @@ module.exports = grammar({
 		},
 
 		parenthesized_expression: $ => seq("(", $._expression, ")"),
-
-		_expression: $ =>
-			choice(
-				$.binary_expression,
-				$.unary_expression,
-				$.pipe_expression,
-				$.call_expression,
-				$._literal,
-				$.identifier,
-				$.parenthesized_expression,
-			),
 	},
 });
 
