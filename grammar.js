@@ -134,12 +134,16 @@ module.exports = grammar({
 				),
 			),
 
-		arguments: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 		call_expression: $ =>
 			prec.left(
 				PREC.call,
-				seq(field("function", $.identifier), field("arguments", $.arguments)),
+				seq(
+					field("function", $.identifier),
+					field("arguments", $.argument_list),
+				),
 			),
+
+		argument_list: $ => seq("(", sepBy(",", $._expression), optional(","), ")"),
 
 		pipe_expression: $ =>
 			prec.left(

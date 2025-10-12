@@ -116,33 +116,33 @@ Function call
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (arguments)))
+      arguments: (argument_list)))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (arguments)))
+      arguments: (argument_list)))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (arguments
+      arguments: (argument_list
         (identifier))))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (arguments
+      arguments: (argument_list
         (identifier)
         (identifier))))
   (text_block)
   (render_block
     (call_expression
       function: (identifier)
-      arguments: (arguments
+      arguments: (argument_list
         (call_expression
           function: (identifier)
-          arguments: (arguments)))))
+          arguments: (argument_list)))))
   (text_block))
 
 =============================
