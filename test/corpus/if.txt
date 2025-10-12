@@ -90,14 +90,14 @@ B
     condition: (identifier)
     consequence: (block
       (text))
-    alternatives: (else_if_clause
+    alternative: (else_if_clause
       condition: (identifier)
       consequence: (block
-        (text)))
-    alternatives: (else_if_clause
-      condition: (identifier)
-      consequence: (block
-        (text))))
+        (text))
+      alternative: (else_if_clause
+        condition: (identifier)
+        consequence: (block
+          (text)))))
   (text))
 
 =============================
@@ -194,7 +194,7 @@ Deep nested ifs
         condition: (identifier)
         consequence: (block
           (text))
-        alternatives: (else_if_clause
+        alternative: (else_if_clause
           condition: (identifier)
           consequence: (block
             (text)
@@ -202,7 +202,7 @@ Deep nested ifs
               condition: (identifier)
               consequence: (block
                 (text))
-              alternatives: (else_if_clause
+              alternative: (else_if_clause
                 condition: (identifier)
                 consequence: (block
                   (text))))

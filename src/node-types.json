@@ -268,6 +268,20 @@
     "type": "else_if_clause",
     "named": true,
     "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_clause",
+            "named": true
+          },
+          {
+            "type": "else_if_clause",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -329,13 +343,7 @@
           {
             "type": "else_clause",
             "named": true
-          }
-        ]
-      },
-      "alternatives": {
-        "multiple": true,
-        "required": false,
-        "types": [
+          },
           {
             "type": "else_if_clause",
             "named": true

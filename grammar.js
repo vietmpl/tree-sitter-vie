@@ -58,8 +58,7 @@ module.exports = grammar({
 				field("condition", $._expression),
 				"%}",
 				optional(field("consequence", $.block)),
-				repeat(field("alternatives", $.else_if_clause)),
-				optional(field("alternative", $.else_clause)),
+				optional(field("alternative", choice($.else_if_clause, $.else_clause))),
 				"{%",
 				"end",
 				"%}",
@@ -73,6 +72,7 @@ module.exports = grammar({
 				field("condition", $._expression),
 				"%}",
 				optional(field("consequence", $.block)),
+				optional(field("alternative", choice($.else_if_clause, $.else_clause))),
 			),
 
 		else_clause: $ => seq("{%", "else", "%}", optional($.block)),
