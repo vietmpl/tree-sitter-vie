@@ -290,21 +290,12 @@
         },
         {
           "type": "FIELD",
-          "name": "body",
+          "name": "cases",
           "content": {
             "type": "REPEAT",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_case_clause"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "comment"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "case_clause"
             }
           }
         },
@@ -322,7 +313,7 @@
         }
       ]
     },
-    "_case_clause": {
+    "case_clause": {
       "type": "SEQ",
       "members": [
         {
@@ -891,7 +882,7 @@
       "else_if_clause"
     ],
     [
-      "_case_clause"
+      "case_clause"
     ],
     [
       "block"

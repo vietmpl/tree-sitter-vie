@@ -27,7 +27,7 @@ module.exports = grammar({
 	conflicts: $ => [
 		[$.else_clause],
 		[$.else_if_clause],
-		[$._case_clause],
+		[$.case_clause],
 		[$.block],
 	],
 
@@ -83,13 +83,13 @@ module.exports = grammar({
 				"switch",
 				field("value", $._expression),
 				"%}",
-				field("body", repeat(choice($._case_clause, $.comment))),
+				field("cases", repeat($.case_clause)),
 				"{%",
 				"end",
 				"%}",
 			),
 
-		_case_clause: $ =>
+		case_clause: $ =>
 			seq(
 				"{%",
 				"case",

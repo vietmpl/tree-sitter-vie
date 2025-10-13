@@ -237,8 +237,9 @@ If with switch
       (text)
       (switch_statement
         value: (identifier)
-        value: (identifier)
-        body: (block
-          (text)))
+        cases: (case_clause
+          value: (identifier)
+          body: (block
+            (text))))
       (text)))
   (text))

@@ -17,7 +17,8 @@ Switch with one case
 (source_file
   (switch_statement
     value: (identifier)
-    value: (identifier)))
+    cases: (case_clause
+      value: (identifier))))
 
 =============================
 Switch with text
@@ -36,12 +37,14 @@ Text
   (text)
   (switch_statement
     value: (identifier)
-    value: (identifier)
-    body: (block
-      (text))
-    value: (identifier)
-    body: (block
-      (text)))
+    cases: (case_clause
+      value: (identifier)
+      body: (block
+        (text)))
+    cases: (case_clause
+      value: (identifier)
+      body: (block
+        (text))))
   (text))
 
 =============================
@@ -62,15 +65,17 @@ Nested switches
   (text)
   (switch_statement
     value: (identifier)
-    value: (identifier)
-    body: (block
-      (text)
-      (switch_statement
-        value: (identifier)
-        value: (identifier)
-        body: (block
-          (text)))
-      (text)))
+    cases: (case_clause
+      value: (identifier)
+      body: (block
+        (text)
+        (switch_statement
+          value: (identifier)
+          cases: (case_clause
+            value: (identifier)
+            body: (block
+              (text))))
+        (text))))
   (text))
 
 =============================
@@ -89,18 +94,20 @@ Switch with if
   (text)
   (switch_statement
     value: (identifier)
-    value: (identifier)
-    body: (block
-      (text)
-      (if_statement
-        condition: (identifier)
-        consequence: (block
-          (text)))
-      (text)))
+    cases: (case_clause
+      value: (identifier)
+      body: (block
+        (text)
+        (if_statement
+          condition: (identifier)
+          consequence: (block
+            (text)))
+        (text))))
   (text))
 
 =============================
 Switch with comment
+:error
 =============================
 
 {% switch key %}
@@ -110,15 +117,7 @@ Switch with comment
 
 ---
 
-(source_file
-  (text)
-  (switch_statement
-    value: (identifier)
-    body: (comment)
-    value: (identifier)
-    body: (block
-      (text)))
-  (text))
+
 
 =============================
 Invalid switch with text
