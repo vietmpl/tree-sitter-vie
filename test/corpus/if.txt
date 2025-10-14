@@ -238,7 +238,8 @@ If with switch
       (switch_statement
         value: (identifier)
         cases: (case_clause
-          value: (identifier)
+          value: (expression_list
+            (identifier))
           body: (block
             (text))))
       (text)))

@@ -18,7 +18,23 @@ Switch with one case
   (switch_statement
     value: (identifier)
     cases: (case_clause
-      value: (identifier))))
+      value: (expression_list
+        (identifier)))))
+
+=============================
+Switch with few expressions in case 
+=============================
+{%switch key%}{%case a, b%}{%end%}
+---
+
+(source_file
+  (switch_statement
+    value: (identifier)
+    cases: (case_clause
+      value: (expression_list
+        (identifier)
+        (identifier)))))
+
 
 =============================
 Switch with text
@@ -38,11 +54,13 @@ Text
   (switch_statement
     value: (identifier)
     cases: (case_clause
-      value: (identifier)
+      value: (expression_list
+        (identifier))
       body: (block
         (text)))
     cases: (case_clause
-      value: (identifier)
+      value: (expression_list
+        (identifier))
       body: (block
         (text))))
   (text))
@@ -66,13 +84,15 @@ Nested switches
   (switch_statement
     value: (identifier)
     cases: (case_clause
-      value: (identifier)
+      value: (expression_list
+        (identifier))
       body: (block
         (text)
         (switch_statement
           value: (identifier)
           cases: (case_clause
-            value: (identifier)
+            value: (expression_list
+              (identifier))
             body: (block
               (text))))
         (text))))
@@ -95,7 +115,8 @@ Switch with if
   (switch_statement
     value: (identifier)
     cases: (case_clause
-      value: (identifier)
+      value: (expression_list
+        (identifier))
       body: (block
         (text)
         (if_statement

@@ -89,11 +89,13 @@ module.exports = grammar({
 				"%}",
 			),
 
+		expression_list: $ => seq(sepBy1(",", $._expression), optional(",")),
+
 		case_clause: $ =>
 			seq(
 				"{%",
 				"case",
-				field("value", $._expression),
+				field("value", $.expression_list),
 				"%}",
 				optional(field("body", $.block)),
 			),
