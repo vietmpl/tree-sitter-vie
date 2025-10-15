@@ -1,26 +1,24 @@
 {
 	"name": "tree-sitter-vie",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Vie grammar for tree-sitter",
 	"repository": "https://github.com/vietmpl/tree-sitter-vie",
 	"license": "MIT",
-	"contributors": [
-		{
-			"name": "skewb1k",
-			"email": "skewb1kunix@gmail.com"
-		},
-		{
-			"name": "nickshiro",
-			"email": "rudbsm@gmail.com"
-		}
-	],
-	"main": "bindings/node",
-	"types": "bindings/node",
 	"keywords": [
 		"incremental",
 		"parsing",
 		"tree-sitter",
 		"vie"
+	],
+	"contributors": [
+		{
+			"name": "nickshiro",
+			"email": "rudbsm@gmail.com"
+		},
+		{
+			"name": "skewb1k",
+			"email": "skewb1kunix@gmail.com"
+		}
 	],
 	"files": [
 		"grammar.js",
@@ -32,6 +30,8 @@
 		"src/**",
 		"*.wasm"
 	],
+	"main": "bindings/node",
+	"types": "bindings/node",
 	"dependencies": {
 		"node-addon-api": "^8.5.0",
 		"node-gyp-build": "^4.8.4"
