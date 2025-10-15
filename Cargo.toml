@@ -1,8 +1,8 @@
 [package]
 name = "tree-sitter-vie"
 description = "Vie grammar for tree-sitter"
-version = "0.1.0"
-authors = ["skewb1k", "nickshiro"]
+version = "0.1.2"
+authors = ["nickshiro","skewb1k"]
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "vie"]
