@@ -7,17 +7,10 @@
       "type": "REPEAT",
       "content": {
         "type": "SYMBOL",
-        "name": "_statement"
+        "name": "_node"
       }
     },
-    "block": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "_statement"
-      }
-    },
-    "_statement": {
+    "_node": {
       "type": "CHOICE",
       "members": [
         {
@@ -30,15 +23,31 @@
         },
         {
           "type": "SYMBOL",
-          "name": "render_statement"
+          "name": "render"
         },
         {
           "type": "SYMBOL",
-          "name": "if_statement"
+          "name": "if_tag"
         },
         {
           "type": "SYMBOL",
-          "name": "switch_statement"
+          "name": "else_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "else_if_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "end_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "switch_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "case_tag"
         }
       ]
     },
@@ -56,7 +65,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "[^#]+"
+                "value": "[^#\\r\\n]+"
               },
               {
                 "type": "STRING",
@@ -71,7 +80,7 @@
         }
       ]
     },
-    "render_statement": {
+    "render": {
       "type": "SEQ",
       "members": [
         {
@@ -88,70 +97,9 @@
         }
       ]
     },
-    "if_statement": {
+    "end_tag": {
       "type": "SEQ",
       "members": [
-        {
-          "type": "STRING",
-          "value": "{%"
-        },
-        {
-          "type": "STRING",
-          "value": "if"
-        },
-        {
-          "type": "FIELD",
-          "name": "condition",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "%}"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "consequence",
-              "content": {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "alternative",
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "else_if_clause"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "else_clause"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
         {
           "type": "STRING",
           "value": "{%"
@@ -166,7 +114,7 @@
         }
       ]
     },
-    "else_if_clause": {
+    "if_tag": {
       "type": "SEQ",
       "members": [
         {
@@ -174,69 +122,55 @@
           "value": "{%"
         },
         {
-          "type": "STRING",
-          "value": "else"
-        },
-        {
-          "type": "STRING",
-          "value": "if"
-        },
-        {
-          "type": "FIELD",
-          "name": "condition",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "if"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "consequence",
-              "content": {
-                "type": "SYMBOL",
-                "name": "block"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "alternative",
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "SYMBOL",
-                    "name": "else_if_clause"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "else_clause"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },
-    "else_clause": {
+    "else_if_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{%"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "else"
+            },
+            {
+              "type": "STRING",
+              "value": "if"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "%}"
+        }
+      ]
+    },
+    "else_tag": {
       "type": "SEQ",
       "members": [
         {
@@ -250,22 +184,10 @@
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "block"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
         }
       ]
     },
-    "switch_statement": {
+    "switch_tag": {
       "type": "SEQ",
       "members": [
         {
@@ -273,39 +195,43 @@
           "value": "{%"
         },
         {
-          "type": "STRING",
-          "value": "switch"
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "switch"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
         },
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "FIELD",
-          "name": "cases",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "case_clause"
-            }
-          }
-        },
+        }
+      ]
+    },
+    "case_tag": {
+      "type": "SEQ",
+      "members": [
         {
           "type": "STRING",
           "value": "{%"
         },
         {
-          "type": "STRING",
-          "value": "end"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "case"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "expression_list"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -347,47 +273,6 @@
             {
               "type": "STRING",
               "value": ","
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        }
-      ]
-    },
-    "case_clause": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{%"
-        },
-        {
-          "type": "STRING",
-          "value": "case"
-        },
-        {
-          "type": "FIELD",
-          "name": "value",
-          "content": {
-            "type": "SYMBOL",
-            "name": "expression_list"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "%}"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "body",
-              "content": {
-                "type": "SYMBOL",
-                "name": "block"
-              }
             },
             {
               "type": "BLANK"
@@ -927,23 +812,10 @@
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s"
+      "value": "[^\\S\\r\\n]"
     }
   ],
-  "conflicts": [
-    [
-      "else_clause"
-    ],
-    [
-      "else_if_clause"
-    ],
-    [
-      "case_clause"
-    ],
-    [
-      "block"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [
     {

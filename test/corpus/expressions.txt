@@ -8,30 +8,19 @@ Hello {{ name }}!
 
 (source_file
   (text)
-  (render_statement
+  (render
     (identifier))
   (text))
 
 =============================
 Multiline render
+:error
 =============================
-
 {{""
 }}
-{{
-    ""
-}}
-
 ---
 
-(source_file
-  (text)
-  (render_statement
-    (string_literal))
-  (text)
-  (render_statement
-    (string_literal))
-  (text))
+
 
 =============================
 Multiple renders
@@ -40,11 +29,11 @@ Multiple renders
 ---
 
 (source_file
-  (render_statement
+  (render
     (identifier))
-  (render_statement
+  (render
     (identifier))
-  (render_statement
+  (render
     (identifier)))
 
 =============================
@@ -72,19 +61,19 @@ Identifier
 
 (source_file
   (text)
-  (render_statement
+  (render
     (identifier))
   (text)
-  (render_statement
+  (render
     (identifier))
   (text)
-  (render_statement
+  (render
     (identifier))
   (text)
-  (render_statement
+  (render
     (identifier))
   (text)
-  (render_statement
+  (render
     (identifier))
   (text))
 
@@ -113,30 +102,30 @@ Function call
 
 (source_file
   (text)
-  (render_statement
+  (render
     (call_expression
       function: (identifier)
       arguments: (argument_list)))
   (text)
-  (render_statement
+  (render
     (call_expression
       function: (identifier)
       arguments: (argument_list)))
   (text)
-  (render_statement
+  (render
     (call_expression
       function: (identifier)
       arguments: (argument_list
         (identifier))))
   (text)
-  (render_statement
+  (render
     (call_expression
       function: (identifier)
       arguments: (argument_list
         (identifier)
         (identifier))))
   (text)
-  (render_statement
+  (render
     (call_expression
       function: (identifier)
       arguments: (argument_list
@@ -171,27 +160,27 @@ Unary expression
 
 (source_file
   (text)
-  (render_statement
+  (render
     (unary_expression
       (identifier)))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (boolean_literal)))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (string_literal)))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (boolean_literal)))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (string_literal)))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (identifier)))
   (text))
@@ -217,62 +206,62 @@ Binary expression
 
 (source_file
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       left: (identifier)
       right: (identifier)))
@@ -294,41 +283,41 @@ Nested unary expressions
 
 (source_file
   (text)
-  (render_statement
+  (render
     (unary_expression
       (unary_expression
         (boolean_literal))))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (unary_expression
         (boolean_literal))))
   (text)
-  (render_statement
+  (render
     (unary_expression
       (unary_expression
         (boolean_literal))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (boolean_literal)
       (unary_expression
         (boolean_literal))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (boolean_literal)
       (unary_expression
         (boolean_literal))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (boolean_literal)
         (identifier))
       (boolean_literal)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (parenthesized_expression
         (binary_expression
@@ -351,7 +340,7 @@ Nested binary expressions
 
 (source_file
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (identifier)
@@ -362,7 +351,7 @@ Nested binary expressions
         (identifier)
         (identifier))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (unary_expression
@@ -371,7 +360,7 @@ Nested binary expressions
       (unary_expression
         (identifier))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (binary_expression
@@ -384,7 +373,7 @@ Nested binary expressions
         (identifier)
         (identifier))))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (identifier)
@@ -395,7 +384,7 @@ Nested binary expressions
             (identifier))))
       (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (binary_expression
         (binary_expression
@@ -420,19 +409,19 @@ Parenthesized expression
 
 (source_file
   (text)
-  (render_statement
+  (render
     (parenthesized_expression
       (string_literal)))
   (text)
-  (render_statement
+  (render
     (parenthesized_expression
       (boolean_literal)))
   (text)
-  (render_statement
+  (render
     (parenthesized_expression
       (identifier)))
   (text)
-  (render_statement
+  (render
     (binary_expression
       (identifier)
       (parenthesized_expression

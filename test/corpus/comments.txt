@@ -9,14 +9,14 @@ Simple comment
 
 =============================
 Multiline comment
+:error
 =============================
 {#
-Wow
+Error
 #}
 ---
 
-(source_file
-  (comment))
+
 
 =============================
 Multiple comments
@@ -33,21 +33,16 @@ Multiple comments
 Comment with text
 =============================
 
+WOW BOB WOW
+
 {# Comment #}
 
 MyCoolText
-
-{#
-WOW BOB WOW
-#}{##}
 
 ---
 
 (source_file
   (text)
-  (comment)
-  (text)
-  (comment)
   (comment)
   (text))
 
@@ -61,15 +56,9 @@ Comment with #
 
 {# ### #}
 
-{#
-###
-#}
-
 ---
 
 (source_file
-  (text)
-  (comment)
   (text)
   (comment)
   (text)

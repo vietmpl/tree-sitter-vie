@@ -5,8 +5,9 @@ Simple if
 ---
 
 (source_file
-  (if_statement
-    condition: (identifier)))
+  (if_tag
+    (identifier))
+  (end_tag))
 
 =============================
 If with text
@@ -20,10 +21,10 @@ Conditional content
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text)))
+  (if_tag
+    (identifier))
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -38,13 +39,13 @@ If with render
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text)
-      (render_statement
-        (identifier))
-      (text)))
+  (if_tag
+    (identifier))
+  (text)
+  (render
+    (identifier))
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -61,13 +62,12 @@ B
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text))
-    alternative: (else_clause
-      (block
-        (text))))
+  (if_tag
+    (identifier))
+  (text)
+  (else_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -86,18 +86,16 @@ B
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text))
-    alternative: (else_if_clause
-      condition: (identifier)
-      consequence: (block
-        (text))
-      alternative: (else_if_clause
-        condition: (identifier)
-        consequence: (block
-          (text)))))
+  (if_tag
+    (identifier))
+  (text)
+  (else_if_tag
+    (identifier))
+  (text)
+  (else_if_tag
+    (identifier))
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -114,15 +112,15 @@ A
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text)
-      (if_statement
-        condition: (identifier)
-        consequence: (block
-          (text)))
-      (text)))
+  (if_tag
+    (identifier))
+  (text)
+  (if_tag
+    (identifier))
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -143,21 +141,19 @@ C
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text))
-    alternative: (else_clause
-      (block
-        (text)
-        (if_statement
-          condition: (identifier)
-          consequence: (block
-            (text))
-          alternative: (else_clause
-            (block
-              (text))))
-        (text))))
+  (if_tag
+    (identifier))
+  (text)
+  (else_tag)
+  (text)
+  (if_tag
+    (identifier))
+  (text)
+  (else_tag)
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -186,31 +182,28 @@ Deep nested ifs
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text)
-      (if_statement
-        condition: (identifier)
-        consequence: (block
-          (text))
-        alternative: (else_if_clause
-          condition: (identifier)
-          consequence: (block
-            (text)
-            (if_statement
-              condition: (identifier)
-              consequence: (block
-                (text))
-              alternative: (else_if_clause
-                condition: (identifier)
-                consequence: (block
-                  (text))))
-            (text))))
-      (text))
-    alternative: (else_clause
-      (block
-        (text))))
+  (if_tag
+    (identifier))
+  (text)
+  (if_tag
+    (identifier))
+  (text)
+  (else_if_tag
+    (identifier))
+  (text)
+  (if_tag
+    (identifier))
+  (text)
+  (else_if_tag
+    (identifier))
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
+  (text)
+  (else_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -231,16 +224,17 @@ If with switch
 
 (source_file
   (text)
-  (if_statement
-    condition: (identifier)
-    consequence: (block
-      (text)
-      (switch_statement
-        value: (identifier)
-        cases: (case_clause
-          value: (expression_list
-            (identifier))
-          body: (block
-            (text))))
-      (text)))
+  (if_tag
+    (identifier))
+  (text)
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
   (text))

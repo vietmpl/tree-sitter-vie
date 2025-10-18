@@ -21,84 +21,46 @@ const PREC = {
 module.exports = grammar({
 	name: "vie",
 
-	externals: $ => [$.text],
+	// Allow all whitespace characters except line breaks.
+	extras: _ => [/[^\S\r\n]/],
 
-	// TODO: this might not be needed if prec's values are specified correctly
-	conflicts: $ => [
-		[$.else_clause],
-		[$.else_if_clause],
-		[$.case_clause],
-		[$.block],
-	],
+	externals: $ => [$.text],
 
 	word: $ => $.identifier,
 
 	rules: {
-		source_file: $ => repeat($._statement),
+		source_file: $ => repeat($._node),
 
-		block: $ => repeat1($._statement),
-
-		_statement: $ =>
+		_node: $ =>
 			choice(
 				$.text,
 				$.comment,
-				$.render_statement,
-				$.if_statement,
-				$.switch_statement,
+				$.render,
+				$.if_tag,
+				$.else_tag,
+				$.else_if_tag,
+				$.end_tag,
+				$.switch_tag,
+				$.case_tag,
 			),
 
-		comment: _ => seq("{#", repeat(choice(/[^#]+/, "#")), "#}"),
+		comment: _ => seq("{#", repeat(choice(/[^#\r\n]+/, "#")), "#}"),
 
-		render_statement: $ => seq("{{", $._expression, "}}"),
+		render: $ => seq("{{", $._expression, "}}"),
 
-		if_statement: $ =>
-			seq(
-				"{%",
-				"if",
-				field("condition", $._expression),
-				"%}",
-				optional(field("consequence", $.block)),
-				optional(field("alternative", choice($.else_if_clause, $.else_clause))),
-				"{%",
-				"end",
-				"%}",
-			),
+		end_tag: _ => tag("end"),
 
-		else_if_clause: $ =>
-			seq(
-				"{%",
-				"else",
-				"if",
-				field("condition", $._expression),
-				"%}",
-				optional(field("consequence", $.block)),
-				optional(field("alternative", choice($.else_if_clause, $.else_clause))),
-			),
+		if_tag: $ => tag(seq("if", $._expression)),
 
-		else_clause: $ => seq("{%", "else", "%}", optional($.block)),
+		else_if_tag: $ => tag(seq("else", "if", $._expression)),
 
-		switch_statement: $ =>
-			seq(
-				"{%",
-				"switch",
-				field("value", $._expression),
-				"%}",
-				field("cases", repeat($.case_clause)),
-				"{%",
-				"end",
-				"%}",
-			),
+		else_tag: _ => tag("else"),
+
+		switch_tag: $ => tag(seq("switch", $._expression)),
+
+		case_tag: $ => tag(seq("case", $.expression_list)),
 
 		expression_list: $ => seq(sepBy1(",", $._expression), optional(",")),
-
-		case_clause: $ =>
-			seq(
-				"{%",
-				"case",
-				field("value", $.expression_list),
-				"%}",
-				optional(field("body", $.block)),
-			),
 
 		_expression: $ =>
 			choice(
@@ -217,6 +179,10 @@ module.exports = grammar({
 		parenthesized_expression: $ => seq("(", $._expression, ")"),
 	},
 });
+
+function tag(content) {
+	return seq("{%", content, "%}");
+}
 
 // https://github.com/tree-sitter/tree-sitter-rust/
 /**

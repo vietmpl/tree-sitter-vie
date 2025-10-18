@@ -9,10 +9,10 @@ Boolean literal
 
 (source_file
   (text)
-  (render_statement
+  (render
     (boolean_literal))
   (text)
-  (render_statement
+  (render
     (boolean_literal))
   (text))
 
@@ -31,22 +31,22 @@ Simple string literal
 
 (source_file
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text))
 
@@ -69,34 +69,34 @@ String literal with special chars
 
 (source_file
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text)
-  (render_statement
+  (render
     (string_literal))
   (text))
 
@@ -117,35 +117,35 @@ Escaped string literal
 
 (source_file
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text)
-  (render_statement
+  (render
     (string_literal
       (escape_sequence)))
   (text))
@@ -170,6 +170,5 @@ Invalid multiline string literal
 " }}
 
 ---
-
 
 
