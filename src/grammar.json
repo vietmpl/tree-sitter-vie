@@ -775,7 +775,7 @@
                 "name": "operator",
                 "content": {
                   "type": "STRING",
-                  "value": ".."
+                  "value": "~"
                 }
               },
               {

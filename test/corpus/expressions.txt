@@ -195,7 +195,7 @@ Binary expression
 {{ a > b }}
 {{ a >= b }}
 {{ a <= b }}
-{{ a .. b }}
+{{ a ~ b }}
 {{ a or b }}
 {{ a and b }}
 {{ a is b }}
