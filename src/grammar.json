@@ -467,8 +467,15 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^'\\\\\\n]"
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PREC",
+                      "value": 1,
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[^'\\\\\\r\\n]+"
+                      }
+                    }
                   },
                   {
                     "type": "SYMBOL",
@@ -499,8 +506,15 @@
                 "type": "CHOICE",
                 "members": [
                   {
-                    "type": "PATTERN",
-                    "value": "[^\"\\\\\\n]"
+                    "type": "IMMEDIATE_TOKEN",
+                    "content": {
+                      "type": "PREC",
+                      "value": 1,
+                      "content": {
+                        "type": "PATTERN",
+                        "value": "[^\"\\\\\\r\\n]+"
+                      }
+                    }
                   },
                   {
                     "type": "SYMBOL",

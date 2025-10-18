@@ -120,12 +120,16 @@ module.exports = grammar({
 			choice(
 				seq(
 					"'",
-					repeat(choice(/[^'\\\n]/, $.escape_sequence)),
+					repeat(
+						choice(token.immediate(prec(1, /[^'\\\r\n]+/)), $.escape_sequence),
+					),
 					token.immediate("'"),
 				),
 				seq(
 					'"',
-					repeat(choice(/[^"\\\n]/, $.escape_sequence)),
+					repeat(
+						choice(token.immediate(prec(1, /[^"\\\r\n]+/)), $.escape_sequence),
+					),
 					token.immediate('"'),
 				),
 			),
