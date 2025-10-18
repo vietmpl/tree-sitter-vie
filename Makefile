@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-vie
 HOMEPAGE_URL := https://github.com/vietmpl/tree-sitter-vie
-VERSION := 0.2.0
+VERSION := 0.2.1
 
 # repository
 SRC_DIR := src
