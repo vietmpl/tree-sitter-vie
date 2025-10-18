@@ -5,8 +5,9 @@ Simple switch
 ---
 
 (source_file
-  (switch_statement
-    value: (identifier)))
+  (switch_tag
+    (identifier))
+  (end_tag))
 
 =============================
 Switch with one case
@@ -15,26 +16,27 @@ Switch with one case
 ---
 
 (source_file
-  (switch_statement
-    value: (identifier)
-    cases: (case_clause
-      value: (expression_list
-        (identifier)))))
+  (switch_tag
+    (identifier))
+  (case_tag
+    (expression_list
+      (identifier)))
+  (end_tag))
 
 =============================
-Switch with few expressions in case 
+Switch with few expressions in case
 =============================
 {%switch key%}{%case a, b%}{%end%}
 ---
 
 (source_file
-  (switch_statement
-    value: (identifier)
-    cases: (case_clause
-      value: (expression_list
-        (identifier)
-        (identifier)))))
-
+  (switch_tag
+    (identifier))
+  (case_tag
+    (expression_list
+      (identifier)
+      (identifier)))
+  (end_tag))
 
 =============================
 Switch with text
@@ -51,18 +53,18 @@ Text
 
 (source_file
   (text)
-  (switch_statement
-    value: (identifier)
-    cases: (case_clause
-      value: (expression_list
-        (identifier))
-      body: (block
-        (text)))
-    cases: (case_clause
-      value: (expression_list
-        (identifier))
-      body: (block
-        (text))))
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -81,21 +83,23 @@ Nested switches
 
 (source_file
   (text)
-  (switch_statement
-    value: (identifier)
-    cases: (case_clause
-      value: (expression_list
-        (identifier))
-      body: (block
-        (text)
-        (switch_statement
-          value: (identifier)
-          cases: (case_clause
-            value: (expression_list
-              (identifier))
-            body: (block
-              (text))))
-        (text))))
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
@@ -112,23 +116,23 @@ Switch with if
 
 (source_file
   (text)
-  (switch_statement
-    value: (identifier)
-    cases: (case_clause
-      value: (expression_list
-        (identifier))
-      body: (block
-        (text)
-        (if_statement
-          condition: (identifier)
-          consequence: (block
-            (text)))
-        (text))))
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (if_tag
+    (identifier))
+  (text)
+  (end_tag)
+  (text)
+  (end_tag)
   (text))
 
 =============================
 Switch with comment
-:error
 =============================
 
 {% switch key %}
@@ -138,11 +142,22 @@ Switch with comment
 
 ---
 
-
+(source_file
+  (text)
+  (switch_tag
+    (identifier))
+  (text)
+  (comment)
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (end_tag)
+  (text))
 
 =============================
 Invalid switch with text
-:error
 =============================
 
 {% switch key %}
@@ -153,4 +168,14 @@ YOU SHOULDNT PUT TEXT HERE
 
 ---
 
-
+(source_file
+  (text)
+  (switch_tag
+    (identifier))
+  (text)
+  (case_tag
+    (expression_list
+      (identifier)))
+  (text)
+  (end_tag)
+  (text))
