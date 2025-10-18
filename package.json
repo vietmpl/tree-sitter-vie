@@ -1,6 +1,6 @@
 {
 	"name": "tree-sitter-vie",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"description": "Vie grammar for tree-sitter",
 	"repository": "https://github.com/vietmpl/tree-sitter-vie",
 	"license": "MIT",
