@@ -157,7 +157,7 @@ module.exports = grammar({
 						alias(/is\s+not/, "is not"),
 					),
 				],
-				[PREC.additive, ".."],
+				[PREC.additive, "~"],
 			];
 
 			return choice(
@@ -180,6 +180,12 @@ module.exports = grammar({
 	},
 });
 
+/**
+ * Wraps a rule or literal between `{%` and `%}` delimiters.
+ *
+ * @param {RuleOrLiteral} content
+ * @returns {SeqRule}
+ */
 function tag(content) {
 	return seq("{%", content, "%}");
 }
