@@ -39,11 +39,10 @@
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.5",
 		"prebuildify": "^6.0.1",
-		"tree-sitter": "^0.25.0",
 		"tree-sitter-cli": "^0.25.10"
 	},
 	"peerDependencies": {
-		"tree-sitter": "^0.22.4"
+		"tree-sitter": "^0.25.0"
 	},
 	"peerDependenciesMeta": {
 		"tree-sitter": {
