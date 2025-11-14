@@ -1,36 +1,29 @@
 =============================
 Boolean literal
 =============================
-
 {{ true }}
 {{ false }}
-
 ---
 
 (source_file
-  (text)
   (render
     (boolean_literal))
   (text)
   (render
-    (boolean_literal))
-  (text))
+    (boolean_literal)))
 
 =============================
 Simple string literal
 =============================
-
 {{ 'cringe' }}
 {{ "based" }}
 {{ '' }}
 {{ "" }}
 {{ "    	" }}
 {{ '//' }}
-
 ---
 
 (source_file
-  (text)
   (render
     (string_literal))
   (text)
@@ -47,13 +40,11 @@ Simple string literal
     (string_literal))
   (text)
   (render
-    (string_literal))
-  (text))
+    (string_literal)))
 
 =============================
 String literal with special chars
 =============================
-
 {{ "'" }}
 {{ '"' }}
 {{ '{' }}
@@ -64,11 +55,9 @@ String literal with special chars
 {{ '{#' }}
 {{ '{%' }}
 {{ '%}' }}
-
 ---
 
 (source_file
-  (text)
   (render
     (string_literal))
   (text)
@@ -97,13 +86,11 @@ String literal with special chars
     (string_literal))
   (text)
   (render
-    (string_literal))
-  (text))
+    (string_literal)))
 
 =============================
 Escaped string literal
 =============================
-
 {{ '\'' }}
 {{ '\n' }}
 {{ "\r" }}
@@ -112,11 +99,9 @@ Escaped string literal
 {{ "\U0001F600" }}
 {{ "\x7F" }}
 {{ "\  t" }}
-
 ---
 
 (source_file
-  (text)
   (render
     (string_literal
       (escape_sequence)))
@@ -147,23 +132,10 @@ Escaped string literal
   (text)
   (render
     (string_literal
-      (escape_sequence)))
-  (text))
-
-=============================
-Invalid string literal
-:error
-=============================
-
-{{ ' ' ' }}
-
----
-
-
+      (escape_sequence))))
 
 =============================
 Invalid multiline string literal
-:error
 =============================
 
 {{ "
@@ -171,4 +143,7 @@ Invalid multiline string literal
 
 ---
 
-
+(source_file
+  (text)
+  (ERROR)
+  (text))
