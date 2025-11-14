@@ -1,0 +1,91 @@
+=============================
+Multiline comment
+=============================
+{#
+Error
+#}
+---
+
+(source_file
+  (ERROR)
+  (text))
+
+=============================
+Unclosed render
+=============================
+{{ name
+---
+
+(source_file
+  (render
+    (identifier)
+    (MISSING "}}")))
+
+=============================
+Multiline render
+=============================
+{{""
+}}
+---
+
+(source_file
+  (render
+    (string_literal)
+    (MISSING "}}"))
+  (text))
+
+=============================
+Invalid render
+=============================
+{{ { }}
+---
+
+(source_file
+  (ERROR)
+  (text))
+
+=============================
+Nested renders
+=============================
+{{ {{a}} }}
+---
+
+(source_file
+  (ERROR)
+  (text)
+  (render
+    (identifier))
+  (text))
+
+=============================
+Unclosed function call
+=============================
+{{ foo( }}
+---
+
+(source_file
+  (ERROR
+    (identifier))
+  (text))
+
+=============================
+Invalid identifier
+=============================
+{{ @_iaminvalid }}
+---
+
+(source_file
+  (ERROR)
+  (text))
+
+=============================
+Invalid string literal
+=============================
+{{ ' ' ' }}
+---
+
+(source_file
+  (render
+    (string_literal)
+    (MISSING "}}"))
+  (text))

@@ -13,16 +13,6 @@ Hello {{ name }}!
   (text))
 
 =============================
-Multiline render
-:error
-=============================
-{{""
-}}
----
-
-
-
-=============================
 Multiple renders
 =============================
 {{a}}{{a}}{{a}}
@@ -37,30 +27,16 @@ Multiple renders
     (identifier)))
 
 =============================
-Nested renders
-:error
-=============================
-
-{{ {{a}} }}
-
----
-
-
-
-=============================
 Identifier
 =============================
-
 {{ name }}
 {{ nam_e1 }}
 {{ _nam_e1 }}
 {{ @name }}
 {{ @na_me1 }}
-
 ---
 
 (source_file
-  (text)
   (render
     (identifier))
   (text)
@@ -74,34 +50,19 @@ Identifier
     (identifier))
   (text)
   (render
-    (identifier))
-  (text))
-
-=============================
-Invalid identifier
-:error
-=============================
-
-{{ @_iaminvalid }}
-
----
-
-
+    (identifier)))
 
 =============================
 Function call
 =============================
-
 {{ foo() }}
 {{ @foo() }}
 {{ foo(x) }}
 {{ foo(x, y) }}
 {{ foo(bar()) }}
-
 ---
 
 (source_file
-  (text)
   (render
     (call_expression
       function: (identifier)
@@ -131,35 +92,20 @@ Function call
       arguments: (argument_list
         (call_expression
           function: (identifier)
-          arguments: (argument_list)))))
-  (text))
-
-=============================
-Invalid function call
-:error
-=============================
-
-{{ foo( }}
-
----
-
-
+          arguments: (argument_list))))))
 
 =============================
 Unary expression
 =============================
-
 {{ ! flag }}
 {{ !true }}
 {{ !"str" }}
 {{ not true }}
 {{ not "srr" }}
 {{ not value }}
-
 ---
 
 (source_file
-  (text)
   (render
     (unary_expression
       (identifier)))
@@ -182,13 +128,11 @@ Unary expression
   (text)
   (render
     (unary_expression
-      (identifier)))
-  (text))
+      (identifier))))
 
 =============================
 Binary expression
 =============================
-
 {{ a == b }}
 {{ a != b }}
 {{ a < b }}
@@ -201,11 +145,9 @@ Binary expression
 {{ a is b }}
 {{ a is not b }}
 {{   a is   not  b }}
-
 ---
 
 (source_file
-  (text)
   (render
     (binary_expression
       left: (identifier)
@@ -264,13 +206,11 @@ Binary expression
   (render
     (binary_expression
       left: (identifier)
-      right: (identifier)))
-  (text))
+      right: (identifier))))
 
 =============================
 Nested unary expressions
 =============================
-
 {{ not not true }}
 {{ not !true }}
 {{ !!true }}
@@ -278,11 +218,9 @@ Nested unary expressions
 {{ false is not ! true }}
 {{ false is not a < false }}
 {{ (false is not true) is not a }}
-
 ---
 
 (source_file
-  (text)
   (render
     (unary_expression
       (unary_expression
@@ -323,23 +261,19 @@ Nested unary expressions
         (binary_expression
           (boolean_literal)
           (boolean_literal)))
-      (identifier)))
-  (text))
+      (identifier))))
 
 =============================
 Nested binary expressions
 =============================
-
 {{ a or b and c or d and e }}
 {{ not a and b or not c }}
 {{ a == b and c != d or e > f }}
 {{ x or y and z == w or v }}
 {{ a and b or c and d or e }}
-
 ---
 
 (source_file
-  (text)
   (render
     (binary_expression
       (binary_expression
@@ -393,22 +327,18 @@ Nested binary expressions
         (binary_expression
           (identifier)
           (identifier)))
-      (identifier)))
-  (text))
+      (identifier))))
 
 =============================
 Parenthesized expression
 =============================
-
 {{ ("") }}
 {{ (true) }}
 {{ (name) }}
 {{ a is (not b) }}
-
 ---
 
 (source_file
-  (text)
   (render
     (parenthesized_expression
       (string_literal)))
@@ -426,5 +356,4 @@ Parenthesized expression
       (identifier)
       (parenthesized_expression
         (unary_expression
-          (identifier)))))
-  (text))
+          (identifier))))))

@@ -8,17 +8,6 @@ Simple comment
   (comment))
 
 =============================
-Multiline comment
-:error
-=============================
-{#
-Error
-#}
----
-
-
-
-=============================
 Multiple comments
 =============================
 {# 1 #}{# 2 #}{# 3 #}
@@ -27,6 +16,30 @@ Multiple comments
 (source_file
   (comment)
   (comment)
+  (comment))
+
+=============================
+Space between comments
+=============================
+{# 1 #} {# 2 #}
+---
+
+(source_file
+  (comment)
+  (text)
+  (comment))
+
+=============================
+Newline between comments
+=============================
+{# 1 #}
+
+{# 2 #}
+---
+
+(source_file
+  (comment)
+  (text)
   (comment))
 
 =============================
@@ -49,36 +62,49 @@ MyCoolText
 =============================
 Comment with #
 =============================
-
 {###}
-
 {# # #}
-
 {# ### #}
-
 ---
 
 (source_file
-  (text)
   (comment)
   (text)
   (comment)
   (text)
+  (comment))
+
+=============================
+Trail spaces
+=============================
+{##} 
+{##}
+---
+
+(source_file
   (comment)
-  (text))
+  (text)
+  (comment))
 
 =============================
 Comment with #}
 =============================
-
 {##}#}
+---
 
+(source_file
+  (comment)
+  (text))
+
+=============================
+#} before comment
+=============================
+#}{##}
 ---
 
 (source_file
   (text)
-  (comment)
-  (text))
+  (comment))
 
 =============================
 Nested comments

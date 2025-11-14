@@ -12,40 +12,48 @@ unsigned tree_sitter_vie_external_scanner_serialize(void *p, char *b) {
 void tree_sitter_vie_external_scanner_deserialize(void *p, const char *b,
                                                   unsigned n) {}
 
-static inline void advance(TSLexer *l) { l->advance(l, false); }
-
 bool tree_sitter_vie_external_scanner_scan(void *p, TSLexer *l,
                                            const bool *valid_symbols) {
-  if (!valid_symbols[TEXT])
+  if (!valid_symbols[TEXT]) {
     return false;
+  }
 
   bool has_content = false;
 
-  while (!l->eof(l)) {
-    int c = l->lookahead;
+  while (l->lookahead == ' ' || l->lookahead == '\t') {
+    has_content = true;
+    l->advance(l, true);
+  }
 
-    if (c == '{') {
-      l->mark_end(l); // Mark end before checking next char
-      advance(l);
+  if (l->lookahead == '\n') {
+    has_content = true;
+    l->advance(l, true);
+  } else if (l->lookahead == '\r') {
+    has_content = true;
+    l->advance(l, true);
+    if (l->lookahead == '\n')
+      l->advance(l, true);
+  }
+
+  while (!l->eof(l)) {
+    if (l->lookahead == '{') {
+      l->mark_end(l);
+      l->advance(l, false);
       int next = l->lookahead;
 
       if (next == '%' || next == '{' || next == '#') {
-        // Found tag start -> stop before this '{'
-        return has_content; // Do NOT emit if nothing read yet
+        return has_content; // Do NOT emit if nothing was read
       }
-      has_content = true;
-      continue;
+    } else {
+      l->advance(l, false);
     }
-
     has_content = true;
-    advance(l);
   }
 
-  if (has_content) {
-    l->result_symbol = TEXT;
-    l->mark_end(l);
-    return true;
+  if (!has_content) {
+    return false;
   }
-
-  return false;
+  l->result_symbol = TEXT;
+  l->mark_end(l);
+  return true;
 }
