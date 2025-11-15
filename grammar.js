@@ -24,7 +24,7 @@ module.exports = grammar({
 	// Allow all whitespace characters except line breaks.
 	extras: _ => [/[^\S\r\n]/],
 
-	externals: $ => [$.text],
+	externals: $ => [$.text, $._newline],
 
 	word: $ => $.identifier,
 
@@ -48,17 +48,17 @@ module.exports = grammar({
 
 		render: $ => seq("{{", $._expression, "}}"),
 
-		end_tag: _ => tag("end"),
+		end_tag: $ => tag("end", $._newline),
 
-		if_tag: $ => tag(seq("if", $._expression)),
+		if_tag: $ => tag(seq("if", $._expression), $._newline),
 
-		else_if_tag: $ => tag(seq("else", "if", $._expression)),
+		else_if_tag: $ => tag(seq("else", "if", $._expression), $._newline),
 
-		else_tag: _ => tag("else"),
+		else_tag: $ => tag("else", $._newline),
 
-		switch_tag: $ => tag(seq("switch", $._expression)),
+		switch_tag: $ => tag(seq("switch", $._expression), $._newline),
 
-		case_tag: $ => tag(seq("case", $.expression_list)),
+		case_tag: $ => tag(seq("case", $.expression_list), $._newline),
 
 		expression_list: $ => seq(sepBy1(",", $._expression), optional(",")),
 
@@ -184,10 +184,11 @@ module.exports = grammar({
  * Wraps a rule or literal between `{%` and `%}` delimiters.
  *
  * @param {RuleOrLiteral} content
+ * @param {RuleOrLiteral} newline
  * @returns {SeqRule}
  */
-function tag(content) {
-	return seq("{%", content, "%}");
+function tag(content, newline) {
+	return seq("{%", content, "%}", newline);
 }
 
 // https://github.com/tree-sitter/tree-sitter-rust/

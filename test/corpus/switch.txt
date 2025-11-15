@@ -55,7 +55,6 @@ Text
   (text)
   (switch_tag
     (identifier))
-  (text)
   (case_tag
     (expression_list
       (identifier)))
@@ -64,8 +63,7 @@ Text
     (expression_list
       (identifier)))
   (text)
-  (end_tag)
-  (text))
+  (end_tag))
 
 =============================
 Nested switches
@@ -85,7 +83,6 @@ Nested switches
   (text)
   (switch_tag
     (identifier))
-  (text)
   (case_tag
     (expression_list
       (identifier)))
@@ -98,9 +95,7 @@ Nested switches
       (identifier)))
   (text)
   (end_tag)
-  (text)
-  (end_tag)
-  (text))
+  (end_tag))
 
 =============================
 Switch with if
@@ -118,7 +113,6 @@ Switch with if
   (text)
   (switch_tag
     (identifier))
-  (text)
   (case_tag
     (expression_list
       (identifier)))
@@ -127,9 +121,7 @@ Switch with if
     (identifier))
   (text)
   (end_tag)
-  (text)
-  (end_tag)
-  (text))
+  (end_tag))
 
 =============================
 Switch with comment
@@ -146,15 +138,12 @@ Switch with comment
   (text)
   (switch_tag
     (identifier))
-  (text)
   (comment)
   (text)
   (case_tag
     (expression_list
       (identifier)))
-  (text)
-  (end_tag)
-  (text))
+  (end_tag))
 
 =============================
 Invalid switch with text
@@ -177,5 +166,4 @@ YOU SHOULDNT PUT TEXT HERE
     (expression_list
       (identifier)))
   (text)
-  (end_tag)
-  (text))
+  (end_tag))

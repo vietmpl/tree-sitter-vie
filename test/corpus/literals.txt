@@ -145,5 +145,7 @@ Invalid multiline string literal
 
 (source_file
   (text)
-  (ERROR)
+  (render
+  (string_literal
+    (ERROR)))
   (text))

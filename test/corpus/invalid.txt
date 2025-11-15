@@ -7,8 +7,9 @@ Error
 ---
 
 (source_file
-  (ERROR)
-  (text))
+  (comment
+    (ERROR
+      (identifier))))
 
 =============================
 Unclosed render
@@ -31,8 +32,7 @@ Multiline render
 (source_file
   (render
     (string_literal)
-    (MISSING "}}"))
-  (text))
+    (ERROR)))
 
 =============================
 Invalid render
@@ -41,8 +41,8 @@ Invalid render
 ---
 
 (source_file
-  (ERROR)
-  (text))
+  (ERROR
+    (UNEXPECTED ' ')))
 
 =============================
 Nested renders
@@ -52,7 +52,6 @@ Nested renders
 
 (source_file
   (ERROR)
-  (text)
   (render
     (identifier))
   (text))
@@ -64,9 +63,9 @@ Unclosed function call
 ---
 
 (source_file
-  (ERROR
-    (identifier))
-  (text))
+  (render
+    (identifier)
+    (ERROR)))
 
 =============================
 Invalid identifier
@@ -75,8 +74,10 @@ Invalid identifier
 ---
 
 (source_file
-  (ERROR)
-  (text))
+  (render
+    (ERROR
+      (UNEXPECTED '_'))
+    (identifier)))
 
 =============================
 Invalid string literal
@@ -87,5 +88,4 @@ Invalid string literal
 (source_file
   (render
     (string_literal)
-    (MISSING "}}"))
-  (text))
+    (ERROR)))
