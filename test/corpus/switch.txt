@@ -138,7 +138,8 @@ Switch with comment
   (text)
   (switch_tag
     (identifier))
-  (comment)
+  (comment_tag
+    (comment))
   (text)
   (case_tag
     (expression_list

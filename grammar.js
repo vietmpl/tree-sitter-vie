@@ -34,7 +34,7 @@ module.exports = grammar({
 		_node: $ =>
 			choice(
 				$.text,
-				$.comment,
+				$.comment_tag,
 				$.render,
 				$.if_tag,
 				$.else_tag,
@@ -44,7 +44,9 @@ module.exports = grammar({
 				$.case_tag,
 			),
 
-		comment: _ => seq("{#", repeat(choice(/[^#\r\n]+/, "#")), "#}"),
+		comment: _ => repeat1(choice(/[^#\r\n]+/, "#")),
+
+		comment_tag: $ => seq("{#", optional($.comment), "#}"),
 
 		render: $ => seq("{{", $._expression, "}}"),
 
