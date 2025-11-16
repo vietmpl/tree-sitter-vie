@@ -7,7 +7,7 @@ Error
 ---
 
 (source_file
-  (comment
+  (comment_tag
     (ERROR
       (identifier))))
 

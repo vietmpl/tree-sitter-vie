@@ -5,7 +5,8 @@ Simple comment
 ---
 
 (source_file
-  (comment))
+  (comment_tag
+    (comment)))
 
 =============================
 Multiple comments
@@ -14,9 +15,12 @@ Multiple comments
 ---
 
 (source_file
-  (comment)
-  (comment)
-  (comment))
+  (comment_tag
+    (comment))
+  (comment_tag
+    (comment))
+  (comment_tag
+    (comment)))
 
 =============================
 Space between comments
@@ -25,9 +29,11 @@ Space between comments
 ---
 
 (source_file
-  (comment)
+  (comment_tag
+    (comment))
   (text)
-  (comment))
+  (comment_tag
+    (comment)))
 
 =============================
 Newline between comments
@@ -38,9 +44,11 @@ Newline between comments
 ---
 
 (source_file
-  (comment)
+  (comment_tag
+    (comment))
   (text)
-  (comment))
+  (comment_tag
+    (comment)))
 
 =============================
 Comment with text
@@ -56,7 +64,8 @@ MyCoolText
 
 (source_file
   (text)
-  (comment)
+  (comment_tag
+    (comment))
   (text))
 
 =============================
@@ -68,11 +77,14 @@ Comment with #
 ---
 
 (source_file
-  (comment)
+  (comment_tag
+    (comment))
   (text)
-  (comment)
+  (comment_tag
+    (comment))
   (text)
-  (comment))
+  (comment_tag
+    (comment)))
 
 =============================
 Trail spaces
@@ -82,9 +94,9 @@ Trail spaces
 ---
 
 (source_file
-  (comment)
+  (comment_tag)
   (text)
-  (comment))
+  (comment_tag))
 
 =============================
 Comment with #}
@@ -93,7 +105,7 @@ Comment with #}
 ---
 
 (source_file
-  (comment)
+  (comment_tag)
   (text))
 
 =============================
@@ -104,7 +116,7 @@ Comment with #}
 
 (source_file
   (text)
-  (comment))
+  (comment_tag))
 
 =============================
 Nested comments
@@ -113,7 +125,8 @@ Nested comments
 ---
 
 (source_file
-  (comment)
+  (comment_tag
+    (comment))
   (text))
 
 =============================
@@ -125,4 +138,4 @@ Comment and { text
 
 (source_file
   (text)
-  (comment))
+  (comment_tag))

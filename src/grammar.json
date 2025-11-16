@@ -19,7 +19,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "comment"
+          "name": "comment_tag"
         },
         {
           "type": "SYMBOL",
@@ -52,6 +52,22 @@
       ]
     },
     "comment": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^#\\r\\n]+"
+          },
+          {
+            "type": "STRING",
+            "value": "#"
+          }
+        ]
+      }
+    },
+    "comment_tag": {
       "type": "SEQ",
       "members": [
         {
@@ -59,20 +75,16 @@
           "value": "{#"
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[^#\\r\\n]+"
-              },
-              {
-                "type": "STRING",
-                "value": "#"
-              }
-            ]
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
