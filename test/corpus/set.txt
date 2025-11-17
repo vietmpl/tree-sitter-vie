@@ -1,0 +1,10 @@
+=============================
+Simple set
+=============================
+{% set flag = true %}
+---
+
+(source_file
+  (set_tag
+    (identifier)
+    (boolean_literal)))

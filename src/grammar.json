@@ -27,6 +27,14 @@
         },
         {
           "type": "SYMBOL",
+          "name": "end_tag"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "set_tag"
+        },
+        {
+          "type": "SYMBOL",
           "name": "if_tag"
         },
         {
@@ -36,10 +44,6 @@
         {
           "type": "SYMBOL",
           "name": "else_if_tag"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "end_tag"
         },
         {
           "type": "SYMBOL",
@@ -130,6 +134,44 @@
         }
       ]
     },
+    "set_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{%"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "set"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "%}"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
     "if_tag": {
       "type": "SEQ",
       "members": [
@@ -149,6 +191,27 @@
               "name": "_expression"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": "%}"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_newline"
+        }
+      ]
+    },
+    "else_tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{%"
+        },
+        {
+          "type": "STRING",
+          "value": "else"
         },
         {
           "type": "STRING",
@@ -183,27 +246,6 @@
               "name": "_expression"
             }
           ]
-        },
-        {
-          "type": "STRING",
-          "value": "%}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
-        }
-      ]
-    },
-    "else_tag": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "{%"
-        },
-        {
-          "type": "STRING",
-          "value": "else"
         },
         {
           "type": "STRING",

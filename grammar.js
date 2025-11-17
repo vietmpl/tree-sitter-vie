@@ -36,10 +36,11 @@ module.exports = grammar({
 				$.text,
 				$.comment_tag,
 				$.render,
+				$.end_tag,
+				$.set_tag,
 				$.if_tag,
 				$.else_tag,
 				$.else_if_tag,
-				$.end_tag,
 				$.switch_tag,
 				$.case_tag,
 			),
@@ -52,11 +53,13 @@ module.exports = grammar({
 
 		end_tag: $ => tag("end", $._newline),
 
+		set_tag: $ => tag(seq("set", $.identifier, "=", $._expression), $._newline),
+
 		if_tag: $ => tag(seq("if", $._expression), $._newline),
 
-		else_if_tag: $ => tag(seq("else", "if", $._expression), $._newline),
-
 		else_tag: $ => tag("else", $._newline),
+
+		else_if_tag: $ => tag(seq("else", "if", $._expression), $._newline),
 
 		switch_tag: $ => tag(seq("switch", $._expression), $._newline),
 
