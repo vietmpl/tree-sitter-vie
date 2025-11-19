@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-vie"
 description = "Vie grammar for tree-sitter"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["nickshiro","skewb1k"]
 license = "MIT"
 readme = "README.md"
