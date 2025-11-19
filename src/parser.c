@@ -9,10 +9,10 @@
 #define LANGUAGE_VERSION 15
 #define STATE_COUNT 80
 #define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 71
+#define SYMBOL_COUNT 72
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 45
-#define EXTERNAL_TOKEN_COUNT 2
+#define TOKEN_COUNT 46
+#define EXTERNAL_TOKEN_COUNT 3
 #define FIELD_COUNT 7
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
@@ -64,32 +64,33 @@ enum ts_symbol_identifiers {
   anon_sym_TILDE = 42,
   sym_text = 43,
   sym__newline = 44,
-  sym_source_file = 45,
-  sym__node = 46,
-  sym_comment = 47,
-  sym_comment_tag = 48,
-  sym_render = 49,
-  sym_end_tag = 50,
-  sym_if_tag = 51,
-  sym_else_if_tag = 52,
-  sym_else_tag = 53,
-  sym_switch_tag = 54,
-  sym_case_tag = 55,
-  sym_expression_list = 56,
-  sym__expression = 57,
-  sym_boolean_literal = 58,
-  sym_string_literal = 59,
-  sym_call_expression = 60,
-  sym_argument_list = 61,
-  sym_pipe_expression = 62,
-  sym_unary_expression = 63,
-  sym_binary_expression = 64,
-  sym_parenthesized_expression = 65,
-  aux_sym_source_file_repeat1 = 66,
-  aux_sym_comment_repeat1 = 67,
-  aux_sym_expression_list_repeat1 = 68,
-  aux_sym_string_literal_repeat1 = 69,
-  aux_sym_string_literal_repeat2 = 70,
+  sym_error_sentinel = 45,
+  sym_source_file = 46,
+  sym__node = 47,
+  sym_comment = 48,
+  sym_comment_tag = 49,
+  sym_render = 50,
+  sym_end_tag = 51,
+  sym_if_tag = 52,
+  sym_else_if_tag = 53,
+  sym_else_tag = 54,
+  sym_switch_tag = 55,
+  sym_case_tag = 56,
+  sym_expression_list = 57,
+  sym__expression = 58,
+  sym_boolean_literal = 59,
+  sym_string_literal = 60,
+  sym_call_expression = 61,
+  sym_argument_list = 62,
+  sym_pipe_expression = 63,
+  sym_unary_expression = 64,
+  sym_binary_expression = 65,
+  sym_parenthesized_expression = 66,
+  aux_sym_source_file_repeat1 = 67,
+  aux_sym_comment_repeat1 = 68,
+  aux_sym_expression_list_repeat1 = 69,
+  aux_sym_string_literal_repeat1 = 70,
+  aux_sym_string_literal_repeat2 = 71,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -138,6 +139,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_TILDE] = "~",
   [sym_text] = "text",
   [sym__newline] = "_newline",
+  [sym_error_sentinel] = "error_sentinel",
   [sym_source_file] = "source_file",
   [sym__node] = "_node",
   [sym_comment] = "comment",
@@ -212,6 +214,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_TILDE] = anon_sym_TILDE,
   [sym_text] = sym_text,
   [sym__newline] = sym__newline,
+  [sym_error_sentinel] = sym_error_sentinel,
   [sym_source_file] = sym_source_file,
   [sym__node] = sym__node,
   [sym_comment] = sym_comment,
@@ -419,6 +422,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [sym__newline] = {
     .visible = false,
+    .named = true,
+  },
+  [sym_error_sentinel] = {
+    .visible = true,
     .named = true,
   },
   [sym_source_file] = {
@@ -1466,6 +1473,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_TILDE] = ACTIONS(1),
     [sym_text] = ACTIONS(1),
     [sym__newline] = ACTIONS(1),
+    [sym_error_sentinel] = ACTIONS(1),
   },
   [STATE(1)] = {
     [sym_source_file] = STATE(71),
@@ -2938,17 +2946,20 @@ static const TSParseActionEntry ts_parse_actions[] = {
 enum ts_external_scanner_symbol_identifiers {
   ts_external_token_text = 0,
   ts_external_token__newline = 1,
+  ts_external_token_error_sentinel = 2,
 };
 
 static const TSSymbol ts_external_scanner_symbol_map[EXTERNAL_TOKEN_COUNT] = {
   [ts_external_token_text] = sym_text,
   [ts_external_token__newline] = sym__newline,
+  [ts_external_token_error_sentinel] = sym_error_sentinel,
 };
 
 static const bool ts_external_scanner_states[4][EXTERNAL_TOKEN_COUNT] = {
   [1] = {
     [ts_external_token_text] = true,
     [ts_external_token__newline] = true,
+    [ts_external_token_error_sentinel] = true,
   },
   [2] = {
     [ts_external_token_text] = true,

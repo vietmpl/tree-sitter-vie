@@ -3,6 +3,7 @@
 enum TokenType {
   TEXT,
   _NEWLINE,
+  ERROR_SENTINEL,
 };
 
 void *tree_sitter_vie_external_scanner_create() { return NULL; }
@@ -15,48 +16,64 @@ void tree_sitter_vie_external_scanner_deserialize(void *p, const char *b,
 
 static inline void advance(TSLexer *l) { l->advance(l, false); }
 
+static inline bool process_text(TSLexer *l) {
+  bool has_content = false;
+
+  while (!l->eof(l)) {
+    if (l->lookahead == '{') {
+      l->mark_end(l);
+      advance(l);
+      int next = l->lookahead;
+
+      if (next == '%' || next == '{' || next == '#') {
+        return has_content; // Do NOT emit if nothing was read
+      }
+    } else {
+      advance(l);
+    }
+    has_content = true;
+  }
+
+  if (!has_content) {
+    return false;
+  }
+  l->result_symbol = TEXT;
+  l->mark_end(l);
+  return true;
+}
+
+static inline bool process_newline(TSLexer *l) {
+  while (l->lookahead == ' ' || l->lookahead == '\t') {
+    advance(l);
+  }
+
+  if (l->lookahead == '\n') {
+    advance(l);
+  } else if (l->lookahead == '\r') {
+    advance(l);
+    if (l->lookahead == '\n')
+      advance(l);
+  }
+
+  l->result_symbol = _NEWLINE;
+  l->mark_end(l);
+  return true;
+}
+
 bool tree_sitter_vie_external_scanner_scan(void *p, TSLexer *l,
                                            const bool *valid_symbols) {
-  if (valid_symbols[_NEWLINE]) {
-    while (l->lookahead == ' ' || l->lookahead == '\t') {
-      advance(l);
-    }
-
-    if (l->lookahead == '\n') {
-      advance(l);
-    } else if (l->lookahead == '\r') {
-      advance(l);
-      if (l->lookahead == '\n')
-        advance(l);
-    }
-
-    l->result_symbol = _NEWLINE;
-    l->mark_end(l);
-    return true;
-  } else if (valid_symbols[TEXT]) {
-    bool emit = false;
-
-    while (!l->eof(l)) {
-      if (l->lookahead == '{') {
-        l->mark_end(l);
-        advance(l);
-        int next = l->lookahead;
-
-        if (next == '%' || next == '{' || next == '#') {
-          return emit; // Do NOT emit if nothing was read
-        }
-      } else {
-        advance(l);
-      }
-      emit = true;
-    }
-
-    if (!emit) {
-      return false;
-    }
-    l->result_symbol = TEXT;
-    l->mark_end(l);
-    return true;
+  // handle error recovery mode.
+  if (valid_symbols[ERROR_SENTINEL]) {
+    return false;
   }
+
+  if (valid_symbols[_NEWLINE]) {
+    return process_newline(l);
+  }
+
+  if (valid_symbols[TEXT]) {
+    return process_text(l);
+  }
+
   return false;
 }
