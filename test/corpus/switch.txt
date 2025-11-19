@@ -1,6 +1,6 @@
-=============================
+===
 Simple switch
-=============================
+===
 {% switch key %}{% end %}
 ---
 
@@ -9,9 +9,9 @@ Simple switch
     (identifier))
   (end_tag))
 
-=============================
+===
 Switch with one case
-=============================
+===
 {%switch key%}{%case a%}{%end%}
 ---
 
@@ -23,9 +23,9 @@ Switch with one case
       (identifier)))
   (end_tag))
 
-=============================
+===
 Switch with few expressions in case
-=============================
+===
 {%switch key%}{%case a, b%}{%end%}
 ---
 
@@ -38,9 +38,9 @@ Switch with few expressions in case
       (identifier)))
   (end_tag))
 
-=============================
+===
 Switch with text
-=============================
+===
 
 {% switch key %}
 {% case a %}
@@ -65,9 +65,9 @@ Text
   (text)
   (end_tag))
 
-=============================
+===
 Nested switches
-=============================
+===
 
 {% switch key %}
 {% case a %}
@@ -97,9 +97,9 @@ Nested switches
   (end_tag)
   (end_tag))
 
-=============================
+===
 Switch with if
-=============================
+===
 
 {% switch key %}
 {% case a %}
@@ -123,9 +123,9 @@ Switch with if
   (end_tag)
   (end_tag))
 
-=============================
+===
 Switch with comment
-=============================
+===
 
 {% switch key %}
 {# A #}
@@ -146,9 +146,9 @@ Switch with comment
       (identifier)))
   (end_tag))
 
-=============================
+===
 Invalid switch with text
-=============================
+===
 
 {% switch key %}
 YOU SHOULDNT PUT TEXT HERE
@@ -168,3 +168,14 @@ YOU SHOULDNT PUT TEXT HERE
       (identifier)))
   (text)
   (end_tag))
+
+===
+Empty switch
+:error
+===
+{% switch %}
+{% end %}
+---
+
+
+

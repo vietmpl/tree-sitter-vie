@@ -1,6 +1,6 @@
-=============================
+===
 Simple comment
-=============================
+===
 {# Comment #}
 ---
 
@@ -8,9 +8,9 @@ Simple comment
   (comment_tag
     (comment)))
 
-=============================
+===
 Multiple comments
-=============================
+===
 {# 1 #}{# 2 #}{# 3 #}
 ---
 
@@ -22,9 +22,9 @@ Multiple comments
   (comment_tag
     (comment)))
 
-=============================
+===
 Space between comments
-=============================
+===
 {# 1 #} {# 2 #}
 ---
 
@@ -35,9 +35,9 @@ Space between comments
   (comment_tag
     (comment)))
 
-=============================
+===
 Newline between comments
-=============================
+===
 {# 1 #}
 
 {# 2 #}
@@ -50,9 +50,9 @@ Newline between comments
   (comment_tag
     (comment)))
 
-=============================
+===
 Comment with text
-=============================
+===
 
 WOW BOB WOW
 
@@ -68,9 +68,9 @@ MyCoolText
     (comment))
   (text))
 
-=============================
+===
 Comment with #
-=============================
+===
 {###}
 {# # #}
 {# ### #}
@@ -86,9 +86,9 @@ Comment with #
   (comment_tag
     (comment)))
 
-=============================
+===
 Trail spaces
-=============================
+===
 {##} 
 {##}
 ---
@@ -98,9 +98,9 @@ Trail spaces
   (text)
   (comment_tag))
 
-=============================
+===
 Comment with #}
-=============================
+===
 {##}#}
 ---
 
@@ -108,9 +108,9 @@ Comment with #}
   (comment_tag)
   (text))
 
-=============================
+===
 #} before comment
-=============================
+===
 #}{##}
 ---
 
@@ -118,9 +118,9 @@ Comment with #}
   (text)
   (comment_tag))
 
-=============================
+===
 Nested comments
-=============================
+===
 {#{##}#}
 ---
 
@@ -129,9 +129,9 @@ Nested comments
     (comment))
   (text))
 
-=============================
+===
 Comment and { text
-=============================
+===
 {
 {##}
 ---
@@ -139,3 +139,15 @@ Comment and { text
 (source_file
   (text)
   (comment_tag))
+
+===
+Multiline comment
+:error
+===
+{#
+comment
+#}
+---
+
+
+

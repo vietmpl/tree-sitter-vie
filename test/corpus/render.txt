@@ -1,0 +1,65 @@
+===
+Render with text
+===
+
+Hello {{ name }}!
+
+---
+
+(source_file
+  (text)
+  (render
+    (identifier))
+  (text))
+
+===
+Multiple renders
+===
+{{a}}{{a}}{{a}}
+---
+
+(source_file
+  (render
+    (identifier))
+  (render
+    (identifier))
+  (render
+    (identifier)))
+
+===
+Unclosed render
+:error
+===
+{{ name
+---
+
+
+
+===
+Multiline render
+:error
+===
+{{""
+}}
+---
+
+
+
+===
+Render with {
+:error
+===
+{{ { }}
+---
+
+
+
+===
+Nested renders
+:error
+===
+{{ {{a}} }}
+---
+
+
+

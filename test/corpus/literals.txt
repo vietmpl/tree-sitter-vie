@@ -1,6 +1,6 @@
-=============================
+===
 Boolean literal
-=============================
+===
 {{ true }}
 {{ false }}
 ---
@@ -12,9 +12,9 @@ Boolean literal
   (render
     (boolean_literal)))
 
-=============================
+===
 Simple string literal
-=============================
+===
 {{ 'cringe' }}
 {{ "based" }}
 {{ '' }}
@@ -42,9 +42,9 @@ Simple string literal
   (render
     (string_literal)))
 
-=============================
+===
 String literal with special chars
-=============================
+===
 {{ "'" }}
 {{ '"' }}
 {{ '{' }}
@@ -88,9 +88,9 @@ String literal with special chars
   (render
     (string_literal)))
 
-=============================
+===
 Escaped string literal
-=============================
+===
 {{ '\'' }}
 {{ '\n' }}
 {{ "\r" }}
@@ -134,18 +134,24 @@ Escaped string literal
     (string_literal
       (escape_sequence))))
 
-=============================
+===
 Invalid multiline string literal
-=============================
+:error
+===
 
 {{ "
 " }}
 
 ---
 
-(source_file
-  (text)
-  (render
-  (string_literal
-    (ERROR)))
-  (text))
+
+
+===
+Invalid string literal
+:error
+===
+{{ ' ' ' }}
+---
+
+
+

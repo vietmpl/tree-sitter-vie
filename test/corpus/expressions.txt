@@ -1,34 +1,6 @@
-=============================
-Render with text
-=============================
-
-Hello {{ name }}!
-
----
-
-(source_file
-  (text)
-  (render
-    (identifier))
-  (text))
-
-=============================
-Multiple renders
-=============================
-{{a}}{{a}}{{a}}
----
-
-(source_file
-  (render
-    (identifier))
-  (render
-    (identifier))
-  (render
-    (identifier)))
-
-=============================
+===
 Identifier
-=============================
+===
 {{ name }}
 {{ nam_e1 }}
 {{ _nam_e1 }}
@@ -52,9 +24,18 @@ Identifier
   (render
     (identifier)))
 
-=============================
+===
+Invalid identifier
+:error
+===
+{{ @_iaminvalid }}
+---
+
+
+
+===
 Function call
-=============================
+===
 {{ foo() }}
 {{ @foo() }}
 {{ foo(x) }}
@@ -94,9 +75,18 @@ Function call
           function: (identifier)
           arguments: (argument_list))))))
 
-=============================
+===
+Unclosed function call
+:error
+===
+{{ foo( }}
+---
+
+
+
+===
 Unary expression
-=============================
+===
 {{ ! flag }}
 {{ !true }}
 {{ !"str" }}
@@ -130,9 +120,9 @@ Unary expression
     (unary_expression
       (identifier))))
 
-=============================
+===
 Binary expression
-=============================
+===
 {{ a == b }}
 {{ a != b }}
 {{ a < b }}
@@ -208,9 +198,9 @@ Binary expression
       left: (identifier)
       right: (identifier))))
 
-=============================
+===
 Nested unary expressions
-=============================
+===
 {{ not not true }}
 {{ not !true }}
 {{ !!true }}
@@ -263,9 +253,9 @@ Nested unary expressions
           (boolean_literal)))
       (identifier))))
 
-=============================
+===
 Nested binary expressions
-=============================
+===
 {{ a or b and c or d and e }}
 {{ not a and b or not c }}
 {{ a == b and c != d or e > f }}
@@ -329,9 +319,9 @@ Nested binary expressions
           (identifier)))
       (identifier))))
 
-=============================
+===
 Parenthesized expression
-=============================
+===
 {{ ("") }}
 {{ (true) }}
 {{ (name) }}
