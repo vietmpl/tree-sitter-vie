@@ -24,7 +24,7 @@ module.exports = grammar({
 	// Allow all whitespace characters except line breaks.
 	extras: _ => [/[^\S\r\n]/],
 
-	externals: $ => [$.text, $._newline],
+	externals: $ => [$.text, $._newline, $.error_sentinel],
 
 	word: $ => $.identifier,
 
