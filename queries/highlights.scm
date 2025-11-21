@@ -9,7 +9,7 @@
 
 "," @punctuation.delimiter
 
-(comment) @comment
+(comment_tag) @comment
 
 [
   "if"
