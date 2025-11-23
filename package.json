@@ -54,6 +54,7 @@
 		"generate": "tree-sitter generate",
 		"prestart": "tree-sitter build --wasm",
 		"start": "tree-sitter playground",
-		"fmt": "biome check --write grammar.js"
+		"lint": "biome check",
+		"fmt": "biome check --write"
 	}
 }

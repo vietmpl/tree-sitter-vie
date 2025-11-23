@@ -1,12 +1,5 @@
 name: Lint
-
-on:
-  push:
-    paths:
-      - grammar.js
-  pull_request:
-    paths:
-      - grammar.js
+on: [push, pull_request]
 
 jobs:
   lint:
@@ -14,7 +7,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - name: Setup Biome CLI
-        uses: biomejs/setup-biome@v2
-      - name: Run Biome
-        run: biome ci grammar.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+      - name: Install dependencies
+        run: npm ci
+      - name: Run lint
+        run: npm run lint

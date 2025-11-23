@@ -1,13 +1,11 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
-	},
 	"javascript": {
 		"formatter": {
 			"arrowParentheses": "asNeeded"
 		}
+	},
+	"files": {
+		"includes": ["grammar.js", "package.json"]
 	}
 }
