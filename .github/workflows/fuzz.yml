@@ -2,7 +2,6 @@ name: Fuzz Parser
 
 on:
   push:
-    branches: [master]
     paths:
       - src/scanner.c
   pull_request:
