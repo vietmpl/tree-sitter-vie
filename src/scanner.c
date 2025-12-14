@@ -20,13 +20,32 @@ static inline bool process_text(TSLexer *l) {
   bool has_content = false;
 
   while (!l->eof(l)) {
+    if (l->lookahead == '\\') {
+      advance(l);
+
+      if (l->eof(l)) {
+        return false;
+      }
+
+      int next = l->lookahead;
+
+      if (next == '\\' || next == '{') {
+        advance(l);
+        has_content = true;
+        continue;
+      }
+      return false;
+    }
     if (l->lookahead == '{') {
       l->mark_end(l);
       advance(l);
+      if (l->eof(l)) {
+        break;
+      }
       int next = l->lookahead;
 
       if (next == '%' || next == '{' || next == '#') {
-        return has_content; // Do NOT emit if nothing was read
+        return has_content; // Do not emit if nothing was read
       }
     } else {
       advance(l);

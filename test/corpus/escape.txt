@@ -1,0 +1,87 @@
+===
+Escape render
+===
+
+Hello \{{ name }}!
+
+---
+
+(source_file
+  (text))
+
+===
+Escape backslash
+===
+
+Hello \\{{ name }}!
+
+---
+
+(source_file
+  (text)
+  (render
+    (identifier))
+  (text))
+
+===
+Escape comment
+===
+
+\{# #}
+
+---
+
+(source_file
+  (text))
+
+===
+Escape statement
+===
+
+\{% if true %}
+\{% end %}
+
+---
+
+(source_file
+  (text))
+
+===
+Escape unclosed comment
+===
+
+\{#
+
+---
+
+(source_file
+  (text))
+
+===
+Single backslash
+:error
+===
+\
+---
+
+
+
+===
+Invalid escape sequence
+:error
+===
+\s
+---
+
+
+
+===
+Escape sequence with newline
+:error
+===
+\
+\
+---
+
+
+
