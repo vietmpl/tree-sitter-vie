@@ -54,6 +54,7 @@
 		"generate": "tree-sitter generate",
 		"prestart": "tree-sitter build --wasm",
 		"start": "tree-sitter playground",
+		"test": "tree-sitter test",
 		"lint": "biome check",
 		"fmt": "biome check --write"
 	}
