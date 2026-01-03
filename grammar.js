@@ -40,8 +40,6 @@ export default grammar({
 				$.else_tag,
 				$.else_if_tag,
 				$.end_tag,
-				$.switch_tag,
-				$.case_tag,
 			),
 
 		comment: _ => repeat1(choice(/[^#\r\n]+/, "#")),
@@ -57,12 +55,6 @@ export default grammar({
 		else_if_tag: $ => tag(seq("else", "if", $._expression), $._newline),
 
 		else_tag: $ => tag("else", $._newline),
-
-		switch_tag: $ => tag(seq("switch", $._expression), $._newline),
-
-		case_tag: $ => tag(seq("case", $.expression_list), $._newline),
-
-		expression_list: $ => seq(sepBy1(",", $._expression), optional(",")),
 
 		_expression: $ =>
 			choice(

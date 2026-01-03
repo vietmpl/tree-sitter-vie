@@ -191,35 +191,3 @@ Deep nested ifs
   (else_tag)
   (text)
   (end_tag))
-
-===
-If with switch
-===
-
-{% if flag %}
-
-{% switch a %}
-
-{% case a %}
-
-{% end %}
-
-{% end %}
-
----
-
-(source_file
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (switch_tag
-    (identifier))
-  (text)
-  (case_tag
-    (expression_list
-      (identifier)))
-  (text)
-  (end_tag)
-  (text)
-  (end_tag))

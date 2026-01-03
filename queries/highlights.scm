@@ -14,8 +14,6 @@
 [
   "if"
   "else"
-  "switch"
-  "case"
   "end"
   "is"
   "not"
