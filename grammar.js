@@ -73,21 +73,12 @@ export default grammar({
 		boolean_literal: _ => choice("true", "false"),
 
 		string_literal: $ =>
-			choice(
-				seq(
-					"'",
-					repeat(
-						choice(token.immediate(prec(1, /[^'\\\r\n]+/)), $.escape_sequence),
-					),
-					token.immediate("'"),
+			seq(
+				'"',
+				repeat(
+					choice(token.immediate(prec(1, /[^"\\\r\n]+/)), $.escape_sequence),
 				),
-				seq(
-					'"',
-					repeat(
-						choice(token.immediate(prec(1, /[^"\\\r\n]+/)), $.escape_sequence),
-					),
-					token.immediate('"'),
-				),
+				token.immediate('"'),
 			),
 
 		escape_sequence: _ =>

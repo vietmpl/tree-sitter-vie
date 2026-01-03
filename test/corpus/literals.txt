@@ -15,24 +15,12 @@ Boolean literal
 ===
 Simple string literal
 ===
-{{ 'cringe' }}
 {{ "based" }}
-{{ '' }}
 {{ "" }}
 {{ "    	" }}
-{{ '//' }}
 ---
 
 (source_file
-  (render
-    (string_literal))
-  (text)
-  (render
-    (string_literal))
-  (text)
-  (render
-    (string_literal))
-  (text)
   (render
     (string_literal))
   (text)
@@ -46,21 +34,17 @@ Simple string literal
 String literal with special chars
 ===
 {{ "'" }}
-{{ '"' }}
-{{ '{' }}
-{{ '{{' }}
-{{ '}}' }}
-{{ '#}' }}
-{{ '##}' }}
-{{ '{#' }}
-{{ '{%' }}
-{{ '%}' }}
+{{ "{" }}
+{{ "{{" }}
+{{ "}}" }}
+{{ "#}" }}
+{{ "##}" }}
+{{ "{#" }}
+{{ "{%" }}
+{{ "%}" }}
 ---
 
 (source_file
-  (render
-    (string_literal))
-  (text)
   (render
     (string_literal))
   (text)
@@ -91,8 +75,7 @@ String literal with special chars
 ===
 Escaped string literal
 ===
-{{ '\'' }}
-{{ '\n' }}
+{{ "\n" }}
 {{ "\r" }}
 {{ "\"" }}
 {{ "\u03A9" }}
@@ -102,10 +85,6 @@ Escaped string literal
 ---
 
 (source_file
-  (render
-    (string_literal
-      (escape_sequence)))
-  (text)
   (render
     (string_literal
       (escape_sequence)))
@@ -150,7 +129,7 @@ Invalid multiline string literal
 Invalid string literal
 :error
 ===
-{{ ' ' ' }}
+{{ " " " }}
 ---
 
 
