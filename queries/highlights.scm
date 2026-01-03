@@ -13,6 +13,7 @@
 
 [
   "if"
+  "elseif"
   "else"
   "end"
   "is"

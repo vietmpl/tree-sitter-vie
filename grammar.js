@@ -38,7 +38,7 @@ export default grammar({
 				$.render,
 				$.if_tag,
 				$.else_tag,
-				$.else_if_tag,
+				$.elseif_tag,
 				$.end_tag,
 			),
 
@@ -52,7 +52,7 @@ export default grammar({
 
 		if_tag: $ => tag(seq("if", $._expression), $._newline),
 
-		else_if_tag: $ => tag(seq("else", "if", $._expression), $._newline),
+		elseif_tag: $ => tag(seq("elseif", $._expression), $._newline),
 
 		else_tag: $ => tag("else", $._newline),
 

@@ -35,7 +35,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "else_if_tag"
+          "name": "elseif_tag"
         },
         {
           "type": "SYMBOL",
@@ -152,7 +152,7 @@
         }
       ]
     },
-    "else_if_tag": {
+    "elseif_tag": {
       "type": "SEQ",
       "members": [
         {
@@ -164,11 +164,7 @@
           "members": [
             {
               "type": "STRING",
-              "value": "else"
-            },
-            {
-              "type": "STRING",
-              "value": "if"
+              "value": "elseif"
             },
             {
               "type": "SYMBOL",

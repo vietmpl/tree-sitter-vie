@@ -234,7 +234,12 @@
     }
   },
   {
-    "type": "else_if_tag",
+    "type": "else_tag",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "elseif_tag",
     "named": true,
     "fields": {},
     "children": {
@@ -275,11 +280,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "else_tag",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "end_tag",
@@ -483,11 +483,11 @@
           "named": true
         },
         {
-          "type": "else_if_tag",
+          "type": "else_tag",
           "named": true
         },
         {
-          "type": "else_tag",
+          "type": "elseif_tag",
           "named": true
         },
         {
@@ -652,6 +652,10 @@
   },
   {
     "type": "else",
+    "named": false
+  },
+  {
+    "type": "elseif",
     "named": false
   },
   {

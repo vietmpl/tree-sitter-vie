@@ -70,9 +70,9 @@ Else if
 
 {% if flag %}
 A
-{% else if flag2 %}
+{% elseif flag2 %}
 B
-{% else if flag3 %}
+{% elseif flag3 %}
 B
 {% end %}
 
@@ -83,10 +83,10 @@ B
   (if_tag
     (identifier))
   (text)
-  (else_if_tag
+  (elseif_tag
     (identifier))
   (text)
-  (else_if_tag
+  (elseif_tag
     (identifier))
   (text)
   (end_tag))
@@ -151,11 +151,11 @@ Deep nested ifs
 
   {% if flag %}
 
-  {% else if flag2 %}
+  {% elseif flag2 %}
 
     {% if flag3 %}
 
-    {% else if flag2 %}
+    {% elseif flag2 %}
 
     {% end %}
 
@@ -175,13 +175,13 @@ Deep nested ifs
   (if_tag
     (identifier))
   (text)
-  (else_if_tag
+  (elseif_tag
     (identifier))
   (text)
   (if_tag
     (identifier))
   (text)
-  (else_if_tag
+  (elseif_tag
     (identifier))
   (text)
   (end_tag)
