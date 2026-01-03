@@ -5,21 +5,15 @@
 	"type": "module",
 	"repository": "https://github.com/vietmpl/tree-sitter-vie",
 	"license": "MIT",
+	"author": {
+		"name": "skewb1k",
+		"email": "skewb1kunix@gmail.com"
+	},
 	"keywords": [
 		"incremental",
 		"parsing",
 		"tree-sitter",
 		"vie"
-	],
-	"contributors": [
-		{
-			"name": "nickshiro",
-			"email": "rudbsm@gmail.com"
-		},
-		{
-			"name": "skewb1k",
-			"email": "skewb1kunix@gmail.com"
-		}
 	],
 	"files": [
 		"grammar.js",

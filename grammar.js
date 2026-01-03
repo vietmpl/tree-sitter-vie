@@ -1,6 +1,5 @@
 /**
  * @file Vie grammar for tree-sitter
- * @author nickshiro <rudbsm@gmail.com>
  * @author skewb1k <skewb1kunix@gmail.com>
  * @license MIT
  */
@@ -48,13 +47,13 @@ export default grammar({
 
 		render: $ => seq("{{", $._expression, "}}"),
 
-		end_tag: _ => tag("end"),
+		if_tag: $ => seq("{%", "if", $._expression, "%}"),
 
-		if_tag: $ => tag(seq("if", $._expression)),
+		elseif_tag: $ => seq("{%", "elseif", $._expression, "%}"),
 
-		elseif_tag: $ => tag(seq("elseif", $._expression)),
+		else_tag: _ => seq("{%", "else", "%}"),
 
-		else_tag: _ => tag("else"),
+		end_tag: _ => seq("{%", "end", "%}"),
 
 		_expression: $ =>
 			choice(
@@ -148,16 +147,6 @@ export default grammar({
 		parenthesized_expression: $ => seq("(", $._expression, ")"),
 	},
 });
-
-/**
- * Wraps a rule or literal between `{%` and `%}` delimiters.
- *
- * @param {RuleOrLiteral} content
- * @returns {SeqRule}
- */
-function tag(content) {
-	return seq("{%", content, "%}");
-}
 
 // https://github.com/tree-sitter/tree-sitter-rust/
 /**
