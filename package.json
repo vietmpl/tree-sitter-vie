@@ -23,34 +23,15 @@
 	"files": [
 		"grammar.js",
 		"tree-sitter.json",
-		"binding.gyp",
-		"prebuilds/**",
-		"bindings/node/*",
 		"queries/*",
 		"src/**",
 		"*.wasm"
 	],
-	"main": "bindings/node",
-	"types": "bindings/node",
-	"dependencies": {
-		"node-addon-api": "^8.5.0",
-		"node-gyp-build": "^4.8.4"
-	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.8",
-		"prebuildify": "^6.0.1",
 		"tree-sitter-cli": "^0.26.3"
 	},
-	"peerDependencies": {
-		"tree-sitter": "^0.25.0"
-	},
-	"peerDependenciesMeta": {
-		"tree-sitter": {
-			"optional": true
-		}
-	},
 	"scripts": {
-		"install": "node-gyp-build",
 		"generate": "tree-sitter generate",
 		"prestart": "tree-sitter build --wasm",
 		"start": "tree-sitter playground",
