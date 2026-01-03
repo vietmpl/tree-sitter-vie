@@ -33,7 +33,7 @@
 		"c": true,
 		"go": true,
 		"node": false,
-		"python": true,
+		"python": false,
 		"rust": true,
 		"swift": true,
 		"zig": true
