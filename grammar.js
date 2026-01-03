@@ -24,7 +24,7 @@ export default grammar({
 	// Allow all whitespace characters except line breaks.
 	extras: _ => [/[^\S\r\n]/],
 
-	externals: $ => [$.text, $._newline, $.error_sentinel],
+	externals: $ => [$.text, $.error_sentinel],
 
 	word: $ => $.identifier,
 
@@ -48,13 +48,13 @@ export default grammar({
 
 		render: $ => seq("{{", $._expression, "}}"),
 
-		end_tag: $ => tag("end", $._newline),
+		end_tag: _ => tag("end"),
 
-		if_tag: $ => tag(seq("if", $._expression), $._newline),
+		if_tag: $ => tag(seq("if", $._expression)),
 
-		elseif_tag: $ => tag(seq("elseif", $._expression), $._newline),
+		elseif_tag: $ => tag(seq("elseif", $._expression)),
 
-		else_tag: $ => tag("else", $._newline),
+		else_tag: _ => tag("else"),
 
 		_expression: $ =>
 			choice(
@@ -153,11 +153,10 @@ export default grammar({
  * Wraps a rule or literal between `{%` and `%}` delimiters.
  *
  * @param {RuleOrLiteral} content
- * @param {RuleOrLiteral} newline
  * @returns {SeqRule}
  */
-function tag(content, newline) {
-	return seq("{%", content, "%}", newline);
+function tag(content) {
+	return seq("{%", content, "%}");
 }
 
 // https://github.com/tree-sitter/tree-sitter-rust/

@@ -115,10 +115,6 @@
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -145,10 +141,6 @@
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -175,10 +167,6 @@
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -196,10 +184,6 @@
         {
           "type": "STRING",
           "value": "%}"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_newline"
         }
       ]
     },
@@ -643,10 +627,6 @@
     {
       "type": "SYMBOL",
       "name": "text"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "_newline"
     },
     {
       "type": "SYMBOL",

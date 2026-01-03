@@ -22,7 +22,9 @@ If with text
   (text)
   (if_tag
     (identifier))
-  (end_tag))
+  (text)
+  (end_tag)
+  (text))
 
 ===
 If with render
@@ -38,10 +40,12 @@ If with render
   (text)
   (if_tag
     (identifier))
+  (text)
   (render
     (identifier))
   (text)
-  (end_tag))
+  (end_tag)
+  (text))
 
 ===
 If else
@@ -62,7 +66,8 @@ B
   (text)
   (else_tag)
   (text)
-  (end_tag))
+  (end_tag)
+  (text))
 
 ===
 Else if
@@ -89,7 +94,8 @@ B
   (elseif_tag
     (identifier))
   (text)
-  (end_tag))
+  (end_tag)
+  (text))
 
 ===
 Nested ifs
@@ -107,11 +113,14 @@ A
   (text)
   (if_tag
     (identifier))
+  (text)
   (if_tag
     (identifier))
   (text)
   (end_tag)
-  (end_tag))
+  (text)
+  (end_tag)
+  (text))
 
 ===
 Nested if else
@@ -135,13 +144,16 @@ C
     (identifier))
   (text)
   (else_tag)
+  (text)
   (if_tag
     (identifier))
   (text)
   (else_tag)
   (text)
   (end_tag)
-  (end_tag))
+  (text)
+  (end_tag)
+  (text))
 
 ===
 Deep nested ifs
@@ -190,4 +202,5 @@ Deep nested ifs
   (text)
   (else_tag)
   (text)
-  (end_tag))
+  (end_tag)
+  (text))

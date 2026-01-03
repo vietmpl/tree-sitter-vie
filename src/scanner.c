@@ -2,7 +2,6 @@
 
 enum TokenType {
   TEXT,
-  _NEWLINE,
   ERROR_SENTINEL,
 };
 
@@ -42,33 +41,11 @@ static inline bool process_text(TSLexer *l) {
   return true;
 }
 
-static inline bool process_newline(TSLexer *l) {
-  while (l->lookahead == ' ' || l->lookahead == '\t') {
-    advance(l);
-  }
-
-  if (l->lookahead == '\n') {
-    advance(l);
-  } else if (l->lookahead == '\r') {
-    advance(l);
-    if (l->lookahead == '\n')
-      advance(l);
-  }
-
-  l->result_symbol = _NEWLINE;
-  l->mark_end(l);
-  return true;
-}
-
 bool tree_sitter_vie_external_scanner_scan(void *p, TSLexer *l,
                                            const bool *valid_symbols) {
   // handle error recovery mode.
   if (valid_symbols[ERROR_SENTINEL]) {
     return false;
-  }
-
-  if (valid_symbols[_NEWLINE]) {
-    return process_newline(l);
   }
 
   if (valid_symbols[TEXT]) {
