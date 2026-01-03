@@ -18,7 +18,7 @@ const PREC = {
 	or: 1,
 };
 
-module.exports = grammar({
+export default grammar({
 	name: "vie",
 
 	// Allow all whitespace characters except line breaks.
