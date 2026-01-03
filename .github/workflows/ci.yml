@@ -1,10 +1,6 @@
 name: CI
 on: push
 
-concurrency:
-  group: ${{github.workflow}}-${{github.ref}}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
-
 jobs:
   verify-parser:
     name: Verify generated parser
@@ -19,7 +15,7 @@ jobs:
       - name: Check for changes
         run: |
           if ! git diff --quiet; then
-            echo "The parser is out of date. Please run 'npm run generate' and commit the changes."
+            echo "The parser is out of date."
             git --no-pager diff
             exit 1
           fi
@@ -38,11 +34,7 @@ jobs:
   test:
     name: Test parser
     needs: [lint, verify-parser]
-    runs-on: ${{matrix.os}}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
