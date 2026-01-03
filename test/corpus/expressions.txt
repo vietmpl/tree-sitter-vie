@@ -125,10 +125,6 @@ Binary expression
 ===
 {{ a == b }}
 {{ a != b }}
-{{ a < b }}
-{{ a > b }}
-{{ a >= b }}
-{{ a <= b }}
 {{ a ~ b }}
 {{ a or b }}
 {{ a and b }}
@@ -138,26 +134,6 @@ Binary expression
 ---
 
 (source_file
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
   (render
     (binary_expression
       left: (identifier)
@@ -206,7 +182,7 @@ Nested unary expressions
 {{ !!true }}
 {{ false is not not true }}
 {{ false is not ! true }}
-{{ false is not a < false }}
+{{ false is not a == false }}
 {{ (false is not true) is not a }}
 ---
 
@@ -258,7 +234,7 @@ Nested binary expressions
 ===
 {{ a or b and c or d and e }}
 {{ not a and b or not c }}
-{{ a == b and c != d or e > f }}
+{{ a == b and c != d or e ~ f }}
 {{ x or y and z == w or v }}
 {{ a and b or c and d or e }}
 ---

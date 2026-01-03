@@ -142,10 +142,6 @@ export default grammar({
 					choice(
 						"==",
 						"!=",
-						"<",
-						">",
-						"<=",
-						">=",
 						"is",
 						// Note: this hardcodes whitespaces instead of relying on 'extras'
 						alias(/is\s+not/, "is not"),
