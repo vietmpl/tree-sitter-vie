@@ -127,26 +127,14 @@ export default grammar({
 		unary_expression: $ =>
 			prec.left(
 				PREC.unary,
-				seq(
-					field("operator", choice("!", "not")),
-					field("operand", $._expression),
-				),
+				seq(field("operator", "!"), field("operand", $._expression)),
 			),
 
 		binary_expression: $ => {
 			const table = [
-				[PREC.or, choice("or", "||")],
-				[PREC.and, choice("and", "&&")],
-				[
-					PREC.comparative,
-					choice(
-						"==",
-						"!=",
-						"is",
-						// Note: this hardcodes whitespaces instead of relying on 'extras'
-						alias(/is\s+not/, "is not"),
-					),
-				],
+				[PREC.or, "or"],
+				[PREC.and, "and"],
+				[PREC.comparative, choice("==", "!=")],
 				[PREC.additive, "~"],
 			];
 

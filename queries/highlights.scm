@@ -16,16 +16,11 @@
   "elseif"
   "else"
   "end"
-  "is"
-  "not"
-  "is not"
   "or"
   "and"
 ] @keyword
 
 [
-  "||"
-  "&&"
   "!="
   "=="
   "!"

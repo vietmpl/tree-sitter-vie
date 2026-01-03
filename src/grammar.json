@@ -496,17 +496,8 @@
             "type": "FIELD",
             "name": "operator",
             "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "!"
-                },
-                {
-                  "type": "STRING",
-                  "value": "not"
-                }
-              ]
+              "type": "STRING",
+              "value": "!"
             }
           },
           {
@@ -541,17 +532,8 @@
                 "type": "FIELD",
                 "name": "operator",
                 "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "or"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "||"
-                    }
-                  ]
+                  "type": "STRING",
+                  "value": "or"
                 }
               },
               {
@@ -583,17 +565,8 @@
                 "type": "FIELD",
                 "name": "operator",
                 "content": {
-                  "type": "CHOICE",
-                  "members": [
-                    {
-                      "type": "STRING",
-                      "value": "and"
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "&&"
-                    }
-                  ]
+                  "type": "STRING",
+                  "value": "and"
                 }
               },
               {
@@ -634,19 +607,6 @@
                     {
                       "type": "STRING",
                       "value": "!="
-                    },
-                    {
-                      "type": "STRING",
-                      "value": "is"
-                    },
-                    {
-                      "type": "ALIAS",
-                      "content": {
-                        "type": "PATTERN",
-                        "value": "is\\s+not"
-                      },
-                      "named": false,
-                      "value": "is not"
                     }
                   ]
                 }

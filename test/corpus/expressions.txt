@@ -90,9 +90,6 @@ Unary expression
 {{ ! flag }}
 {{ !true }}
 {{ !"str" }}
-{{ not true }}
-{{ not "srr" }}
-{{ not value }}
 ---
 
 (source_file
@@ -106,19 +103,7 @@ Unary expression
   (text)
   (render
     (unary_expression
-      (string_literal)))
-  (text)
-  (render
-    (unary_expression
-      (boolean_literal)))
-  (text)
-  (render
-    (unary_expression
-      (string_literal)))
-  (text)
-  (render
-    (unary_expression
-      (identifier))))
+      (string_literal))))
 
 ===
 Binary expression
@@ -128,27 +113,9 @@ Binary expression
 {{ a ~ b }}
 {{ a or b }}
 {{ a and b }}
-{{ a is b }}
-{{ a is not b }}
-{{   a is   not  b }}
 ---
 
 (source_file
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
-  (render
-    (binary_expression
-      left: (identifier)
-      right: (identifier)))
-  (text)
   (render
     (binary_expression
       left: (identifier)
@@ -177,13 +144,10 @@ Binary expression
 ===
 Nested unary expressions
 ===
-{{ not not true }}
-{{ not !true }}
 {{ !!true }}
-{{ false is not not true }}
-{{ false is not ! true }}
-{{ false is not a == false }}
-{{ (false is not true) is not a }}
+{{ false == ! ! true }}
+{{ false == !a == false }}
+{{ (false == !true) == a }}
 ---
 
 (source_file
@@ -193,32 +157,18 @@ Nested unary expressions
         (boolean_literal))))
   (text)
   (render
-    (unary_expression
-      (unary_expression
-        (boolean_literal))))
-  (text)
-  (render
-    (unary_expression
-      (unary_expression
-        (boolean_literal))))
-  (text)
-  (render
     (binary_expression
       (boolean_literal)
       (unary_expression
-        (boolean_literal))))
-  (text)
-  (render
-    (binary_expression
-      (boolean_literal)
-      (unary_expression
-        (boolean_literal))))
+        (unary_expression
+          (boolean_literal)))))
   (text)
   (render
     (binary_expression
       (binary_expression
         (boolean_literal)
-        (identifier))
+        (unary_expression
+          (identifier)))
       (boolean_literal)))
   (text)
   (render
@@ -226,14 +176,15 @@ Nested unary expressions
       (parenthesized_expression
         (binary_expression
           (boolean_literal)
-          (boolean_literal)))
+          (unary_expression
+            (boolean_literal))))
       (identifier))))
 
 ===
 Nested binary expressions
 ===
 {{ a or b and c or d and e }}
-{{ not a and b or not c }}
+{{ !a and b or !c }}
 {{ a == b and c != d or e ~ f }}
 {{ x or y and z == w or v }}
 {{ a and b or c and d or e }}
@@ -301,7 +252,6 @@ Parenthesized expression
 {{ ("") }}
 {{ (true) }}
 {{ (name) }}
-{{ a is (not b) }}
 ---
 
 (source_file
@@ -315,11 +265,4 @@ Parenthesized expression
   (text)
   (render
     (parenthesized_expression
-      (identifier)))
-  (text)
-  (render
-    (binary_expression
-      (identifier)
-      (parenthesized_expression
-        (unary_expression
-          (identifier))))))
+      (identifier))))
