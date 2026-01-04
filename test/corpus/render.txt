@@ -8,7 +8,7 @@ Hello {{ name }}!
 
 (source_file
   (text)
-  (render
+  (display_tag
     (identifier))
   (text))
 
@@ -19,11 +19,11 @@ Multiple renders
 ---
 
 (source_file
-  (render
+  (display_tag
     (identifier))
-  (render
+  (display_tag
     (identifier))
-  (render
+  (display_tag
     (identifier)))
 
 ===

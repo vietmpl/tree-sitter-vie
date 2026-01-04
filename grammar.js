@@ -34,7 +34,7 @@ export default grammar({
 			choice(
 				$.text,
 				$.comment_tag,
-				$.render,
+				$.display_tag,
 				$.if_tag,
 				$.else_tag,
 				$.elseif_tag,
@@ -45,7 +45,7 @@ export default grammar({
 
 		comment_tag: $ => seq("{#", optional($.comment), "#}"),
 
-		render: $ => seq("{{", $._expression, "}}"),
+		display_tag: $ => seq("{{", $._expression, "}}"),
 
 		if_tag: $ => seq("{%", "if", $._expression, "%}"),
 

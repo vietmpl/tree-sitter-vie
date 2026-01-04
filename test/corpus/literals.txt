@@ -6,10 +6,10 @@ Boolean literal
 ---
 
 (source_file
-  (render
+  (display_tag
     (boolean_literal))
   (text)
-  (render
+  (display_tag
     (boolean_literal)))
 
 ===
@@ -21,13 +21,13 @@ Simple string literal
 ---
 
 (source_file
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal)))
 
 ===
@@ -45,31 +45,31 @@ String literal with special chars
 ---
 
 (source_file
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal))
   (text)
-  (render
+  (display_tag
     (string_literal)))
 
 ===
@@ -85,31 +85,31 @@ Escaped string literal
 ---
 
 (source_file
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence)))
   (text)
-  (render
+  (display_tag
     (string_literal
       (escape_sequence))))
 

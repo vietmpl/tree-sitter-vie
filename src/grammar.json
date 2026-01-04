@@ -23,7 +23,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "render"
+          "name": "display_tag"
         },
         {
           "type": "SYMBOL",
@@ -84,7 +84,7 @@
         }
       ]
     },
-    "render": {
+    "display_tag": {
       "type": "SEQ",
       "members": [
         {

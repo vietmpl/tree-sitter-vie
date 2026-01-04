@@ -41,7 +41,7 @@ If with render
   (if_tag
     (identifier))
   (text)
-  (render
+  (display_tag
     (identifier))
   (text)
   (end_tag)
