@@ -1,0 +1,50 @@
+===
+Display
+===
+
+Hello {{ name }}!
+
+---
+
+(source_file
+  (text)
+  (display_tag
+    (identifier))
+  (text))
+
+===
+Invalid unclosed display
+:error
+===
+{{ name
+---
+
+
+
+===
+Multiline display
+:error
+===
+{{""
+}}
+---
+
+
+
+===
+Invalid display with {
+:error
+===
+{{ { }}
+---
+
+
+
+===
+Invalid nested displays
+:error
+===
+{{ {{a}} }}
+---
+
+

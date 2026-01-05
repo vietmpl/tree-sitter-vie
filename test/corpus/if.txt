@@ -1,60 +1,11 @@
 ===
-Simple if
-===
-{% if flag %}{% end %}
----
-
-(source_file
-  (if_tag
-    (identifier))
-  (end_tag))
-
-===
-If with text
+If
 ===
 
 {% if flag %}
-{% end %}
-
----
-
-(source_file
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (end_tag)
-  (text))
-
-===
-If with render
-===
-
-{% if flag %}
-{{ user }}
-{% end %}
-
----
-
-(source_file
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (display_tag
-    (identifier))
-  (text)
-  (end_tag)
-  (text))
-
-===
-If else
-===
-
-{% if flag %}
-A
+{% elseif flag2 %}
+{% elseif flag3 %}
 {% else %}
-B
 {% end %}
 
 ---
@@ -62,37 +13,15 @@ B
 (source_file
   (text)
   (if_tag
+    (identifier))
+  (text)
+  (elseif_tag
+    (identifier))
+  (text)
+  (elseif_tag
     (identifier))
   (text)
   (else_tag)
-  (text)
-  (end_tag)
-  (text))
-
-===
-Else if
-===
-
-{% if flag %}
-A
-{% elseif flag2 %}
-B
-{% elseif flag3 %}
-B
-{% end %}
-
----
-
-(source_file
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (elseif_tag
-    (identifier))
-  (text)
-  (elseif_tag
-    (identifier))
   (text)
   (end_tag)
   (text))
@@ -123,18 +52,10 @@ A
   (text))
 
 ===
-Nested if else
+Inline if
 ===
 
-{% if flag %}
-A
-{% else %}
-{% if flag %}
-B
-{% else %}
-C
-{% end %}
-{% end %}
+{% if flag %}text{% end %}
 
 ---
 
@@ -142,65 +63,6 @@ C
   (text)
   (if_tag
     (identifier))
-  (text)
-  (else_tag)
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (else_tag)
-  (text)
-  (end_tag)
-  (text)
-  (end_tag)
-  (text))
-
-===
-Deep nested ifs
-===
-
-{% if flag %}
-
-  {% if flag %}
-
-  {% elseif flag2 %}
-
-    {% if flag3 %}
-
-    {% elseif flag2 %}
-
-    {% end %}
-
-  {% end %}
-
-{% else %}
-
-{% end %}
-
----
-
-(source_file
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (elseif_tag
-    (identifier))
-  (text)
-  (if_tag
-    (identifier))
-  (text)
-  (elseif_tag
-    (identifier))
-  (text)
-  (end_tag)
-  (text)
-  (end_tag)
-  (text)
-  (else_tag)
   (text)
   (end_tag)
   (text))

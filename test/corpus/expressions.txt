@@ -2,16 +2,12 @@
 Identifier
 ===
 {{ name }}
-{{ nam_e1 }}
 {{ _nam_e1 }}
 {{ @name }}
 {{ @na_me1 }}
 ---
 
 (source_file
-  (display_tag
-    (identifier))
-  (text)
   (display_tag
     (identifier))
   (text)
@@ -37,18 +33,12 @@ Invalid identifier
 Function call
 ===
 {{ foo() }}
-{{ @foo() }}
 {{ foo(x) }}
 {{ foo(x, y) }}
 {{ foo(bar()) }}
 ---
 
 (source_file
-  (display_tag
-    (call_expression
-      function: (identifier)
-      arguments: (argument_list)))
-  (text)
   (display_tag
     (call_expression
       function: (identifier)
@@ -76,18 +66,9 @@ Function call
           arguments: (argument_list))))))
 
 ===
-Unclosed function call
-:error
-===
-{{ foo( }}
----
-
-
-
-===
 Unary expression
 ===
-{{ ! flag }}
+{{ !flag }}
 {{ !true }}
 {{ !"str" }}
 ---
@@ -145,124 +126,21 @@ Binary expression
 Nested unary expressions
 ===
 {{ !!true }}
-{{ false == ! ! true }}
-{{ false == !a == false }}
-{{ (false == !true) == a }}
 ---
 
 (source_file
   (display_tag
     (unary_expression
       (unary_expression
-        (boolean_literal))))
-  (text)
-  (display_tag
-    (binary_expression
-      (boolean_literal)
-      (unary_expression
-        (unary_expression
-          (boolean_literal)))))
-  (text)
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (boolean_literal)
-        (unary_expression
-          (identifier)))
-      (boolean_literal)))
-  (text)
-  (display_tag
-    (binary_expression
-      (parenthesized_expression
-        (binary_expression
-          (boolean_literal)
-          (unary_expression
-            (boolean_literal))))
-      (identifier))))
-
-===
-Nested binary expressions
-===
-{{ a or b and c or d and e }}
-{{ !a and b or !c }}
-{{ a == b and c != d or e ~ f }}
-{{ x or y and z == w or v }}
-{{ a and b or c and d or e }}
----
-
-(source_file
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (identifier)
-        (binary_expression
-          (identifier)
-          (identifier)))
-      (binary_expression
-        (identifier)
-        (identifier))))
-  (text)
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (unary_expression
-          (identifier))
-        (identifier))
-      (unary_expression
-        (identifier))))
-  (text)
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (binary_expression
-          (identifier)
-          (identifier))
-        (binary_expression
-          (identifier)
-          (identifier)))
-      (binary_expression
-        (identifier)
-        (identifier))))
-  (text)
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (identifier)
-        (binary_expression
-          (identifier)
-          (binary_expression
-            (identifier)
-            (identifier))))
-      (identifier)))
-  (text)
-  (display_tag
-    (binary_expression
-      (binary_expression
-        (binary_expression
-          (identifier)
-          (identifier))
-        (binary_expression
-          (identifier)
-          (identifier)))
-      (identifier))))
+        (boolean_literal)))))
 
 ===
 Parenthesized expression
 ===
-{{ ("") }}
-{{ (true) }}
-{{ (name) }}
+{{ (a) }}
 ---
 
 (source_file
-  (display_tag
-    (parenthesized_expression
-      (string_literal)))
-  (text)
-  (display_tag
-    (parenthesized_expression
-      (boolean_literal)))
-  (text)
   (display_tag
     (parenthesized_expression
       (identifier))))

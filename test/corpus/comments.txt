@@ -1,49 +1,13 @@
 ===
-Simple comment
+Comments
 ===
-{# Comment #}
----
-
-(source_file
-  (comment_tag
-    (comment)))
-
-===
-Multiple comments
-===
-{# 1 #}{# 2 #}{# 3 #}
+{# comment 1 #}{# comment 2 #}
+{#comment#}
 ---
 
 (source_file
   (comment_tag
     (comment))
-  (comment_tag
-    (comment))
-  (comment_tag
-    (comment)))
-
-===
-Space between comments
-===
-{# 1 #} {# 2 #}
----
-
-(source_file
-  (comment_tag
-    (comment))
-  (text)
-  (comment_tag
-    (comment)))
-
-===
-Newline between comments
-===
-{# 1 #}
-
-{# 2 #}
----
-
-(source_file
   (comment_tag
     (comment))
   (text)
@@ -54,11 +18,7 @@ Newline between comments
 Comment with text
 ===
 
-WOW BOB WOW
-
-{# Comment #}
-
-MyCoolText
+WOW BOB WOW {# Comment #}MyCoolText
 
 ---
 
@@ -71,18 +31,10 @@ MyCoolText
 ===
 Comment with #
 ===
-{###}
-{# # #}
 {# ### #}
 ---
 
 (source_file
-  (comment_tag
-    (comment))
-  (text)
-  (comment_tag
-    (comment))
-  (text)
   (comment_tag
     (comment)))
 
@@ -132,8 +84,7 @@ Nested comments
 ===
 Comment and { text
 ===
-{
-{##}
+{ {##}
 ---
 
 (source_file

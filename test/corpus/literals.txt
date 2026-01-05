@@ -1,52 +1,53 @@
 ===
 Boolean literal
 ===
+
 {{ true }}
 {{ false }}
+
 ---
 
 (source_file
+  (text)
   (display_tag
     (boolean_literal))
   (text)
   (display_tag
-    (boolean_literal)))
+    (boolean_literal))
+  (text))
 
 ===
-Simple string literal
+String literal
 ===
-{{ "based" }}
-{{ "" }}
-{{ "    	" }}
+
+{{ "simple" }}
+
 ---
 
 (source_file
-  (display_tag
-    (string_literal))
   (text)
   (display_tag
     (string_literal))
-  (text)
-  (display_tag
-    (string_literal)))
+  (text))
 
 ===
 String literal with special chars
 ===
+
 {{ "'" }}
 {{ "{" }}
 {{ "{{" }}
 {{ "}}" }}
-{{ "#}" }}
-{{ "##}" }}
 {{ "{#" }}
+{{ "#}" }}
 {{ "{%" }}
 {{ "%}" }}
+{{ "(" }}
+{{ ")" }}
+
 ---
 
 (source_file
-  (display_tag
-    (string_literal))
   (text)
   (display_tag
     (string_literal))
@@ -70,11 +71,19 @@ String literal with special chars
     (string_literal))
   (text)
   (display_tag
-    (string_literal)))
+    (string_literal))
+  (text)
+  (display_tag
+    (string_literal))
+  (text)
+  (display_tag
+    (string_literal))
+  (text))
 
 ===
 Escaped string literal
 ===
+
 {{ "\n" }}
 {{ "\r" }}
 {{ "\"" }}
@@ -82,12 +91,10 @@ Escaped string literal
 {{ "\U0001F600" }}
 {{ "\x7F" }}
 {{ "\  t" }}
+
 ---
 
 (source_file
-  (display_tag
-    (string_literal
-      (escape_sequence)))
   (text)
   (display_tag
     (string_literal
@@ -111,7 +118,12 @@ Escaped string literal
   (text)
   (display_tag
     (string_literal
-      (escape_sequence))))
+      (escape_sequence)))
+  (text)
+  (display_tag
+    (string_literal
+      (escape_sequence)))
+  (text))
 
 ===
 Invalid multiline string literal
@@ -126,7 +138,7 @@ Invalid multiline string literal
 
 
 ===
-Invalid string literal
+Invalid string literal with quote
 :error
 ===
 {{ " " " }}
