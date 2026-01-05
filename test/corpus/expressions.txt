@@ -146,6 +146,33 @@ Parenthesized expression
       (identifier))))
 
 ===
+Pipe expression
+===
+{{ foo | bar | baz }}
+---
+
+(source_file
+  (display_tag
+    (pipe_expression
+      (pipe_expression
+        (identifier)
+        (identifier))
+      (identifier))))
+
+===
+Unary is higher prec than binary
+===
+{{ !a or b }}
+---
+
+(source_file
+  (display_tag
+    (binary_expression
+      (unary_expression
+        (identifier))
+      (identifier))))
+
+===
 Conditional expression
 ===
 {{ a ? "1" : "2" }}
