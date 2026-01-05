@@ -65,6 +65,7 @@ export default grammar({
 				$.string_literal,
 				$.identifier,
 				$.parenthesized_expression,
+				$.conditional_expression,
 			),
 
 		identifier: _ => /[@_]?[\p{XID_Start}]\p{XID_Continue}*/u,
@@ -145,6 +146,17 @@ export default grammar({
 		},
 
 		parenthesized_expression: $ => seq("(", $._expression, ")"),
+
+		conditional_expression: $ =>
+			prec.right(
+				seq(
+					field("condition", $._expression),
+					"?",
+					field("consequence", $._expression),
+					":",
+					field("alternative", $._expression),
+				),
+			),
 	},
 });
 

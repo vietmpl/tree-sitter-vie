@@ -144,3 +144,47 @@ Parenthesized expression
   (display_tag
     (parenthesized_expression
       (identifier))))
+
+===
+Conditional expression
+===
+{{ a ? "1" : "2" }}
+---
+
+(source_file
+  (display_tag
+    (conditional_expression
+      condition: (identifier)
+      consequence: (string_literal)
+      alternative: (string_literal))))
+
+===
+Nested conditional expressions
+===
+{{ a ? "1" : b ? "1" : "2" }}
+---
+
+(source_file
+  (display_tag
+    (conditional_expression
+      condition: (identifier)
+      consequence: (string_literal)
+      alternative: (conditional_expression
+        condition: (identifier)
+        consequence: (string_literal)
+        alternative: (string_literal)))))
+
+===
+Conditional expression with binary expression condition
+===
+{{ a == b ? "1" : "2" }}
+---
+
+(source_file
+  (display_tag
+    (conditional_expression
+      condition: (binary_expression
+        left: (identifier)
+        right: (identifier))
+      consequence: (string_literal)
+      alternative: (string_literal))))

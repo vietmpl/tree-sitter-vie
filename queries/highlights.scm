@@ -41,3 +41,9 @@
 (string_literal) @string
 
 (escape_sequence) @string.escape
+
+(conditional_expression
+  [
+    "?"
+    ":"
+  ] @keyword.conditional.ternary)
